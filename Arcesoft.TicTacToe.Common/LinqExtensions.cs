@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace System.Linq
+namespace Arcesoft.TicTacToe
 {
 	public static class LinqExtensions
 	{

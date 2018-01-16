@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TicTacToe
+namespace Arcesoft.TicTacToe
 {
     public class GameException : Exception
     {

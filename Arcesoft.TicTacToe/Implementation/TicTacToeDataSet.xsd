@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="TicTacToeDataSet" targetNamespace="http://tempuri.org/TicTacToe.xsd" xmlns:mstns="http://tempuri.org/TicTacToe.xsd" xmlns="http://tempuri.org/TicTacToe.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TicTacToeDataSet" targetNamespace="http://tempuri.org/TicTacToeDataSet.xsd" xmlns:mstns="http://tempuri.org/TicTacToeDataSet.xsd" xmlns="http://tempuri.org/TicTacToeDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="NotPublic" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections />
         <Tables />
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="TicTacToeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="TicTacToeDataSet" msprop:Generator_UserDSName="TicTacToeDataSet">
+  <xs:element name="TicTacToeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TicTacToeDataSet" msprop:Generator_UserDSName="TicTacToeDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Moves" msprop:Generator_UserTableName="Moves" msprop:Generator_RowEvArgName="MovesRowChangeEvent" msprop:Generator_TableVarName="tableMoves" msprop:Generator_TablePropName="Moves" msprop:Generator_RowDeletingName="MovesRowDeleting" msprop:Generator_RowChangingName="MovesRowChanging" msprop:Generator_RowDeletedName="MovesRowDeleted" msprop:Generator_RowEvHandlerName="MovesRowChangeEventHandler" msprop:Generator_TableClassName="MovesDataTable" msprop:Generator_RowChangedName="MovesRowChanged" msprop:Generator_RowClassName="MovesRow">
+        <xs:element name="Moves" msprop:Generator_TableClassName="MovesDataTable" msprop:Generator_TableVarName="tableMoves" msprop:Generator_TablePropName="Moves" msprop:Generator_RowDeletingName="MovesRowDeleting" msprop:Generator_RowChangingName="MovesRowChanging" msprop:Generator_RowEvHandlerName="MovesRowChangeEventHandler" msprop:Generator_RowDeletedName="MovesRowDeleted" msprop:Generator_UserTableName="Moves" msprop:Generator_RowChangedName="MovesRowChanged" msprop:Generator_RowEvArgName="MovesRowChangeEvent" msprop:Generator_RowClassName="MovesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Board" msprop:Generator_ColumnVarNameInTable="columnBoard" msprop:Generator_ColumnPropNameInRow="Board" msprop:Generator_ColumnPropNameInTable="BoardColumn" msprop:Generator_UserColumnName="Board" default="&quot;&quot;">

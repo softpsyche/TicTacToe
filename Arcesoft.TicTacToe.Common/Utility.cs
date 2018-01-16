@@ -5,14 +5,10 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
-namespace TicTacToe
+namespace Arcesoft.TicTacToe
 {
 	public static class Utility
 	{
-		//public void Serialize(object serializableObject, string filePath)
-		//{
-		//    IF
-		//}
 		public static void Serialize<T>(T serializableObject,string filePath)
 		{
 			IFormatter iFormatter = new BinaryFormatter();

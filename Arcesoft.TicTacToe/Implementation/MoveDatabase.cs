@@ -6,8 +6,9 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Linq;
+using Arcesoft.TicTacToe.Implementation;
 
-namespace TicTacToe
+namespace Arcesoft.TicTacToe
 {
     [Serializable]
     public class MoveDatabase : IMoveDatabase
@@ -20,14 +21,14 @@ namespace TicTacToe
 
 		public MoveDatabase(TicTacToeDataSet.MovesDataTable movesDataTable)
         {
-            this.MovesDataTable = movesDataTable;
+            MovesDataTable = movesDataTable;
         }
         public GameMove LookupBestMove(string currentBoardPosition, Player currentPlayer, Boolean random = true)
         {
             TicTacToeDataSet.MovesRow bestMove;
             Random randy = random ? new Random() : null;
 
-            var moves = this.LookupMoves(currentBoardPosition, currentPlayer);
+            var moves = LookupMoves(currentBoardPosition, currentPlayer);
             var winningMoves = moves.Where(a => a.IsWin).ToList();
             var tieMoves = moves.Where(a => a.IsTie).ToList();
             var losingMoves = moves.Where(a => a.IsLoss).ToList();
@@ -56,7 +57,7 @@ namespace TicTacToe
         {
             var searchPattern = String.Format("Board = '{0}' AND Player = '{1}'", currentBoardPosition, currentPlayer.ToString());
 
-            return (TicTacToeDataSet.MovesRow[])this.MovesDataTable.Select(searchPattern);
+            return (TicTacToeDataSet.MovesRow[])MovesDataTable.Select(searchPattern);
         }
     }
 
@@ -76,7 +77,7 @@ namespace TicTacToe
 
         private MoveDatabaseBuilder(ArtificialIntelligence artificialIntelligence)
         {
-            this.ArtificialIntelligence = artificialIntelligence;
+            ArtificialIntelligence = artificialIntelligence;
         }
 
 		private TicTacToeDataSet.MovesDataTable BuildMovesDataTable()
@@ -85,7 +86,7 @@ namespace TicTacToe
 
             Collection<BoardLayoutAndGameMoveResult> gameMoveResultCollection = new Collection<BoardLayoutAndGameMoveResult>();
 
-            this.ArtificialIntelligence.GetAllResponsesForGame(gameMoveResultCollection);
+            ArtificialIntelligence.GetAllResponsesForGame(gameMoveResultCollection);
 
             foreach (BoardLayoutAndGameMoveResult boardLayoutAndGameMoveResult
                 in gameMoveResultCollection)

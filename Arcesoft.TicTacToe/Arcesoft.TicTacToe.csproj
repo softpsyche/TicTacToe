@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.0.12\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,41 +46,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions.cs" />
-    <Compile Include="Game\ArtificialIntelligence.cs" />
-    <Compile Include="Game\Board.cs" />
-    <Compile Include="Game\BoardLayoutAndGameMoveResult.cs" />
-    <Compile Include="Game\Enumerations.cs" />
-    <Compile Include="Game\Game.cs" />
-    <Compile Include="Game\GameException.cs" />
-    <Compile Include="Game\GameMove.cs" />
-    <Compile Include="Game\GameMoveResult.cs" />
-    <Compile Include="Game\IRandom.cs" />
-    <Compile Include="Game\MoveDatabase.cs" />
-    <Compile Include="LinqExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicTacToeDataSet.cs">
+    <Compile Include="IGame.cs" />
+    <Compile Include="Implementation\ArtificialIntelligence.cs" />
+    <Compile Include="Implementation\Board.cs" />
+    <Compile Include="Implementation\BoardLayoutAndGameMoveResult.cs" />
+    <Compile Include="Implementation\Enumerations.cs" />
+    <Compile Include="Implementation\Game.cs" />
+    <Compile Include="Implementation\GameException.cs" />
+    <Compile Include="Implementation\MoveResult.cs" />
+    <Compile Include="Implementation\IRandom.cs" />
+    <Compile Include="Implementation\MoveDatabase.cs" />
+    <Compile Include="Implementation\TicTacToeDataSet.cs">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TicTacToeDataSet.Designer.cs">
-      <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
+    <Compile Include="Implementation\TicTacToeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Utility.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TicTacToeDataSet.xsc">
+    <ProjectReference Include="..\Arcesoft.TicTacToe.Common\Arcesoft.TicTacToe.Common.csproj">
+      <Project>{f9c02105-c670-4937-9e13-d57b6bdd309e}</Project>
+      <Name>Arcesoft.TicTacToe.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Implementation\TicTacToeDataSet.xsc">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TicTacToeDataSet.xsd">
+    <None Include="Implementation\TicTacToeDataSet.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>TicTacToeDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
-    <None Include="TicTacToeDataSet.xss">
+    <None Include="Implementation\TicTacToeDataSet.xss">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

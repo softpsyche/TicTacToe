@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TicTacToe
+namespace Arcesoft.TicTacToe
 {
 	public enum Square
 	{
@@ -10,6 +10,7 @@ namespace TicTacToe
 		X =1,
 		O =2
 	}
+
 	public enum GameState
 	{
 		InPlay,
@@ -17,12 +18,14 @@ namespace TicTacToe
 		XWin,
 		OWin
 	}
+
 	public enum Player
 	{
 		X,
 		O
 	}
-    public enum MoveDirection
+
+    public enum Move
     {
         NorthEast = 0,
         Northern = 1,

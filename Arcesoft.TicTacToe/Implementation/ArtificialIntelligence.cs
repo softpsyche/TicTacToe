@@ -9,17 +9,17 @@ using System.Xml;
 
 
 
-namespace TicTacToe
+namespace Arcesoft.TicTacToe
 {
     [Serializable]
     public class ArtificialIntelligence
     {
         #region Private Variables
-        private IGame game = null;
-        private IRandom random = null;
+        private IGame _game = null;
+        private IRandom _random = null;
         #endregion
         #region Private Methods
-        private int FindBestMoveIndex(Collection<GameMoveResult> gameMoveResults, Player side)
+        private int FindBestMoveIndex(Collection<MoveResult> gameMoveResults, Player side)
         {
             Collection<int> winningMovesIndexes = new Collection<int>();
             Collection<int> tieMovesIndexes = new Collection<int>();
@@ -64,56 +64,54 @@ namespace TicTacToe
 
             if (winningMovesIndexes.Count > 0)
             {
-                return winningMovesIndexes[random.Next( winningMovesIndexes.Count)];
+                return winningMovesIndexes[_random.Next( winningMovesIndexes.Count)];
             }
             else if (tieMovesIndexes.Count > 0)
             {
-                return tieMovesIndexes[random.Next( tieMovesIndexes.Count)];
+                return tieMovesIndexes[_random.Next( tieMovesIndexes.Count)];
             }
             else if (losingMovesIndexes.Count > 0)
             {
-                return losingMovesIndexes[random.Next(losingMovesIndexes.Count)];
+                return losingMovesIndexes[_random.Next(losingMovesIndexes.Count)];
             }
             else
                 throw new ArgumentException("gameMoveResults collection is either empty or corrupt");
         }
-        private GameMoveResult GetMinMaxResponseForGame(Collection<BoardLayoutAndGameMoveResult> boardLayoutAndGameMoveResult)
+        private MoveResult GetMinMaxResponseForGame(Collection<BoardLayoutAndGameMoveResult> boardLayoutAndGameMoveResult)
         {
-            Collection<GameMoveResult> gameMoveResults = new Collection<GameMoveResult>();
+            Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
             int bestMoveIndex;
-			var legalMoves = game.GetLegalMoves();
+			var legalMoves = _game.GetLegalMoves();
 
-			foreach (GameMove gameMove in legalMoves)
+			foreach (var move in legalMoves)
             {
-                GameMoveResult gameMoveResult;
-                Player player = game.PlayerTurn;
-                game.MakeMove(gameMove);
+                MoveResult gameMoveResult;
+                Player player = _game.CurrentPlayer;
+                _game.Move(move);
 
-                if (game.IsOver)
+                if (_game.GameIsOver)
                 {
-                    gameMoveResult = new GameMoveResult(gameMove,
-                        game.GameState);
+                    gameMoveResult = new MoveResult(move,_game.GameState);
                 }
                 else
                 {
                     //recurse to find this moves finale
-                    gameMoveResult = new GameMoveResult(gameMove,
-                        GetMinMaxResponseForGame( boardLayoutAndGameMoveResult).BoardStateAfterMove);
+                    gameMoveResult = new MoveResult(move,GetMinMaxResponseForGame( boardLayoutAndGameMoveResult).BoardStateAfterMove);
                 }
 
                 //add the result here..
                 gameMoveResults.Add(gameMoveResult);
 
                 //undo that last move...
-                game.UndoLastMove();
+                _game.UndoLastMove();
 
                 boardLayoutAndGameMoveResult.Add(new BoardLayoutAndGameMoveResult(
                     gameMoveResult,
-                    game.GameBoardString,
+                    _game.GameBoardString,
                     player));
             }
 
-            bestMoveIndex = FindBestMoveIndex(gameMoveResults, game.PlayerTurn);
+            bestMoveIndex = FindBestMoveIndex(gameMoveResults, _game.CurrentPlayer);
 
             return gameMoveResults[bestMoveIndex];
         }
@@ -121,34 +119,34 @@ namespace TicTacToe
         #region Public Methods
         public ArtificialIntelligence(IGame game, IRandom random)
         {
-            this.game = game;
-            this.random = random;
+            _game = game;
+            _random = random;
         }
 
-        public GameMoveResult GetBestMove()
+        public MoveResult GetBestMove()
         {
-            Collection<GameMoveResult> gameMoveResults = new Collection<GameMoveResult>();
-			var legalMoves = game.GetLegalMoves();
+            Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
+			var legalMoves = _game.GetLegalMoves();
 
-			foreach (GameMove gameMove in legalMoves)
+			foreach (var move in legalMoves)
             {
-                game.MakeMove(gameMove);
+                _game.Move(move);
 
-                if (game.IsOver)
+                if (_game.GameIsOver)
                 {
-                    gameMoveResults.Add(new GameMoveResult(gameMove, game.GameState));
+                    gameMoveResults.Add(new MoveResult(move, _game.GameState));
                 }
                 else
                 {
                     //recurse to find this moves finale
-                    gameMoveResults.Add(new GameMoveResult(gameMove,
+                    gameMoveResults.Add(new MoveResult(move,
                         GetBestMove().BoardStateAfterMove));
                 }
 
-                game.UndoLastMove();
+                _game.UndoLastMove();
             }
 
-            return gameMoveResults[FindBestMoveIndex(gameMoveResults, this.game.PlayerTurn)];
+            return gameMoveResults[FindBestMoveIndex(gameMoveResults, _game.CurrentPlayer)];
         }
         public void GetAllResponsesForGame(Collection<BoardLayoutAndGameMoveResult> boardLayoutAndGameMoveResult)
         {

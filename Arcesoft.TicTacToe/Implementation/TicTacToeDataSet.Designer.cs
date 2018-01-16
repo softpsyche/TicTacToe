@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace TicTacToe {
+namespace Arcesoft.TicTacToe.Implementation {
     
     
     /// <summary>
@@ -22,7 +22,7 @@ namespace TicTacToe {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("TicTacToeDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class TicTacToeDataSet : global::System.Data.DataSet {
+    internal partial class TicTacToeDataSet : global::System.Data.DataSet {
         
         private MovesDataTable tableMoves;
         
@@ -31,48 +31,48 @@ namespace TicTacToe {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public TicTacToeDataSet() {
-            this.BeginInit();
-            this.InitClass();
-            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
+            BeginInit();
+            InitClass();
+            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
-            this.EndInit();
+            EndInit();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected TicTacToeDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
-            if ((this.IsBinarySerialized(info, context) == true)) {
-                this.InitVars(false);
-                global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
-                this.Tables.CollectionChanged += schemaChangedHandler1;
-                this.Relations.CollectionChanged += schemaChangedHandler1;
+            if ((IsBinarySerialized(info, context) == true)) {
+                InitVars(false);
+                global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(SchemaChanged);
+                Tables.CollectionChanged += schemaChangedHandler1;
+                Relations.CollectionChanged += schemaChangedHandler1;
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
-            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+            if ((DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
                 if ((ds.Tables["Moves"] != null)) {
                     base.Tables.Add(new MovesDataTable(ds.Tables["Moves"]));
                 }
-                this.DataSetName = ds.DataSetName;
-                this.Prefix = ds.Prefix;
-                this.Namespace = ds.Namespace;
-                this.Locale = ds.Locale;
-                this.CaseSensitive = ds.CaseSensitive;
-                this.EnforceConstraints = ds.EnforceConstraints;
-                this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
-                this.InitVars();
+                DataSetName = ds.DataSetName;
+                Prefix = ds.Prefix;
+                Namespace = ds.Namespace;
+                Locale = ds.Locale;
+                CaseSensitive = ds.CaseSensitive;
+                EnforceConstraints = ds.EnforceConstraints;
+                Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
+                InitVars();
             }
             else {
-                this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
             }
-            this.GetSerializationData(info, context);
-            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
+            GetSerializationData(info, context);
+            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
-            this.Relations.CollectionChanged += schemaChangedHandler;
+            Relations.CollectionChanged += schemaChangedHandler;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -81,7 +81,7 @@ namespace TicTacToe {
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public MovesDataTable Moves {
             get {
-                return this.tableMoves;
+                return tableMoves;
             }
         }
         
@@ -91,10 +91,10 @@ namespace TicTacToe {
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
             get {
-                return this._schemaSerializationMode;
+                return _schemaSerializationMode;
             }
             set {
-                this._schemaSerializationMode = value;
+                _schemaSerializationMode = value;
             }
         }
         
@@ -119,9 +119,9 @@ namespace TicTacToe {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override void InitializeDerivedDataSet() {
-            this.BeginInit();
-            this.InitClass();
-            this.EndInit();
+            BeginInit();
+            InitClass();
+            EndInit();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -129,7 +129,7 @@ namespace TicTacToe {
         public override global::System.Data.DataSet Clone() {
             TicTacToeDataSet cln = ((TicTacToeDataSet)(base.Clone()));
             cln.InitVars();
-            cln.SchemaSerializationMode = this.SchemaSerializationMode;
+            cln.SchemaSerializationMode = SchemaSerializationMode;
             return cln;
         }
         
@@ -148,25 +148,25 @@ namespace TicTacToe {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
-            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
-                this.Reset();
+            if ((DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+                Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
                 if ((ds.Tables["Moves"] != null)) {
                     base.Tables.Add(new MovesDataTable(ds.Tables["Moves"]));
                 }
-                this.DataSetName = ds.DataSetName;
-                this.Prefix = ds.Prefix;
-                this.Namespace = ds.Namespace;
-                this.Locale = ds.Locale;
-                this.CaseSensitive = ds.CaseSensitive;
-                this.EnforceConstraints = ds.EnforceConstraints;
-                this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
-                this.InitVars();
+                DataSetName = ds.DataSetName;
+                Prefix = ds.Prefix;
+                Namespace = ds.Namespace;
+                Locale = ds.Locale;
+                CaseSensitive = ds.CaseSensitive;
+                EnforceConstraints = ds.EnforceConstraints;
+                Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
+                InitVars();
             }
             else {
-                this.ReadXml(reader);
-                this.InitVars();
+                ReadXml(reader);
+                InitVars();
             }
         }
         
@@ -174,7 +174,7 @@ namespace TicTacToe {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
-            this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
+            WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
             stream.Position = 0;
             return global::System.Xml.Schema.XmlSchema.Read(new global::System.Xml.XmlTextReader(stream), null);
         }
@@ -182,16 +182,16 @@ namespace TicTacToe {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars() {
-            this.InitVars(true);
+            InitVars(true);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableMoves = ((MovesDataTable)(base.Tables["Moves"]));
+            tableMoves = ((MovesDataTable)(base.Tables["Moves"]));
             if ((initTable == true)) {
-                if ((this.tableMoves != null)) {
-                    this.tableMoves.InitVars();
+                if ((tableMoves != null)) {
+                    tableMoves.InitVars();
                 }
             }
         }
@@ -199,13 +199,13 @@ namespace TicTacToe {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "TicTacToeDataSet";
-            this.Prefix = "";
-            this.Namespace = "http://tempuri.org/TicTacToe.xsd";
-            this.EnforceConstraints = true;
-            this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableMoves = new MovesDataTable();
-            base.Tables.Add(this.tableMoves);
+            DataSetName = "TicTacToeDataSet";
+            Prefix = "";
+            Namespace = "http://tempuri.org/TicTacToeDataSet.xsd";
+            EnforceConstraints = true;
+            SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            tableMoves = new MovesDataTable();
+            base.Tables.Add(tableMoves);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -218,7 +218,7 @@ namespace TicTacToe {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
-                this.InitVars();
+                InitVars();
             }
         }
         
@@ -292,41 +292,41 @@ namespace TicTacToe {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesDataTable() {
-                this.TableName = "Moves";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
+                TableName = "Moves";
+                BeginInit();
+                InitClass();
+                EndInit();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal MovesDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
+                TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
+                    CaseSensitive = table.CaseSensitive;
                 }
                 if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
+                    Locale = table.Locale;
                 }
                 if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
+                    Namespace = table.Namespace;
                 }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
+                Prefix = table.Prefix;
+                MinimumCapacity = table.MinimumCapacity;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected MovesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
-                this.InitVars();
+                InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn BoardColumn {
                 get {
-                    return this.columnBoard;
+                    return columnBoard;
                 }
             }
             
@@ -334,7 +334,7 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn PlayerColumn {
                 get {
-                    return this.columnPlayer;
+                    return columnPlayer;
                 }
             }
             
@@ -342,7 +342,7 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ResponseRowColumn {
                 get {
-                    return this.columnResponseRow;
+                    return columnResponseRow;
                 }
             }
             
@@ -350,7 +350,7 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ResponseColumnColumn {
                 get {
-                    return this.columnResponseColumn;
+                    return columnResponseColumn;
                 }
             }
             
@@ -358,7 +358,7 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn OutcomeColumn {
                 get {
-                    return this.columnOutcome;
+                    return columnOutcome;
                 }
             }
             
@@ -367,7 +367,7 @@ namespace TicTacToe {
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
-                    return this.Rows.Count;
+                    return Rows.Count;
                 }
             }
             
@@ -375,7 +375,7 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRow this[int index] {
                 get {
-                    return ((MovesRow)(this.Rows[index]));
+                    return ((MovesRow)(Rows[index]));
                 }
             }
             
@@ -394,13 +394,13 @@ namespace TicTacToe {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void AddMovesRow(MovesRow row) {
-                this.Rows.Add(row);
+                Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRow AddMovesRow(string Board, string Player, int ResponseRow, int ResponseColumn, string Outcome) {
-                MovesRow rowMovesRow = ((MovesRow)(this.NewRow()));
+                MovesRow rowMovesRow = ((MovesRow)(NewRow()));
                 object[] columnValuesArray = new object[] {
                         Board,
                         Player,
@@ -408,14 +408,14 @@ namespace TicTacToe {
                         ResponseColumn,
                         Outcome};
                 rowMovesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowMovesRow);
+                Rows.Add(rowMovesRow);
                 return rowMovesRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRow FindByBoardResponseColumnResponseRowPlayer(string Board, int ResponseColumn, int ResponseRow, string Player) {
-                return ((MovesRow)(this.Rows.Find(new object[] {
+                return ((MovesRow)(Rows.Find(new object[] {
                             Board,
                             ResponseColumn,
                             ResponseRow,
@@ -439,44 +439,44 @@ namespace TicTacToe {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnBoard = base.Columns["Board"];
-                this.columnPlayer = base.Columns["Player"];
-                this.columnResponseRow = base.Columns["ResponseRow"];
-                this.columnResponseColumn = base.Columns["ResponseColumn"];
-                this.columnOutcome = base.Columns["Outcome"];
+                columnBoard = base.Columns["Board"];
+                columnPlayer = base.Columns["Player"];
+                columnResponseRow = base.Columns["ResponseRow"];
+                columnResponseColumn = base.Columns["ResponseColumn"];
+                columnOutcome = base.Columns["Outcome"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnBoard = new global::System.Data.DataColumn("Board", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBoard);
-                this.columnPlayer = new global::System.Data.DataColumn("Player", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPlayer);
-                this.columnResponseRow = new global::System.Data.DataColumn("ResponseRow", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnResponseRow);
-                this.columnResponseColumn = new global::System.Data.DataColumn("ResponseColumn", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnResponseColumn);
-                this.columnOutcome = new global::System.Data.DataColumn("Outcome", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOutcome);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnBoard,
-                                this.columnResponseColumn,
-                                this.columnResponseRow,
-                                this.columnPlayer}, true));
-                this.columnBoard.AllowDBNull = false;
-                this.columnBoard.DefaultValue = ((string)("\"\""));
-                this.columnBoard.MaxLength = 9;
-                this.columnPlayer.AllowDBNull = false;
-                this.columnPlayer.Caption = "DataColumn1";
-                this.columnResponseRow.AllowDBNull = false;
-                this.columnResponseColumn.AllowDBNull = false;
+                columnBoard = new global::System.Data.DataColumn("Board", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(columnBoard);
+                columnPlayer = new global::System.Data.DataColumn("Player", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(columnPlayer);
+                columnResponseRow = new global::System.Data.DataColumn("ResponseRow", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(columnResponseRow);
+                columnResponseColumn = new global::System.Data.DataColumn("ResponseColumn", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(columnResponseColumn);
+                columnOutcome = new global::System.Data.DataColumn("Outcome", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(columnOutcome);
+                Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                columnBoard,
+                                columnResponseColumn,
+                                columnResponseRow,
+                                columnPlayer}, true));
+                columnBoard.AllowDBNull = false;
+                columnBoard.DefaultValue = ((string)("\"\""));
+                columnBoard.MaxLength = 9;
+                columnPlayer.AllowDBNull = false;
+                columnPlayer.Caption = "DataColumn1";
+                columnResponseRow.AllowDBNull = false;
+                columnResponseColumn.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRow NewMovesRow() {
-                return ((MovesRow)(this.NewRow()));
+                return ((MovesRow)(NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -495,8 +495,8 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.MovesRowChanged != null)) {
-                    this.MovesRowChanged(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
+                if ((MovesRowChanged != null)) {
+                    MovesRowChanged(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -504,8 +504,8 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.MovesRowChanging != null)) {
-                    this.MovesRowChanging(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
+                if ((MovesRowChanging != null)) {
+                    MovesRowChanging(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -513,8 +513,8 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.MovesRowDeleted != null)) {
-                    this.MovesRowDeleted(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
+                if ((MovesRowDeleted != null)) {
+                    MovesRowDeleted(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -522,15 +522,15 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.MovesRowDeleting != null)) {
-                    this.MovesRowDeleting(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
+                if ((MovesRowDeleting != null)) {
+                    MovesRowDeleting(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void RemoveMovesRow(MovesRow row) {
-                this.Rows.Remove(row);
+                Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -608,17 +608,17 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal MovesRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableMoves = ((MovesDataTable)(this.Table));
+                tableMoves = ((MovesDataTable)(Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Board {
                 get {
-                    return ((string)(this[this.tableMoves.BoardColumn]));
+                    return ((string)(this[tableMoves.BoardColumn]));
                 }
                 set {
-                    this[this.tableMoves.BoardColumn] = value;
+                    this[tableMoves.BoardColumn] = value;
                 }
             }
             
@@ -626,10 +626,10 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Player {
                 get {
-                    return ((string)(this[this.tableMoves.PlayerColumn]));
+                    return ((string)(this[tableMoves.PlayerColumn]));
                 }
                 set {
-                    this[this.tableMoves.PlayerColumn] = value;
+                    this[tableMoves.PlayerColumn] = value;
                 }
             }
             
@@ -637,10 +637,10 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int ResponseRow {
                 get {
-                    return ((int)(this[this.tableMoves.ResponseRowColumn]));
+                    return ((int)(this[tableMoves.ResponseRowColumn]));
                 }
                 set {
-                    this[this.tableMoves.ResponseRowColumn] = value;
+                    this[tableMoves.ResponseRowColumn] = value;
                 }
             }
             
@@ -648,10 +648,10 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int ResponseColumn {
                 get {
-                    return ((int)(this[this.tableMoves.ResponseColumnColumn]));
+                    return ((int)(this[tableMoves.ResponseColumnColumn]));
                 }
                 set {
-                    this[this.tableMoves.ResponseColumnColumn] = value;
+                    this[tableMoves.ResponseColumnColumn] = value;
                 }
             }
             
@@ -660,27 +660,27 @@ namespace TicTacToe {
             public string Outcome {
                 get {
                     try {
-                        return ((string)(this[this.tableMoves.OutcomeColumn]));
+                        return ((string)(this[tableMoves.OutcomeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Outcome\' in table \'Moves\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableMoves.OutcomeColumn] = value;
+                    this[tableMoves.OutcomeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsOutcomeNull() {
-                return this.IsNull(this.tableMoves.OutcomeColumn);
+                return IsNull(tableMoves.OutcomeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetOutcomeNull() {
-                this[this.tableMoves.OutcomeColumn] = global::System.Convert.DBNull;
+                this[tableMoves.OutcomeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -697,15 +697,15 @@ namespace TicTacToe {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRowChangeEvent(MovesRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
+                eventRow = row;
+                eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRow Row {
                 get {
-                    return this.eventRow;
+                    return eventRow;
                 }
             }
             
@@ -713,7 +713,7 @@ namespace TicTacToe {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
-                    return this.eventAction;
+                    return eventAction;
                 }
             }
         }

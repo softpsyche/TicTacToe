@@ -64,10 +64,10 @@ namespace Arcesoft.TicTacToe
 
     public interface IMoveDatabase
     {
-        GameMove LookupBestMove(string currentBoardPosition, Player currentPlayer, Boolean random = true);
+        Move LookupBestMove(string currentBoardPosition, Player currentPlayer, Boolean random = true);
     }
 
-    public class MoveDatabaseBuilder
+    internal class MoveDatabaseBuilder
     {
         private ArtificialIntelligence ArtificialIntelligence
         {
@@ -92,17 +92,15 @@ namespace Arcesoft.TicTacToe
                 in gameMoveResultCollection)
             {
 
-                if (movesDataTable.FindByBoardResponseColumnResponseRowPlayer(
+                if (movesDataTable.FindByBoardResponsePlayer(
                     boardLayoutAndGameMoveResult.BoardLayout,
-                    boardLayoutAndGameMoveResult.GameMoveResult.MoveMade.Column,
-                    boardLayoutAndGameMoveResult.GameMoveResult.MoveMade.Row,
+                    (int)boardLayoutAndGameMoveResult.GameMoveResult.MoveMade,
                     boardLayoutAndGameMoveResult.Player.ToString()) == null)
                 {
                     movesDataTable.AddMovesRow(
                         boardLayoutAndGameMoveResult.BoardLayout,
                         boardLayoutAndGameMoveResult.Player.ToString(),
-                        boardLayoutAndGameMoveResult.GameMoveResult.MoveMade.Row,
-                        boardLayoutAndGameMoveResult.GameMoveResult.MoveMade.Column,
+                        (int)boardLayoutAndGameMoveResult.GameMoveResult.MoveMade,
                         boardLayoutAndGameMoveResult.GameMoveResult.BoardStateAfterMove.ToString());
 
                     movesDataTable.AcceptChanges();

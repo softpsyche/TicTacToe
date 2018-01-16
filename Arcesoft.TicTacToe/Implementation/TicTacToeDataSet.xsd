@@ -23,8 +23,7 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Player" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnPlayer" msprop:Generator_ColumnPropNameInRow="Player" msprop:Generator_ColumnPropNameInTable="PlayerColumn" msprop:Generator_UserColumnName="Player" type="xs:string" />
-              <xs:element name="ResponseRow" msprop:Generator_ColumnVarNameInTable="columnResponseRow" msprop:Generator_ColumnPropNameInRow="ResponseRow" msprop:Generator_ColumnPropNameInTable="ResponseRowColumn" msprop:Generator_UserColumnName="ResponseRow" type="xs:int" />
-              <xs:element name="ResponseColumn" msprop:Generator_ColumnVarNameInTable="columnResponseColumn" msprop:Generator_ColumnPropNameInRow="ResponseColumn" msprop:Generator_ColumnPropNameInTable="ResponseColumnColumn" msprop:Generator_UserColumnName="ResponseColumn" type="xs:int" />
+              <xs:element name="Response" msdata:Caption="ResponseRow" msprop:Generator_ColumnVarNameInTable="columnResponse" msprop:Generator_ColumnPropNameInRow="Response" msprop:Generator_ColumnPropNameInTable="ResponseColumn" msprop:Generator_UserColumnName="Response" type="xs:int" />
               <xs:element name="Outcome" msprop:Generator_ColumnVarNameInTable="columnOutcome" msprop:Generator_ColumnPropNameInRow="Outcome" msprop:Generator_ColumnPropNameInTable="OutcomeColumn" msprop:Generator_UserColumnName="Outcome" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
@@ -34,8 +33,7 @@
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Moves" />
       <xs:field xpath="mstns:Board" />
-      <xs:field xpath="mstns:ResponseColumn" />
-      <xs:field xpath="mstns:ResponseRow" />
+      <xs:field xpath="mstns:Response" />
       <xs:field xpath="mstns:Player" />
     </xs:unique>
   </xs:element>

@@ -62,11 +62,11 @@ namespace Arcesoft.TicTacToe
             {
                 if (synchronizingObject != null)
                 {
-                    synchronizingObject.Invoke(temp, new object[] { new GameStateChangedEventArgs(_board.State, gameChange, playerTurn) });
+                    synchronizingObject.Invoke(temp, new object[] { new GameStateChangedEventArgs(_board.State, gameChange, CurrentPlayer) });
                 }
                 else
                 {
-                    temp(this, new GameStateChangedEventArgs(_board.State, gameChange, playerTurn));
+                    temp(this, new GameStateChangedEventArgs(_board.State, gameChange, CurrentPlayer));
                 }
             }
 

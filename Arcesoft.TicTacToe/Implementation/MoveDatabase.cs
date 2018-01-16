@@ -11,7 +11,7 @@ using Arcesoft.TicTacToe.Implementation;
 namespace Arcesoft.TicTacToe
 {
     [Serializable]
-    public class MoveDatabase : IMoveDatabase
+    internal class MoveDatabase : IMoveDatabase
     {
         private TicTacToeDataSet.MovesDataTable MovesDataTable
         {
@@ -23,7 +23,7 @@ namespace Arcesoft.TicTacToe
         {
             MovesDataTable = movesDataTable;
         }
-        public GameMove LookupBestMove(string currentBoardPosition, Player currentPlayer, Boolean random = true)
+        public Move LookupBestMove(string currentBoardPosition, Player currentPlayer, Boolean random = true)
         {
             TicTacToeDataSet.MovesRow bestMove;
             Random randy = random ? new Random() : null;
@@ -50,7 +50,7 @@ namespace Arcesoft.TicTacToe
                 throw new GameException("There is no response for that board position and player turn.");
             }
 
-            return new GameMove(bestMove.ResponseRow, bestMove.ResponseColumn);
+            return (Move)bestMove.Response;
         }
 
 		private TicTacToeDataSet.MovesRow[] LookupMoves(string currentBoardPosition, Player currentPlayer)

@@ -31,48 +31,48 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public TicTacToeDataSet() {
-            BeginInit();
-            InitClass();
-            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(SchemaChanged);
+            this.BeginInit();
+            this.InitClass();
+            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
-            EndInit();
+            this.EndInit();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected TicTacToeDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
-            if ((IsBinarySerialized(info, context) == true)) {
-                InitVars(false);
-                global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(SchemaChanged);
-                Tables.CollectionChanged += schemaChangedHandler1;
-                Relations.CollectionChanged += schemaChangedHandler1;
+            if ((this.IsBinarySerialized(info, context) == true)) {
+                this.InitVars(false);
+                global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
+                this.Tables.CollectionChanged += schemaChangedHandler1;
+                this.Relations.CollectionChanged += schemaChangedHandler1;
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
-            if ((DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
                 if ((ds.Tables["Moves"] != null)) {
                     base.Tables.Add(new MovesDataTable(ds.Tables["Moves"]));
                 }
-                DataSetName = ds.DataSetName;
-                Prefix = ds.Prefix;
-                Namespace = ds.Namespace;
-                Locale = ds.Locale;
-                CaseSensitive = ds.CaseSensitive;
-                EnforceConstraints = ds.EnforceConstraints;
-                Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
-                InitVars();
+                this.DataSetName = ds.DataSetName;
+                this.Prefix = ds.Prefix;
+                this.Namespace = ds.Namespace;
+                this.Locale = ds.Locale;
+                this.CaseSensitive = ds.CaseSensitive;
+                this.EnforceConstraints = ds.EnforceConstraints;
+                this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
+                this.InitVars();
             }
             else {
-                ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
             }
-            GetSerializationData(info, context);
-            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(SchemaChanged);
+            this.GetSerializationData(info, context);
+            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
-            Relations.CollectionChanged += schemaChangedHandler;
+            this.Relations.CollectionChanged += schemaChangedHandler;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -81,7 +81,7 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public MovesDataTable Moves {
             get {
-                return tableMoves;
+                return this.tableMoves;
             }
         }
         
@@ -91,10 +91,10 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
             get {
-                return _schemaSerializationMode;
+                return this._schemaSerializationMode;
             }
             set {
-                _schemaSerializationMode = value;
+                this._schemaSerializationMode = value;
             }
         }
         
@@ -119,9 +119,9 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override void InitializeDerivedDataSet() {
-            BeginInit();
-            InitClass();
-            EndInit();
+            this.BeginInit();
+            this.InitClass();
+            this.EndInit();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -129,7 +129,7 @@ namespace Arcesoft.TicTacToe.Implementation {
         public override global::System.Data.DataSet Clone() {
             TicTacToeDataSet cln = ((TicTacToeDataSet)(base.Clone()));
             cln.InitVars();
-            cln.SchemaSerializationMode = SchemaSerializationMode;
+            cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
         
@@ -148,25 +148,25 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
-            if ((DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
-                Reset();
+            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+                this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
                 if ((ds.Tables["Moves"] != null)) {
                     base.Tables.Add(new MovesDataTable(ds.Tables["Moves"]));
                 }
-                DataSetName = ds.DataSetName;
-                Prefix = ds.Prefix;
-                Namespace = ds.Namespace;
-                Locale = ds.Locale;
-                CaseSensitive = ds.CaseSensitive;
-                EnforceConstraints = ds.EnforceConstraints;
-                Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
-                InitVars();
+                this.DataSetName = ds.DataSetName;
+                this.Prefix = ds.Prefix;
+                this.Namespace = ds.Namespace;
+                this.Locale = ds.Locale;
+                this.CaseSensitive = ds.CaseSensitive;
+                this.EnforceConstraints = ds.EnforceConstraints;
+                this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
+                this.InitVars();
             }
             else {
-                ReadXml(reader);
-                InitVars();
+                this.ReadXml(reader);
+                this.InitVars();
             }
         }
         
@@ -174,7 +174,7 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
-            WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
+            this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
             stream.Position = 0;
             return global::System.Xml.Schema.XmlSchema.Read(new global::System.Xml.XmlTextReader(stream), null);
         }
@@ -182,16 +182,16 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars() {
-            InitVars(true);
+            this.InitVars(true);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            tableMoves = ((MovesDataTable)(base.Tables["Moves"]));
+            this.tableMoves = ((MovesDataTable)(base.Tables["Moves"]));
             if ((initTable == true)) {
-                if ((tableMoves != null)) {
-                    tableMoves.InitVars();
+                if ((this.tableMoves != null)) {
+                    this.tableMoves.InitVars();
                 }
             }
         }
@@ -199,13 +199,13 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            DataSetName = "TicTacToeDataSet";
-            Prefix = "";
-            Namespace = "http://tempuri.org/TicTacToeDataSet.xsd";
-            EnforceConstraints = true;
-            SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            tableMoves = new MovesDataTable();
-            base.Tables.Add(tableMoves);
+            this.DataSetName = "TicTacToeDataSet";
+            this.Prefix = "";
+            this.Namespace = "http://tempuri.org/TicTacToeDataSet.xsd";
+            this.EnforceConstraints = true;
+            this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableMoves = new MovesDataTable();
+            base.Tables.Add(this.tableMoves);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -218,7 +218,7 @@ namespace Arcesoft.TicTacToe.Implementation {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
-                InitVars();
+                this.InitVars();
             }
         }
         
@@ -283,50 +283,48 @@ namespace Arcesoft.TicTacToe.Implementation {
             
             private global::System.Data.DataColumn columnPlayer;
             
-            private global::System.Data.DataColumn columnResponseRow;
-            
-            private global::System.Data.DataColumn columnResponseColumn;
+            private global::System.Data.DataColumn columnResponse;
             
             private global::System.Data.DataColumn columnOutcome;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesDataTable() {
-                TableName = "Moves";
-                BeginInit();
-                InitClass();
-                EndInit();
+                this.TableName = "Moves";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal MovesDataTable(global::System.Data.DataTable table) {
-                TableName = table.TableName;
+                this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    CaseSensitive = table.CaseSensitive;
+                    this.CaseSensitive = table.CaseSensitive;
                 }
                 if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    Locale = table.Locale;
+                    this.Locale = table.Locale;
                 }
                 if ((table.Namespace != table.DataSet.Namespace)) {
-                    Namespace = table.Namespace;
+                    this.Namespace = table.Namespace;
                 }
-                Prefix = table.Prefix;
-                MinimumCapacity = table.MinimumCapacity;
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected MovesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
-                InitVars();
+                this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn BoardColumn {
                 get {
-                    return columnBoard;
+                    return this.columnBoard;
                 }
             }
             
@@ -334,23 +332,15 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn PlayerColumn {
                 get {
-                    return columnPlayer;
+                    return this.columnPlayer;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ResponseRowColumn {
+            public global::System.Data.DataColumn ResponseColumn {
                 get {
-                    return columnResponseRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ResponseColumnColumn {
-                get {
-                    return columnResponseColumn;
+                    return this.columnResponse;
                 }
             }
             
@@ -358,7 +348,7 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn OutcomeColumn {
                 get {
-                    return columnOutcome;
+                    return this.columnOutcome;
                 }
             }
             
@@ -367,7 +357,7 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
-                    return Rows.Count;
+                    return this.Rows.Count;
                 }
             }
             
@@ -375,7 +365,7 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRow this[int index] {
                 get {
-                    return ((MovesRow)(Rows[index]));
+                    return ((MovesRow)(this.Rows[index]));
                 }
             }
             
@@ -394,31 +384,29 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void AddMovesRow(MovesRow row) {
-                Rows.Add(row);
+                this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MovesRow AddMovesRow(string Board, string Player, int ResponseRow, int ResponseColumn, string Outcome) {
-                MovesRow rowMovesRow = ((MovesRow)(NewRow()));
+            public MovesRow AddMovesRow(string Board, string Player, int Response, string Outcome) {
+                MovesRow rowMovesRow = ((MovesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Board,
                         Player,
-                        ResponseRow,
-                        ResponseColumn,
+                        Response,
                         Outcome};
                 rowMovesRow.ItemArray = columnValuesArray;
-                Rows.Add(rowMovesRow);
+                this.Rows.Add(rowMovesRow);
                 return rowMovesRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MovesRow FindByBoardResponseColumnResponseRowPlayer(string Board, int ResponseColumn, int ResponseRow, string Player) {
-                return ((MovesRow)(Rows.Find(new object[] {
+            public MovesRow FindByBoardResponsePlayer(string Board, int Response, string Player) {
+                return ((MovesRow)(this.Rows.Find(new object[] {
                             Board,
-                            ResponseColumn,
-                            ResponseRow,
+                            Response,
                             Player})));
             }
             
@@ -439,44 +427,40 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                columnBoard = base.Columns["Board"];
-                columnPlayer = base.Columns["Player"];
-                columnResponseRow = base.Columns["ResponseRow"];
-                columnResponseColumn = base.Columns["ResponseColumn"];
-                columnOutcome = base.Columns["Outcome"];
+                this.columnBoard = base.Columns["Board"];
+                this.columnPlayer = base.Columns["Player"];
+                this.columnResponse = base.Columns["Response"];
+                this.columnOutcome = base.Columns["Outcome"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                columnBoard = new global::System.Data.DataColumn("Board", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(columnBoard);
-                columnPlayer = new global::System.Data.DataColumn("Player", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(columnPlayer);
-                columnResponseRow = new global::System.Data.DataColumn("ResponseRow", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(columnResponseRow);
-                columnResponseColumn = new global::System.Data.DataColumn("ResponseColumn", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(columnResponseColumn);
-                columnOutcome = new global::System.Data.DataColumn("Outcome", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(columnOutcome);
-                Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                columnBoard,
-                                columnResponseColumn,
-                                columnResponseRow,
-                                columnPlayer}, true));
-                columnBoard.AllowDBNull = false;
-                columnBoard.DefaultValue = ((string)("\"\""));
-                columnBoard.MaxLength = 9;
-                columnPlayer.AllowDBNull = false;
-                columnPlayer.Caption = "DataColumn1";
-                columnResponseRow.AllowDBNull = false;
-                columnResponseColumn.AllowDBNull = false;
+                this.columnBoard = new global::System.Data.DataColumn("Board", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBoard);
+                this.columnPlayer = new global::System.Data.DataColumn("Player", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPlayer);
+                this.columnResponse = new global::System.Data.DataColumn("Response", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnResponse);
+                this.columnOutcome = new global::System.Data.DataColumn("Outcome", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOutcome);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnBoard,
+                                this.columnResponse,
+                                this.columnPlayer}, true));
+                this.columnBoard.AllowDBNull = false;
+                this.columnBoard.DefaultValue = ((string)("\"\""));
+                this.columnBoard.MaxLength = 9;
+                this.columnPlayer.AllowDBNull = false;
+                this.columnPlayer.Caption = "DataColumn1";
+                this.columnResponse.AllowDBNull = false;
+                this.columnResponse.Caption = "ResponseRow";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRow NewMovesRow() {
-                return ((MovesRow)(NewRow()));
+                return ((MovesRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -495,8 +479,8 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((MovesRowChanged != null)) {
-                    MovesRowChanged(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
+                if ((this.MovesRowChanged != null)) {
+                    this.MovesRowChanged(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -504,8 +488,8 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((MovesRowChanging != null)) {
-                    MovesRowChanging(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
+                if ((this.MovesRowChanging != null)) {
+                    this.MovesRowChanging(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -513,8 +497,8 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((MovesRowDeleted != null)) {
-                    MovesRowDeleted(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
+                if ((this.MovesRowDeleted != null)) {
+                    this.MovesRowDeleted(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -522,15 +506,15 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((MovesRowDeleting != null)) {
-                    MovesRowDeleting(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
+                if ((this.MovesRowDeleting != null)) {
+                    this.MovesRowDeleting(this, new MovesRowChangeEvent(((MovesRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void RemoveMovesRow(MovesRow row) {
-                Rows.Remove(row);
+                this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -608,17 +592,17 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal MovesRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                tableMoves = ((MovesDataTable)(Table));
+                this.tableMoves = ((MovesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Board {
                 get {
-                    return ((string)(this[tableMoves.BoardColumn]));
+                    return ((string)(this[this.tableMoves.BoardColumn]));
                 }
                 set {
-                    this[tableMoves.BoardColumn] = value;
+                    this[this.tableMoves.BoardColumn] = value;
                 }
             }
             
@@ -626,32 +610,21 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Player {
                 get {
-                    return ((string)(this[tableMoves.PlayerColumn]));
+                    return ((string)(this[this.tableMoves.PlayerColumn]));
                 }
                 set {
-                    this[tableMoves.PlayerColumn] = value;
+                    this[this.tableMoves.PlayerColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int ResponseRow {
+            public int Response {
                 get {
-                    return ((int)(this[tableMoves.ResponseRowColumn]));
+                    return ((int)(this[this.tableMoves.ResponseColumn]));
                 }
                 set {
-                    this[tableMoves.ResponseRowColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int ResponseColumn {
-                get {
-                    return ((int)(this[tableMoves.ResponseColumnColumn]));
-                }
-                set {
-                    this[tableMoves.ResponseColumnColumn] = value;
+                    this[this.tableMoves.ResponseColumn] = value;
                 }
             }
             
@@ -660,27 +633,27 @@ namespace Arcesoft.TicTacToe.Implementation {
             public string Outcome {
                 get {
                     try {
-                        return ((string)(this[tableMoves.OutcomeColumn]));
+                        return ((string)(this[this.tableMoves.OutcomeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Outcome\' in table \'Moves\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[tableMoves.OutcomeColumn] = value;
+                    this[this.tableMoves.OutcomeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsOutcomeNull() {
-                return IsNull(tableMoves.OutcomeColumn);
+                return this.IsNull(this.tableMoves.OutcomeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetOutcomeNull() {
-                this[tableMoves.OutcomeColumn] = global::System.Convert.DBNull;
+                this[this.tableMoves.OutcomeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -697,15 +670,15 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRowChangeEvent(MovesRow row, global::System.Data.DataRowAction action) {
-                eventRow = row;
-                eventAction = action;
+                this.eventRow = row;
+                this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MovesRow Row {
                 get {
-                    return eventRow;
+                    return this.eventRow;
                 }
             }
             
@@ -713,7 +686,7 @@ namespace Arcesoft.TicTacToe.Implementation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
-                    return eventAction;
+                    return this.eventAction;
                 }
             }
         }

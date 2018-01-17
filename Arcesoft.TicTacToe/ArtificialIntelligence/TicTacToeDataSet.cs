@@ -1,4 +1,6 @@
-﻿namespace Arcesoft.TicTacToe.Implementation
+﻿using Arcesoft.TicTacToe.Entities;
+
+namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
     partial class TicTacToeDataSet
     {
@@ -41,8 +43,8 @@
             {
                 get
                 {
-                    return (PlayerEnum == TicTacToe.Player.O && OutcomeEnum == GameState.OWin) ||
-                        (PlayerEnum == TicTacToe.Player.X && OutcomeEnum == GameState.XWin);
+                    return (PlayerEnum == Entities.Player.O && OutcomeEnum == GameState.OWin) ||
+                        (PlayerEnum == Entities.Player.X && OutcomeEnum == GameState.XWin);
                 }
             }
             public bool IsTie
@@ -56,8 +58,8 @@
             {
                 get
                 {
-                    return (PlayerEnum == TicTacToe.Player.O && OutcomeEnum == GameState.XWin) ||
-                        (PlayerEnum == TicTacToe.Player.X && OutcomeEnum == GameState.OWin);
+                    return (PlayerEnum == Entities.Player.O && OutcomeEnum == GameState.XWin) ||
+                        (PlayerEnum == Entities.Player.X && OutcomeEnum == GameState.OWin);
                 }
             }
         }

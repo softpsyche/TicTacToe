@@ -5,14 +5,13 @@ using System.ComponentModel;
 using System.Text;
 using System.IO;
 using System.Xml;
+using Arcesoft.TicTacToe.RandomNumberGeneration;
+using Arcesoft.TicTacToe.Entities;
 
-
-
-
-namespace Arcesoft.TicTacToe
+namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
     [Serializable]
-    public class ArtificialIntelligence
+    internal class God
     {
         #region Private Variables
         private IGame _game = null;
@@ -117,7 +116,7 @@ namespace Arcesoft.TicTacToe
         }
         #endregion
         #region Public Methods
-        public ArtificialIntelligence(IGame game, IRandom random)
+        public God(IGame game, IRandom random)
         {
             _game = game;
             _random = random;
@@ -153,8 +152,6 @@ namespace Arcesoft.TicTacToe
             GetMinMaxResponseForGame(boardLayoutAndGameMoveResult);
         }
         
-
-
         #endregion
     }
     

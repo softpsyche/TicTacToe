@@ -6,8 +6,9 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Linq;
+using Arcesoft.TicTacToe.Entities;
 
-namespace Arcesoft.TicTacToe
+namespace Arcesoft.TicTacToe.GameImplementation
 {
     [Serializable]
     internal class Game : IGame
@@ -86,20 +87,20 @@ namespace Arcesoft.TicTacToe
         {
 
         }
-		public Game(IEnumerable<Move> gameMoves)
-		{
-			foreach (var move in gameMoves)
-			{
-				if (IsMoveValid(move))
-				{
-					Move(move);
-				}
-				else
-				{
-					throw new GameException("Invalid move passed in. Cannot create game from moves.");
-				}
-			}
-		}
+        public Game(IEnumerable<Move> gameMoves)
+        {
+            foreach (var move in gameMoves)
+            {
+                if (IsMoveValid(move))
+                {
+                    Move(move);
+                }
+                else
+                {
+                    throw new GameException("Invalid move passed in. Cannot create game from moves.");
+                }
+            }
+        }
         #endregion
         #region Properties
         public string GameBoardString => _board.ToString();
@@ -186,24 +187,4 @@ namespace Arcesoft.TicTacToe
 		}
         #endregion
     }
-
-
-
-    [Serializable()]
-    public class GameStateChangedEventArgs : EventArgs
-    {
-        public GameChange GameChange { get; set; }
-        public GameState GameState { get; set; }
-        public Player CurrentPlayer { get; set; }
-
-
-        public GameStateChangedEventArgs(GameState gameState, GameChange change, Player playerTurn)
-        {
-            GameChange = change;
-            GameState = gameState;
-            CurrentPlayer = playerTurn;
-
-        }
-    }
-
 }

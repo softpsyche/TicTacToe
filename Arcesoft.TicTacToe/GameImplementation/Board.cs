@@ -6,11 +6,12 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Linq;
+using Arcesoft.TicTacToe.Entities;
 
-namespace Arcesoft.TicTacToe
+namespace Arcesoft.TicTacToe.GameImplementation
 {
 	[Serializable]
-	public class Board
+	internal class Board
 	{
 		#region Constants
 		public const string BoardEmptyString = "_________";

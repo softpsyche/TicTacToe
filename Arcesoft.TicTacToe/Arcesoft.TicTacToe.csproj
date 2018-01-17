@@ -46,25 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameImplementation\GameFactory.cs" />
+    <Compile Include="IArtificialIntelligence.cs" />
+    <Compile Include="DependencyInjection\Binder.cs" />
+    <Compile Include="Entities\GameChange.cs" />
+    <Compile Include="Entities\GameState.cs" />
+    <Compile Include="Entities\GameStateChangedEventArgs.cs" />
+    <Compile Include="GameImplementation\Square.cs" />
     <Compile Include="IGame.cs" />
-    <Compile Include="Implementation\ArtificialIntelligence.cs" />
-    <Compile Include="Implementation\Board.cs" />
-    <Compile Include="Implementation\BoardLayoutAndGameMoveResult.cs" />
-    <Compile Include="Implementation\Enumerations.cs" />
-    <Compile Include="Implementation\Game.cs" />
-    <Compile Include="Implementation\GameException.cs" />
-    <Compile Include="Implementation\MoveResult.cs" />
-    <Compile Include="Implementation\IRandom.cs" />
-    <Compile Include="Implementation\MoveDatabase.cs" />
-    <Compile Include="Implementation\TicTacToeDataSet.cs">
+    <Compile Include="ArtificialIntelligence\God.cs" />
+    <Compile Include="GameImplementation\Board.cs" />
+    <Compile Include="ArtificialIntelligence\BoardLayoutAndGameMoveResult.cs" />
+    <Compile Include="GameImplementation\Game.cs" />
+    <Compile Include="GameException.cs" />
+    <Compile Include="ArtificialIntelligence\MoveResult.cs" />
+    <Compile Include="Entities\Move.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="IGameFactory.cs" />
+    <Compile Include="RandomNumberGeneration\DefaultRandomNumberGenerator.cs" />
+    <Compile Include="RandomNumberGeneration\IRandom.cs" />
+    <Compile Include="ArtificialIntelligence\MoveDatabase.cs" />
+    <Compile Include="ArtificialIntelligence\TicTacToeDataSet.cs">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Implementation\TicTacToeDataSet.Designer.cs">
+    <Compile Include="ArtificialIntelligence\TicTacToeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomNumberGeneration\IRandomExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Arcesoft.TicTacToe.Common\Arcesoft.TicTacToe.Common.csproj">
@@ -73,18 +84,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Implementation\TicTacToeDataSet.xsc">
+    <None Include="ArtificialIntelligence\TicTacToeDataSet.xsc">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Implementation\TicTacToeDataSet.xsd">
+    <None Include="ArtificialIntelligence\TicTacToeDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>TicTacToeDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Implementation\TicTacToeDataSet.xss">
+    <None Include="ArtificialIntelligence\TicTacToeDataSet.xss">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,12 +5,12 @@ using System.ComponentModel;
 using System.Text;
 using System.IO;
 using System.Xml;
+using Arcesoft.TicTacToe.Entities;
 
-
-namespace Arcesoft.TicTacToe
+namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
     [Serializable]
-    public class BoardLayoutAndGameMoveResult
+    internal class BoardLayoutAndGameMoveResult
     {
         string _boardLayout = null;
         MoveResult _gameMoveResult;

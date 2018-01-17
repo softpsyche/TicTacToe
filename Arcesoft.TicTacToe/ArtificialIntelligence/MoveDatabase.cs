@@ -6,9 +6,12 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Linq;
-using Arcesoft.TicTacToe.Implementation;
+using Arcesoft.TicTacToe.ArtificialIntelligence;
+using Arcesoft.TicTacToe.RandomNumberGeneration;
+using Arcesoft.TicTacToe.Entities;
+using Arcesoft.TicTacToe.GameImplementation;
 
-namespace Arcesoft.TicTacToe
+namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
     [Serializable]
     internal class MoveDatabase : IMoveDatabase
@@ -69,13 +72,13 @@ namespace Arcesoft.TicTacToe
 
     internal class MoveDatabaseBuilder
     {
-        private ArtificialIntelligence ArtificialIntelligence
+        private God ArtificialIntelligence
         {
             get;
             set;
         }
 
-        private MoveDatabaseBuilder(ArtificialIntelligence artificialIntelligence)
+        private MoveDatabaseBuilder(God artificialIntelligence)
         {
             ArtificialIntelligence = artificialIntelligence;
         }
@@ -157,7 +160,7 @@ namespace Arcesoft.TicTacToe
 
             if (moveDatabase == null)
             {
-                var builder = new MoveDatabaseBuilder(new ArtificialIntelligence(new Game(), new GameRng()));
+                var builder = new MoveDatabaseBuilder(new God(new Game(), new DefaultRandomNumberGenerator()));
 
                 moveDatabase = builder.Build();
 

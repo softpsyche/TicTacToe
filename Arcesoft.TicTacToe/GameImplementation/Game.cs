@@ -87,20 +87,6 @@ namespace Arcesoft.TicTacToe.GameImplementation
         {
 
         }
-        public Game(IEnumerable<Move> gameMoves)
-        {
-            foreach (var move in gameMoves)
-            {
-                if (IsMoveValid(move))
-                {
-                    Move(move);
-                }
-                else
-                {
-                    throw new GameException("Invalid move passed in. Cannot create game from moves.");
-                }
-            }
-        }
         #endregion
         #region Properties
         public string GameBoardString => _board.ToString();

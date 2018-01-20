@@ -50,5 +50,15 @@ namespace Arcesoft.TicTacToe.RandomNumberGeneration
 
             return valuesList.Distinct().ToList();
         }
+
+        public static T RandomFromList<T>(this IEnumerable<T> items, IRandom rng)
+        {
+            if (items?.Any() == false)
+            {
+                return default(T);
+            }
+
+            return items.ToList()[rng.Next(items.Count())];
+        }
     }
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
-    public interface IMoveRepository
+    internal interface IMoveRepository
     {
-        Move FindBestMove(string currentBoardPosition, Player currentPlayer, Boolean random = true);
+        IEnumerable<MoveResponse> FindBoardStates(string currentBoardPosition, Player currentPlayer);
     }
 }

@@ -11,12 +11,12 @@ using Arcesoft.TicTacToe.Entities;
 namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
     [Serializable]
-    internal class MoveEvaluator
+    internal class MoveEvaluator:IMoveEvaluator
     {
-        private IGameFactory _gameFactory;
+        private ITicTacToeFactory _gameFactory;
         private IRandom _random;
 
-        public MoveEvaluator(IGameFactory gameFactory, IRandom random)
+        public MoveEvaluator(ITicTacToeFactory gameFactory, IRandom random)
         {
             _gameFactory = gameFactory;
             _random = random;
@@ -26,10 +26,10 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             return CalculateBestMoveInternal(_gameFactory.NewGame(game.MoveHistory));
         }
 
-        public Collection<BoardLayoutAndGameMoveResult> FindAllMoves(IGame game = null)
+        public Collection<BoardState> FindAllMoves(IGame game = null)
         {
             game = game ?? _gameFactory.NewGame();
-            Collection<BoardLayoutAndGameMoveResult> results = new Collection<BoardLayoutAndGameMoveResult>();
+            Collection<BoardState> results = new Collection<BoardState>();
 
             GetMinMaxResponseForGame(game, results);
 
@@ -120,7 +120,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             else
                 throw new ArgumentException("gameMoveResults collection is either empty or corrupt");
         }
-        private MoveResult GetMinMaxResponseForGame(IGame game, Collection<BoardLayoutAndGameMoveResult> boardLayoutAndGameMoveResult)
+        private MoveResult GetMinMaxResponseForGame(IGame game, Collection<BoardState> boardLayoutAndGameMoveResult)
         {
             Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
             int bestMoveIndex;
@@ -148,7 +148,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
                 //undo that last move...
                 game.UndoLastMove();
 
-                boardLayoutAndGameMoveResult.Add(new BoardLayoutAndGameMoveResult(
+                boardLayoutAndGameMoveResult.Add(new BoardState(
                     gameMoveResult,
                     game.GameBoardString,
                     player));

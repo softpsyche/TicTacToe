@@ -46,9 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtificialIntelligence\IMoveDatabase.cs" />
+    <Compile Include="ArtificialIntelligence\IMoveEvaluator.cs" />
     <Compile Include="ArtificialIntelligence\IMoveRepository.cs" />
-    <Compile Include="ArtificialIntelligence\MoveDatabaseBuilder.cs" />
-    <Compile Include="GameImplementation\GameFactory.cs" />
+    <Compile Include="ArtificialIntelligence\MoveDatabase.cs" />
+    <Compile Include="ArtificialIntelligence\MoveResponse.cs" />
+    <Compile Include="ArtificialIntelligence\Strategies\OmniscientArtificialIntelligence.cs" />
+    <Compile Include="ArtificialIntelligence\Strategies\IntoxicatedHomerSimpson.cs" />
+    <Compile Include="Entities\ArtificialIntelligenceTypes.cs" />
+    <Compile Include="Entities\ArtificialIntelligenceBehavior.cs" />
+    <Compile Include="IArtificialIntelligence.cs" />
+    <Compile Include="ArtificialIntelligence\IMoveDataAccess.cs" />
+    <Compile Include="ArtificialIntelligence\MoveRepository.cs" />
+    <Compile Include="GameImplementation\TicTacToeFactory.cs" />
     <Compile Include="DependencyInjection\Binder.cs" />
     <Compile Include="Entities\GameChange.cs" />
     <Compile Include="Entities\GameState.cs" />
@@ -57,16 +67,16 @@
     <Compile Include="IGame.cs" />
     <Compile Include="ArtificialIntelligence\MoveEvaluator.cs" />
     <Compile Include="GameImplementation\Board.cs" />
-    <Compile Include="ArtificialIntelligence\BoardLayoutAndGameMoveResult.cs" />
+    <Compile Include="ArtificialIntelligence\BoardState.cs" />
     <Compile Include="GameImplementation\Game.cs" />
     <Compile Include="GameException.cs" />
     <Compile Include="ArtificialIntelligence\MoveResult.cs" />
     <Compile Include="Entities\Move.cs" />
     <Compile Include="Entities\Player.cs" />
-    <Compile Include="IGameFactory.cs" />
+    <Compile Include="ITicTacToeFactory.cs" />
     <Compile Include="RandomNumberGeneration\DefaultRandomNumberGenerator.cs" />
     <Compile Include="RandomNumberGeneration\IRandom.cs" />
-    <Compile Include="ArtificialIntelligence\MoveRepository.cs" />
+    <Compile Include="ArtificialIntelligence\MoveDataAccess.cs" />
     <Compile Include="ArtificialIntelligence\TicTacToeDataSet.cs">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </Compile>

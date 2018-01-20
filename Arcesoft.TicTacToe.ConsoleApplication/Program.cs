@@ -23,7 +23,7 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
 
         static void Main()
         {
-            container.GetInstance<TicTacToe>().Run();
+            container.GetInstance<UI>().Run();
         }
     }
 }

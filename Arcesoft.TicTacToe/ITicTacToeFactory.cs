@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Arcesoft.TicTacToe
 {
-    public interface IGameFactory
+    public interface ITicTacToeFactory
     {
         IGame NewGame();
 
         IGame NewGame(IEnumerable<Move> moves);
+
+        IArtificialIntelligence NewArtificialIntelligence(string type);
     }
 }

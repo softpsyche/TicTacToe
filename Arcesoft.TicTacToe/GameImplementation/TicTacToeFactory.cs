@@ -1,4 +1,5 @@
 ﻿using Arcesoft.TicTacToe.Entities;
+using SimpleInjector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,17 @@ using System.Threading.Tasks;
 
 namespace Arcesoft.TicTacToe.GameImplementation
 {
-    public class GameFactory : IGameFactory
+    public class TicTacToeFactory : ITicTacToeFactory
     {
+        private readonly Container _container;
+        public TicTacToeFactory(Container container)
+        {
+            _container = container;
+        }
+
         public IGame NewGame()
         {
-            return new Game();
+            return _container.GetInstance<IGame>();
         }
         public IGame NewGame(IEnumerable<Move> moves)
         {
@@ -30,6 +37,16 @@ namespace Arcesoft.TicTacToe.GameImplementation
             }
 
             return game;
+        }
+        public IArtificialIntelligence NewArtificialIntelligence(string type)
+        {
+            switch (type)
+            {
+                case ArtificialIntelligenceTypes.OmniscientGod:
+                    return null;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), $"Unable to create AI for type '{type}'. No implementation found for this type.");
+            }
         }
     }
 }

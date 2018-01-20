@@ -28,9 +28,9 @@ namespace Arcesoft.TicTacToe
 			}
 		}
 
-        public static T ToEnumeration<T>(this String str)
+        public static T ToEnumeration<T>(this object obj)
         {
-            return (T)(Enum.Parse(typeof(T), str));
+            return (T)(Enum.Parse(typeof(T), obj.ToString()));
         }
 	}
 }

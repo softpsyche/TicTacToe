@@ -46,9 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binder.cs" />
+    <Compile Include="Menus\AIMenu.cs" />
+    <Compile Include="Menus\MainMenu.cs" />
+    <Compile Include="Menus\MoveMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicTacToe.cs" />
+    <Compile Include="UI.cs" />
+    <Compile Include="UICommand.cs" />
+    <Compile Include="UIMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -8,8 +8,8 @@ namespace Arcesoft.TicTacToe.ConsoleApplication.Menus
 {
     public static class MainMenu
     {
-        public const string NewGameAI = "a";
-        public const string NewGameHuman = "h";
+        public const string NewGameAI = "1";
+        public const string NewGameHuman = "2";
 
         public static UIMenu Menu => new UIMenu(
             "Please select one of the following options:",

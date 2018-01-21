@@ -22,7 +22,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             _random = random;
         }
 
-        public void MakeMove(IGame game, ArtificialIntelligenceBehavior behavior = ArtificialIntelligenceBehavior.PlayToWin, bool randomlySelectIfMoreThanOne = true)
+        public void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true)
         {
             if (game.GameIsOver)
             {
@@ -30,23 +30,10 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             }
 
             var moves = _moveDataAccess.FindMoveResponses(game.GameBoardString, game.CurrentPlayer);
-            MoveResponse moveResponse;
-
-            switch (behavior)
-            {
-                case ArtificialIntelligenceBehavior.PlayToWin:
-                    moveResponse = moves.Where(a => a.IsWin).RandomFromList(_random);
-                    break;
-                case ArtificialIntelligenceBehavior.PlayToTie:
-                    moveResponse = moves.Where(a => a.IsTie).RandomFromList(_random);
-                    break;
-                case ArtificialIntelligenceBehavior.PlayToLose:
-                    moveResponse = moves.Where(a => a.IsLoss).RandomFromList(_random);
-                    break;
-                default:
-                    //there is a more specific exception for invalid enum but it lives in an unfortunate assembly.
-                    throw new ArgumentOutOfRangeException(nameof(behavior));
-            }
+            MoveResponse moveResponse =
+                moves.Where(a => a.IsWin).RandomFromList(_random) ??
+                moves.Where(a => a.IsTie).RandomFromList(_random) ??
+                moves.Where(a => a.IsLoss).RandomFromList(_random);
 
             if (moveResponse == null)
             {

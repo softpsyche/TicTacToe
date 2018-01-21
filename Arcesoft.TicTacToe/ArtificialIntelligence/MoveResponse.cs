@@ -23,5 +23,21 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         public bool IsLoss => 
             (Player == Player.O && Outcome == GameState.XWin) ||
             (Player == Player.X && Outcome == GameState.OWin);
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            var boardCopy = Board;
+
+            boardCopy.Remove((int)Response, 1);
+            boardCopy.Insert((int)Response, "R");
+
+            sb.AppendLine(boardCopy.Substring(0, 3));
+            sb.AppendLine(boardCopy.Substring(0, 3));
+            sb.AppendLine(boardCopy.Substring(0, 3));
+            sb.AppendLine($"(Outcome: '{Outcome}' )");
+
+            return sb.ToString();
+        }
     }
 }

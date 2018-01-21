@@ -20,7 +20,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             _random = random;
         }
 
-        public void MakeMove(IGame game, ArtificialIntelligenceBehavior behavior = ArtificialIntelligenceBehavior.PlayToWin, bool randomlySelectIfMoreThanOne = true)
+        public void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true)
         {
             if (game.GameIsOver)
             {

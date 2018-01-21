@@ -175,7 +175,9 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
                 menu.Commands.ForEach(a => Console.WriteLine($"{a.CommandCode} - {a.CommandDescription}"));
                 Console.WriteLine();
 
-                var command = Console.ReadLine();
+                var commandKey = Console.ReadKey();
+                Console.WriteLine();
+                var command = commandKey.KeyChar.ToString();
 
                 selectedCommand = menu.Commands.FirstOrDefault(a => a.CommandCode.Equals(command.Trim(), StringComparison.InvariantCultureIgnoreCase));
 

@@ -11,6 +11,6 @@ namespace Arcesoft.TicTacToe
     {
         //string CommentOnGameState(IGame game);
 
-        void MakeMove(IGame game, ArtificialIntelligenceBehavior behavior = ArtificialIntelligenceBehavior.PlayToWin, bool randomlySelectIfMoreThanOne = true);
+        void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true);
     }
 }

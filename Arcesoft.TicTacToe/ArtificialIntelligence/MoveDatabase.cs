@@ -12,7 +12,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
     /// <summary>
     /// Represents an in-memory database of all the possible tic-tac-toe board configurations. 
     /// </summary>
-    internal class MoveDatabase:IMoveDatabase
+    internal class MoveDatabase : IMoveDatabase
     {
         private static readonly string DefaultMoveDataBaseFileName = "MoveDatabase.ttt";
         private IMoveEvaluator _moveEvaluator;
@@ -23,7 +23,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             _moveEvaluator = moveEvaluator;
         }
 
-        public MovesDataTable MovesDataTable
+        public IMovesDataTable MovesDataTable
         {
             get
             {

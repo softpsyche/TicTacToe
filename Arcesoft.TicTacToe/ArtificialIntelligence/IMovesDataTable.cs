@@ -7,8 +7,8 @@ using static Arcesoft.TicTacToe.ArtificialIntelligence.TicTacToeDataSet;
 
 namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
-    internal interface IMoveDatabase
+    internal interface IMovesDataTable
     {
-        IMovesDataTable MovesDataTable { get; }
+        MovesRow[] Select(string filterExpression);
     }
 }

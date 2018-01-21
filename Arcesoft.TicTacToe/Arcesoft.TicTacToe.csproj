@@ -49,6 +49,7 @@
     <Compile Include="ArtificialIntelligence\IMoveDatabase.cs" />
     <Compile Include="ArtificialIntelligence\IMoveEvaluator.cs" />
     <Compile Include="ArtificialIntelligence\IMoveRepository.cs" />
+    <Compile Include="ArtificialIntelligence\IMovesDataTable.cs" />
     <Compile Include="ArtificialIntelligence\MoveDatabase.cs" />
     <Compile Include="ArtificialIntelligence\MoveResponse.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\IntoxicatedHomerSimpson.cs" />

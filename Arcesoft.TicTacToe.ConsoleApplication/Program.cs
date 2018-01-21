@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Arcesoft.TicTacToe.ConsoleApplication
 {
-    class Program
+    internal class Program
     {
         static readonly Container container;
 

@@ -51,8 +51,8 @@
     <Compile Include="ArtificialIntelligence\IMoveRepository.cs" />
     <Compile Include="ArtificialIntelligence\MoveDatabase.cs" />
     <Compile Include="ArtificialIntelligence\MoveResponse.cs" />
-    <Compile Include="ArtificialIntelligence\Strategies\OmniscientArtificialIntelligence.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\IntoxicatedHomerSimpson.cs" />
+    <Compile Include="ArtificialIntelligence\Strategies\OmniscientGod.cs" />
     <Compile Include="Entities\ArtificialIntelligenceTypes.cs" />
     <Compile Include="Entities\ArtificialIntelligenceBehavior.cs" />
     <Compile Include="IArtificialIntelligence.cs" />

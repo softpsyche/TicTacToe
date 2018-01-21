@@ -16,7 +16,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
     {
         private IMoveDatabase _moveDatabase = null;
 
-        private MoveRepository(IMoveDatabase moveDatabase)
+        public MoveRepository(IMoveDatabase moveDatabase)
         {
             _moveDatabase = moveDatabase;
         }

@@ -11,12 +11,12 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
     /// <summary>
     /// Its like playing against a god. All knowing, all seeing, never losing. Very boring
     /// </summary>
-    internal class OmniscientArtificialIntelligence : IArtificialIntelligence
+    internal class OmniscientGod : IArtificialIntelligence
     {
         private IMoveDataAccess _moveDataAccess;
         private IRandom _random;
 
-        public OmniscientArtificialIntelligence(IMoveDataAccess moveDataAccess,IRandom random)
+        public OmniscientGod(IMoveDataAccess moveDataAccess,IRandom random)
         {
             _moveDataAccess = moveDataAccess;
             _random = random;

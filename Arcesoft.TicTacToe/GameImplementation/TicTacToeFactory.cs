@@ -1,4 +1,5 @@
-﻿using Arcesoft.TicTacToe.Entities;
+﻿using Arcesoft.TicTacToe.ArtificialIntelligence.Strategies;
+using Arcesoft.TicTacToe.Entities;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,9 @@ namespace Arcesoft.TicTacToe.GameImplementation
             switch (type)
             {
                 case ArtificialIntelligenceTypes.OmniscientGod:
-                    return null;
+                    return _container.GetInstance<OmniscientGod>();
+                case ArtificialIntelligenceTypes.IntoxicatedHomerSimpson:
+                    return _container.GetInstance<IntoxicatedHomerSimpson>();
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), $"Unable to create AI for type '{type}'. No implementation found for this type.");
             }

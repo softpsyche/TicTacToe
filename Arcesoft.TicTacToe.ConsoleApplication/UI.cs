@@ -67,11 +67,43 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
         private void RunGameVsAI()
         {
             var game = _gameFactory.NewGame();
-            Player humanPlayer;
+            Player player = default(Player);
+            IArtificialIntelligence ai = null;
+
+            switch (GetUserCommand(PlayerSelectMenu.Menu))
+            {
+                case PlayerSelectMenu.PlayAsX:
+                    player = Player.X;
+                    break;
+                case PlayerSelectMenu.PlayAsO:
+                    player = Player.O;
+                    break;
+                case UIMenu.Quit:
+                    return;
+            }
+
+            switch (GetUserCommand(AIMenu.Menu))
+            {
+                case AIMenu.OmniscientGod:
+                    ai = _gameFactory.NewArtificialIntelligence(ArtificialIntelligenceTypes.OmniscientGod);
+                    break;
+                case AIMenu.HomerSimpson:
+                    ai = _gameFactory.NewArtificialIntelligence(ArtificialIntelligenceTypes.IntoxicatedHomerSimpson);
+                    break;
+                case UIMenu.Quit:
+                    return;
+            }
 
             while (game.GameIsOver == false)
             {
-                MakeHumanMove(game);
+                if (player == game.CurrentPlayer)
+                {
+                    MakeHumanMove(game);
+                }
+                else
+                {
+                    ai.MakeMove(game);
+                }    
             }
 
             RenderGameOver(game);

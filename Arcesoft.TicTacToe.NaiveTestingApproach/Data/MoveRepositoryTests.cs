@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
 
-namespace Arcesoft.TicTacToe.NaiveTestingApproach.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.NaiveTestingApproach.Data
 {
     [TestClass]
     public class MoveRepositoryTests

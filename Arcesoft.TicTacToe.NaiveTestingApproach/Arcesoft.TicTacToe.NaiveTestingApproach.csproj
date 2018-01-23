@@ -84,10 +84,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtificialIntelligence\MoveDataAccessTests.cs" />
-    <Compile Include="ArtificialIntelligence\MoveDatabaseTests.cs" />
+    <Compile Include="Data\MoveDataAccessTests.cs" />
+    <Compile Include="Data\MoveDatabaseTests.cs" />
     <Compile Include="ArtificialIntelligence\MoveEvaluatorTests.cs" />
-    <Compile Include="ArtificialIntelligence\MoveRepositoryTests.cs" />
+    <Compile Include="Data\MoveRepositoryTests.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\IntoxicatedHomerSimpsonTests.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\OmniscientGodTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

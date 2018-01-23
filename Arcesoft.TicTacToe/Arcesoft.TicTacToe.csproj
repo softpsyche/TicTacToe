@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\FileAccess.cs" />
+    <Compile Include="Data\IFileAccess.cs" />
     <Compile Include="Data\IMoveDatabase.cs" />
     <Compile Include="ArtificialIntelligence\IMoveEvaluator.cs" />
     <Compile Include="Data\IMoveRepository.cs" />

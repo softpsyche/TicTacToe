@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arcesoft.TicTacToe
 {
-	public static class LinqExtensions
+	public static class IEnumerableExtensions
 	{
 		public static void ForEach<T>(this IEnumerable<T> items,Action<T> action)
 		{

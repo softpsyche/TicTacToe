@@ -25,6 +25,7 @@ namespace Arcesoft.TicTacToe.DependencyInjection
                 container.Register<IMoveDatabase, MoveDatabase>();
                 container.Register<IMoveDataAccess, MoveDataAccess>();
                 container.Register<IMoveRepository, MoveRepository>();
+                container.Register<IFileAccess, FileAccess>();
 
                 //ai
                 container.Register<IMoveEvaluator, MoveEvaluator>();

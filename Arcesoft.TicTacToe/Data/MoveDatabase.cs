@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
@@ -17,11 +18,13 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
     {
         private static readonly string DefaultMoveDataBaseFileName = "MoveDatabase.ttt";
         private IMoveEvaluator _moveEvaluator;
+        private IFileAccess _fileAccess;
         private MovesDataTable _movesDataTable;
 
-        public MoveDatabase(IMoveEvaluator moveEvaluator)
+        public MoveDatabase(IMoveEvaluator moveEvaluator, IFileAccess fileAccess)
         {
             _moveEvaluator = moveEvaluator;
+            _fileAccess = fileAccess;
         }
 
         public IMovesDataTable MovesDataTable
@@ -86,9 +89,19 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         {
             filePath = filePath ?? DefaultMoveDatabaseFilePath;
 
-            if (File.Exists(DefaultMoveDatabaseFilePath))
+            if (_fileAccess.Exists(DefaultMoveDatabaseFilePath))
             {
-                return Utility.Deserialize<MovesDataTable>(filePath);
+                try
+                {
+                    return _fileAccess.Deserialize<MovesDataTable>(filePath);
+                }
+                catch (SerializationException ex)
+                {
+                    //this path is bad, delete the file
+                    _fileAccess.Delete(filePath);
+                }
+
+                return null;
             }
             else
             {
@@ -99,7 +112,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         {
             filePath = filePath ?? DefaultMoveDatabaseFilePath;
 
-            Utility.Serialize(moveDatabase, filePath);
+            _fileAccess.Serialize(moveDatabase, filePath);
         }
     }
 }

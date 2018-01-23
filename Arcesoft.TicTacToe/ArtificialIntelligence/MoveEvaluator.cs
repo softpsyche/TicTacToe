@@ -26,7 +26,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             return CalculateBestMoveInternal(_gameFactory.NewGame(game.MoveHistory));
         }
 
-        public Collection<BoardState> FindAllMoves(IGame game = null)
+        public IEnumerable<BoardState> FindAllMoves(IGame game = null)
         {
             game = game ?? _gameFactory.NewGame();
             Collection<BoardState> results = new Collection<BoardState>();

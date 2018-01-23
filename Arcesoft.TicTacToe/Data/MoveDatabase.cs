@@ -15,11 +15,13 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
     /// Represents an in-memory database of all the possible tic-tac-toe board configurations. 
     /// </summary>
     internal class MoveDatabase : IMoveDatabase
-    {
-        private static readonly string DefaultMoveDataBaseFileName = "MoveDatabase.ttt";
+    {  
         private IMoveEvaluator _moveEvaluator;
         private IFileAccess _fileAccess;
         private MovesDataTable _movesDataTable;
+
+        private static readonly string DefaultMoveDataBaseFileName = "MoveDatabase.ttt";
+        internal string DefaultMoveDatabaseFilePath => AppDomain.CurrentDomain.BaseDirectory + @"\" + DefaultMoveDataBaseFileName;
 
         public MoveDatabase(IMoveEvaluator moveEvaluator, IFileAccess fileAccess)
         {
@@ -59,22 +61,22 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         private MovesDataTable BuildMovesDataTable()
         {
             MovesDataTable movesDataTable = new MovesDataTable();
-            Collection<BoardState> gameMoveResultCollection = _moveEvaluator.FindAllMoves();
+            var boardStates = _moveEvaluator.FindAllMoves();
 
-            foreach (BoardState boardLayoutAndGameMoveResult
-                in gameMoveResultCollection)
+            foreach (var boardState
+                in boardStates)
             {
 
                 if (movesDataTable.FindByBoardResponsePlayer(
-                    boardLayoutAndGameMoveResult.BoardLayout,
-                    (int)boardLayoutAndGameMoveResult.MoveResult.MoveMade,
-                    boardLayoutAndGameMoveResult.Player.ToString()) == null)
+                    boardState.BoardLayout,
+                    (int)boardState.MoveResult.MoveMade,
+                    boardState.Player.ToString()) == null)
                 {
                     movesDataTable.AddMovesRow(
-                        boardLayoutAndGameMoveResult.BoardLayout,
-                        boardLayoutAndGameMoveResult.Player.ToString(),
-                        (int)boardLayoutAndGameMoveResult.MoveResult.MoveMade,
-                        boardLayoutAndGameMoveResult.MoveResult.BoardStateAfterMove.ToString());
+                        boardState.BoardLayout,
+                        boardState.Player.ToString(),
+                        (int)boardState.MoveResult.MoveMade,
+                        boardState.MoveResult.BoardStateAfterMove.ToString());
 
                     movesDataTable.AcceptChanges();
                 }
@@ -83,7 +85,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             return movesDataTable;
         }
 
-        private string DefaultMoveDatabaseFilePath => AppDomain.CurrentDomain.BaseDirectory + @"\" + DefaultMoveDataBaseFileName;
+
 
         private MovesDataTable TryLoadMovesDatabaseFromDisk(String filePath = null)
         {

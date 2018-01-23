@@ -15,7 +15,7 @@ namespace Arcesoft.TicTacToe.Data
 
         public void Delete(string filePath) => File.Delete(filePath);
 
-        public void Serialize<T>(T serializableObject, string filePath)
+        public void SerializeBinary<T>(T serializableObject, string filePath)
         {
             IFormatter iFormatter = new BinaryFormatter();
 
@@ -24,7 +24,8 @@ namespace Arcesoft.TicTacToe.Data
                 iFormatter.Serialize(stream, serializableObject);
             }
         }
-        public T Deserialize<T>(string filePath)
+
+        public T DeserializeBinary<T>(string filePath)
         {
             IFormatter iFormatter = new BinaryFormatter();
 

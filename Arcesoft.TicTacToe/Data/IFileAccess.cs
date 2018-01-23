@@ -12,8 +12,8 @@ namespace Arcesoft.TicTacToe.Data
 
         void Delete(string filePath);
 
-        void Serialize<T>(T obj, string filePath);
+        void SerializeBinary<T>(T obj, string filePath);
 
-        T Deserialize<T>(string filePath);
+        T DeserializeBinary<T>(string filePath);
     }
 }

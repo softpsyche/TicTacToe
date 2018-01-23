@@ -93,7 +93,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             {
                 try
                 {
-                    return _fileAccess.Deserialize<MovesDataTable>(filePath);
+                    return _fileAccess.DeserializeBinary<MovesDataTable>(filePath);
                 }
                 catch (SerializationException ex)
                 {
@@ -112,7 +112,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         {
             filePath = filePath ?? DefaultMoveDatabaseFilePath;
 
-            _fileAccess.Serialize(moveDatabase, filePath);
+            _fileAccess.SerializeBinary(moveDatabase, filePath);
         }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Arcesoft.TicTacToe.ArtificialIntelligence.TicTacToeDataSet;
+using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
 
-namespace Arcesoft.TicTacToe.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.Data
 {
     internal interface IMovesDataTable
     {

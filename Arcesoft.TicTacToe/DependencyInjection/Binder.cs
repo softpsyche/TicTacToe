@@ -7,6 +7,7 @@ using Arcesoft.TicTacToe.ArtificialIntelligence;
 using Arcesoft.TicTacToe.GameImplementation;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
 using SimpleInjector;
+using Arcesoft.TicTacToe.Data;
 
 namespace Arcesoft.TicTacToe.DependencyInjection
 {
@@ -20,10 +21,12 @@ namespace Arcesoft.TicTacToe.DependencyInjection
                 container.Register<ITicTacToeFactory, TicTacToeFactory>();
                 container.Register<IGame, Game>();
 
-                //AI
+                //data
                 container.Register<IMoveDatabase, MoveDatabase>();
                 container.Register<IMoveDataAccess, MoveDataAccess>();
                 container.Register<IMoveRepository, MoveRepository>();
+
+                //ai
                 container.Register<IMoveEvaluator, MoveEvaluator>();
 
                 //random number generation

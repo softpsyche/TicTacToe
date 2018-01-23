@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Arcesoft.TicTacToe.Data;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Arcesoft.TicTacToe.ArtificialIntelligence.TicTacToeDataSet;
+using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
 
 namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {

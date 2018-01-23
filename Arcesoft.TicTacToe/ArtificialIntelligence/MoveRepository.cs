@@ -8,9 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Arcesoft.TicTacToe.ArtificialIntelligence.TicTacToeDataSet;
+using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
 
-namespace Arcesoft.TicTacToe.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.Data
 {
     internal class MoveRepository : IMoveRepository
     {
@@ -25,7 +25,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         {
             var searchPattern = String.Format("Board = '{0}' AND Player = '{1}'", currentBoardPosition, currentPlayer.ToString());
 
-            var rows = (MovesRow[])_moveDatabase.MovesDataTable.Select(searchPattern);
+            var rows = _moveDatabase.MovesDataTable.Select(searchPattern);
 
             return ToBoardState(rows);
         }

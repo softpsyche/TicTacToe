@@ -1,4 +1,5 @@
 ﻿using Arcesoft.TicTacToe.ArtificialIntelligence;
+using Arcesoft.TicTacToe.Data;
 using Arcesoft.TicTacToe.Entities;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -8,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Arcesoft.TicTacToe.ArtificialIntelligence.TicTacToeDataSet;
+using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
 
 namespace Arcesoft.TicTacToe.NaiveTestingApproach.ArtificialIntelligence
 {

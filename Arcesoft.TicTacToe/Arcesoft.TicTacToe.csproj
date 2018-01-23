@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtificialIntelligence\IMoveDatabase.cs" />
+    <Compile Include="Data\IMoveDatabase.cs" />
     <Compile Include="ArtificialIntelligence\IMoveEvaluator.cs" />
-    <Compile Include="ArtificialIntelligence\IMoveRepository.cs" />
-    <Compile Include="ArtificialIntelligence\IMovesDataTable.cs" />
-    <Compile Include="ArtificialIntelligence\MoveDatabase.cs" />
-    <Compile Include="ArtificialIntelligence\MoveResponse.cs" />
+    <Compile Include="Data\IMoveRepository.cs" />
+    <Compile Include="Data\IMovesDataTable.cs" />
+    <Compile Include="Data\MoveDatabase.cs" />
+    <Compile Include="Data\MoveResponse.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\IntoxicatedHomerSimpson.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\OmniscientGod.cs" />
     <Compile Include="Entities\ArtificialIntelligenceTypes.cs" />
     <Compile Include="IArtificialIntelligence.cs" />
-    <Compile Include="ArtificialIntelligence\IMoveDataAccess.cs" />
+    <Compile Include="Data\IMoveDataAccess.cs" />
     <Compile Include="ArtificialIntelligence\MoveRepository.cs" />
     <Compile Include="GameImplementation\TicTacToeFactory.cs" />
     <Compile Include="DependencyInjection\Binder.cs" />
@@ -76,11 +76,11 @@
     <Compile Include="ITicTacToeFactory.cs" />
     <Compile Include="RandomNumberGeneration\DefaultRandomNumberGenerator.cs" />
     <Compile Include="RandomNumberGeneration\IRandom.cs" />
-    <Compile Include="ArtificialIntelligence\MoveDataAccess.cs" />
-    <Compile Include="ArtificialIntelligence\TicTacToeDataSet.cs">
+    <Compile Include="Data\MoveDataAccess.cs" />
+    <Compile Include="Data\TicTacToeDataSet.cs">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ArtificialIntelligence\TicTacToeDataSet.Designer.cs">
+    <Compile Include="Data\TicTacToeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
@@ -95,15 +95,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ArtificialIntelligence\TicTacToeDataSet.xsc">
+    <None Include="Data\TicTacToeDataSet.xsc">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ArtificialIntelligence\TicTacToeDataSet.xsd">
+    <None Include="Data\TicTacToeDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>TicTacToeDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ArtificialIntelligence\TicTacToeDataSet.xss">
+    <None Include="Data\TicTacToeDataSet.xss">
       <DependentUpon>TicTacToeDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />

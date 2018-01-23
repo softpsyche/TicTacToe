@@ -6,10 +6,9 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Linq;
-using Arcesoft.TicTacToe.ArtificialIntelligence;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
 using Arcesoft.TicTacToe.Entities;
-using Arcesoft.TicTacToe.GameImplementation;
+using Arcesoft.TicTacToe.Data;
 
 namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {

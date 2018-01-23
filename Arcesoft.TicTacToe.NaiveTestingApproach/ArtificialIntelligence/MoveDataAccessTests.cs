@@ -1,4 +1,5 @@
 ﻿using Arcesoft.TicTacToe.ArtificialIntelligence;
+using Arcesoft.TicTacToe.Data;
 using Arcesoft.TicTacToe.Entities;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
 using FluentAssertions;

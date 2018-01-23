@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Arcesoft.TicTacToe.ArtificialIntelligence.TicTacToeDataSet;
 
-namespace Arcesoft.TicTacToe.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.Data
 {
     internal interface IMoveDatabase
     {

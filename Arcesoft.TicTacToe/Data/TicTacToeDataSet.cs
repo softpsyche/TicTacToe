@@ -1,6 +1,6 @@
 ﻿using Arcesoft.TicTacToe.Entities;
 
-namespace Arcesoft.TicTacToe.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.Data
 {
     partial class TicTacToeDataSet
     {

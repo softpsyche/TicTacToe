@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Arcesoft.TicTacToe.Entities;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
+using Arcesoft.TicTacToe.Data;
 
 namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
 {

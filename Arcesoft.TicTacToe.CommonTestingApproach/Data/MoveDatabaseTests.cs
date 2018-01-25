@@ -14,6 +14,7 @@ using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
 namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
 {
     [TestClass]
+    [TestCategory("CommonTestingApproach")]
     public class MoveDatabaseTests
     {
         private Mock<IMoveEvaluator> MoveEvaluatorMock { get; set; }

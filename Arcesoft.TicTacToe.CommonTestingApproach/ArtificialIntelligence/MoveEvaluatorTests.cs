@@ -13,6 +13,7 @@ using Arcesoft.TicTacToe.Entities;
 namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence
 {
     [TestClass]
+    [TestCategory("CommonTestingApproach")]
     internal class MoveEvaluatorTests
     {
         private Mock<ITicTacToeFactory> TicTacToeFactoryMock { get; set; }

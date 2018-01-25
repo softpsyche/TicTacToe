@@ -45,6 +45,7 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Game", "Verify that the tic tac toe game follows the domain specifications", ProgrammingLanguage.CSharp, new string[] {
+                        "BetterTestingApproach",
                         "Unit"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -85,10 +86,10 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         
         public virtual void FeatureBackground()
         {
-#line 5
 #line 6
- testRunner.Given("I have a container", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
+ testRunner.Given("I have a container", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 8
  testRunner.Given("I have a tictactoe factory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
@@ -96,25 +97,26 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("New game should start in the correct state")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void NewGameShouldStartInTheCorrectState()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("New game should start in the correct state", ((string[])(null)));
-#line 9
-this.ScenarioSetup(scenarioInfo);
-#line 5
-this.FeatureBackground();
 #line 10
- testRunner.When("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line 11
- testRunner.Then("The current player should be \'X\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.Then("The move history should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The current player should be \'X\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 13
- testRunner.Then("The game state should be \'InPlay\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The move history should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 14
- testRunner.Then("The game should not be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'InPlay\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 15
+ testRunner.Then("The game should not be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 16
  testRunner.Then("The total moves made should be \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -133,7 +135,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-#line 16
+#line 17
  testRunner.Then("The game board should look like", ((string)(null)), table1, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -156,7 +158,7 @@ this.FeatureBackground();
                         "Southern"});
             table2.AddRow(new string[] {
                         "SouthEast"});
-#line 21
+#line 22
  testRunner.Then("The available legal moves should be", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -165,13 +167,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("New game with moves should start in correct state")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void NewGameWithMovesShouldStartInCorrectState()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("New game with moves should start in correct state", ((string[])(null)));
-#line 33
+#line 34
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -182,9 +185,9 @@ this.FeatureBackground();
                         "Southern"});
             table3.AddRow(new string[] {
                         "Eastern"});
-#line 34
+#line 35
  testRunner.When("I start a new game with the following moves", ((string)(null)), table3, "When ");
-#line 39
+#line 40
  testRunner.Then("The current player should be \'O\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -195,13 +198,13 @@ this.FeatureBackground();
                         "Southern"});
             table4.AddRow(new string[] {
                         "Eastern"});
-#line 40
+#line 41
  testRunner.Then("The move history should be", ((string)(null)), table4, "Then ");
-#line 45
- testRunner.Then("The game state should be \'InPlay\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 46
- testRunner.Then("The game should not be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'InPlay\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 47
+ testRunner.Then("The game should not be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 48
  testRunner.Then("The total moves made should be \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -220,7 +223,7 @@ this.FeatureBackground();
                         "",
                         "O",
                         ""});
-#line 48
+#line 49
  testRunner.Then("The game board should look like", ((string)(null)), table5, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -237,7 +240,7 @@ this.FeatureBackground();
                         "SouthWest"});
             table6.AddRow(new string[] {
                         "SouthEast"});
-#line 53
+#line 54
  testRunner.Then("The available legal moves should be", ((string)(null)), table6, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -246,20 +249,20 @@ this.FeatureBackground();
         public virtual void NewGameWithMovesShouldThrowIf(string testName, string moves, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("New game with moves should throw if", exampleTags);
-#line 62
-this.ScenarioSetup(scenarioInfo);
-#line 5
-this.FeatureBackground();
 #line 63
- testRunner.Given("I expect an exception to be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line 64
+ testRunner.Given("I expect an exception to be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 65
  testRunner.When(string.Format("I start a new game with the following moves \'{0}\'", moves), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
             table7.AddRow(new string[] {
                         "Invalid move passed in. Cannot create game from moves."});
-#line 65
+#line 66
  testRunner.Then("I expect the following GameException to be thrown", ((string)(null)), table7, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -268,13 +271,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("New game with moves should throw if: the moves has duplicates")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "the moves has duplicates")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "the moves has duplicates")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Moves", "Center,Southern,Center")]
         public virtual void NewGameWithMovesShouldThrowIf_TheMovesHasDuplicates()
         {
-#line 62
+#line 63
 this.NewGameWithMovesShouldThrowIf("the moves has duplicates", "Center,Southern,Center", ((string[])(null)));
 #line hidden
         }
@@ -283,13 +287,14 @@ this.NewGameWithMovesShouldThrowIf("the moves has duplicates", "Center,Southern,
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("New game with moves should throw if: the moves are invalid due to game being over" +
             "")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "the moves are invalid due to game being over")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "the moves are invalid due to game being over")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Moves", "Center,SouthWest,Southern,SouthEast,Northern,Eastern")]
         public virtual void NewGameWithMovesShouldThrowIf_TheMovesAreInvalidDueToGameBeingOver()
         {
-#line 62
+#line 63
 this.NewGameWithMovesShouldThrowIf("the moves are invalid due to game being over", "Center,SouthWest,Southern,SouthEast,Northern,Eastern", ((string[])(null)));
 #line hidden
         }
@@ -297,6 +302,7 @@ this.NewGameWithMovesShouldThrowIf("the moves are invalid due to game being over
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("New game with moves should throw if: the moves are too many")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "the moves are too many")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "the moves are too many")]
@@ -304,7 +310,7 @@ this.NewGameWithMovesShouldThrowIf("the moves are invalid due to game being over
             "Center")]
         public virtual void NewGameWithMovesShouldThrowIf_TheMovesAreTooMany()
         {
-#line 62
+#line 63
 this.NewGameWithMovesShouldThrowIf("the moves are too many", "Center,SouthWest,Eastern,Western,NorthWest,SouthEast,Southern,Northern,NorthEast," +
                     "Center", ((string[])(null)));
 #line hidden
@@ -313,13 +319,14 @@ this.NewGameWithMovesShouldThrowIf("the moves are too many", "Center,SouthWest,E
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect tie")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldDetectTie()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should detect tie", ((string[])(null)));
-#line 74
+#line 75
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -340,9 +347,9 @@ this.FeatureBackground();
                         "Western"});
             table8.AddRow(new string[] {
                         "Eastern"});
-#line 75
+#line 76
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table8, "Given ");
-#line 85
+#line 86
  testRunner.When("I make the move \'NorthEast\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -365,13 +372,13 @@ this.FeatureBackground();
                         "Eastern"});
             table9.AddRow(new string[] {
                         "NorthEast"});
-#line 86
+#line 87
  testRunner.Then("The move history should be", ((string)(null)), table9, "Then ");
-#line 97
- testRunner.Then("The game state should be \'Tie\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 98
- testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'Tie\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 99
+ testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 100
  testRunner.Then("The total moves made should be \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -390,9 +397,9 @@ this.FeatureBackground();
                         "O",
                         "X",
                         "O"});
-#line 100
+#line 101
  testRunner.Then("The game board should look like", ((string)(null)), table10, "Then ");
-#line 105
+#line 106
  testRunner.Then("The available legal moves should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -401,13 +408,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'X\' win for western column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldDetectXWinForWesternColumn()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should detect \'X\' win for western column", ((string[])(null)));
-#line 107
+#line 108
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -420,9 +428,9 @@ this.FeatureBackground();
                         "Western"});
             table11.AddRow(new string[] {
                         "Southern"});
-#line 108
+#line 109
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table11, "Given ");
-#line 114
+#line 115
  testRunner.When("I make the move \'SouthWest\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -437,13 +445,13 @@ this.FeatureBackground();
                         "Southern"});
             table12.AddRow(new string[] {
                         "SouthWest"});
-#line 115
+#line 116
  testRunner.Then("The move history should be", ((string)(null)), table12, "Then ");
-#line 122
- testRunner.Then("The game state should be \'XWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 123
- testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'XWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 124
+ testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 125
  testRunner.Then("The total moves made should be \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -462,9 +470,9 @@ this.FeatureBackground();
                         "X",
                         "O",
                         ""});
-#line 125
+#line 126
  testRunner.Then("The game board should look like", ((string)(null)), table13, "Then ");
-#line 130
+#line 131
  testRunner.Then("The available legal moves should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -473,13 +481,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'X\' win for center column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldDetectXWinForCenterColumn()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should detect \'X\' win for center column", ((string[])(null)));
-#line 132
+#line 133
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -492,9 +501,9 @@ this.FeatureBackground();
                         "Northern"});
             table14.AddRow(new string[] {
                         "Western"});
-#line 133
+#line 134
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table14, "Given ");
-#line 139
+#line 140
  testRunner.When("I make the move \'Southern\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -509,13 +518,13 @@ this.FeatureBackground();
                         "Western"});
             table15.AddRow(new string[] {
                         "Southern"});
-#line 140
+#line 141
  testRunner.Then("The move history should be", ((string)(null)), table15, "Then ");
-#line 147
- testRunner.Then("The game state should be \'XWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 148
- testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'XWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 149
+ testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 150
  testRunner.Then("The total moves made should be \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -534,9 +543,9 @@ this.FeatureBackground();
                         "O",
                         "X",
                         ""});
-#line 150
+#line 151
  testRunner.Then("The game board should look like", ((string)(null)), table16, "Then ");
-#line 155
+#line 156
  testRunner.Then("The available legal moves should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -545,13 +554,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'X\' win for eastern column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldDetectXWinForEasternColumn()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should detect \'X\' win for eastern column", ((string[])(null)));
-#line 157
+#line 158
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -564,9 +574,9 @@ this.FeatureBackground();
                         "Eastern"});
             table17.AddRow(new string[] {
                         "Southern"});
-#line 158
+#line 159
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table17, "Given ");
-#line 164
+#line 165
  testRunner.When("I make the move \'SouthEast\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -581,13 +591,13 @@ this.FeatureBackground();
                         "Southern"});
             table18.AddRow(new string[] {
                         "SouthEast"});
-#line 165
+#line 166
  testRunner.Then("The move history should be", ((string)(null)), table18, "Then ");
-#line 172
- testRunner.Then("The game state should be \'XWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 173
- testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'XWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 174
+ testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 175
  testRunner.Then("The total moves made should be \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -606,9 +616,9 @@ this.FeatureBackground();
                         "",
                         "O",
                         "X"});
-#line 175
+#line 176
  testRunner.Then("The game board should look like", ((string)(null)), table19, "Then ");
-#line 180
+#line 181
  testRunner.Then("The available legal moves should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -617,13 +627,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'X\' win for diagonal slope")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldDetectXWinForDiagonalSlope()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should detect \'X\' win for diagonal slope", ((string[])(null)));
-#line 182
+#line 183
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -636,9 +647,9 @@ this.FeatureBackground();
                         "Center"});
             table20.AddRow(new string[] {
                         "Eastern"});
-#line 183
+#line 184
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table20, "Given ");
-#line 189
+#line 190
  testRunner.When("I make the move \'SouthEast\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -653,13 +664,13 @@ this.FeatureBackground();
                         "Eastern"});
             table21.AddRow(new string[] {
                         "SouthEast"});
-#line 190
+#line 191
  testRunner.Then("The move history should be", ((string)(null)), table21, "Then ");
-#line 197
- testRunner.Then("The game state should be \'XWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 198
- testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'XWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 199
+ testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 200
  testRunner.Then("The total moves made should be \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -678,9 +689,9 @@ this.FeatureBackground();
                         "",
                         "",
                         "X"});
-#line 200
+#line 201
  testRunner.Then("The game board should look like", ((string)(null)), table22, "Then ");
-#line 205
+#line 206
  testRunner.Then("The available legal moves should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -689,19 +700,20 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'X\' win for diagonal grade")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldDetectXWinForDiagonalGrade()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should detect \'X\' win for diagonal grade", ((string[])(null)));
-#line 208
-this.ScenarioSetup(scenarioInfo);
-#line 5
-this.FeatureBackground();
 #line 209
- testRunner.Given("Todo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line 210
- testRunner.When("Todo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("Todo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 211
+ testRunner.When("Todo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 212
  testRunner.Then("Todo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -710,23 +722,23 @@ this.FeatureBackground();
         public virtual void GameShouldDetectOWinFor(string testName, string initialMoves, string move, string expectedMoveHistory, string expectedGameBoard, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should detect \'O\' win for", exampleTags);
-#line 214
-this.ScenarioSetup(scenarioInfo);
-#line 5
-this.FeatureBackground();
 #line 215
- testRunner.Given(string.Format("I start a new game with the following moves \'{0}\'", initialMoves), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line 216
- testRunner.When(string.Format("I make the move \'{0}\'", move), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given(string.Format("I start a new game with the following moves \'{0}\'", initialMoves), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 217
- testRunner.Then(string.Format("The move history should be \'{0}\'", expectedMoveHistory), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When(string.Format("I make the move \'{0}\'", move), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 218
- testRunner.Then("The game state should be \'OWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("The move history should be \'{0}\'", expectedMoveHistory), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 219
- testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'OWin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 220
- testRunner.Then("The total moves made should be \'6\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game should be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 221
+ testRunner.Then("The total moves made should be \'6\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 222
  testRunner.Then(string.Format("The game board should be \'{0}\'", expectedGameBoard), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -735,6 +747,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'O\' win for: western column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "western column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "western column")]
@@ -744,7 +757,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedGameBoard", "O__OXXOX_")]
         public virtual void GameShouldDetectOWinFor_WesternColumn()
         {
-#line 214
+#line 215
 this.GameShouldDetectOWinFor("western column", "Center,Western,Southern,SouthWest,Eastern", "NorthWest", "Center,Western,Southern,SouthWest,Eastern,NorthWest", "O__OXXOX_", ((string[])(null)));
 #line hidden
         }
@@ -752,6 +765,7 @@ this.GameShouldDetectOWinFor("western column", "Center,Western,Southern,SouthWes
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'O\' win for: center column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "center column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "center column")]
@@ -761,7 +775,7 @@ this.GameShouldDetectOWinFor("western column", "Center,Western,Southern,SouthWes
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedGameBoard", "_O_XOXXO_")]
         public virtual void GameShouldDetectOWinFor_CenterColumn()
         {
-#line 214
+#line 215
 this.GameShouldDetectOWinFor("center column", "Western,Northern,SouthWest,Center,Eastern", "Southern", "Western,Northern,SouthWest,Center,Eastern,Southern", "_O_XOXXO_", ((string[])(null)));
 #line hidden
         }
@@ -769,6 +783,7 @@ this.GameShouldDetectOWinFor("center column", "Western,Northern,SouthWest,Center
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'O\' win for: eastern column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "eastern column")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "eastern column")]
@@ -778,7 +793,7 @@ this.GameShouldDetectOWinFor("center column", "Western,Northern,SouthWest,Center
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedGameBoard", "__OXXO_XO")]
         public virtual void GameShouldDetectOWinFor_EasternColumn()
         {
-#line 214
+#line 215
 this.GameShouldDetectOWinFor("eastern column", "Center,Eastern,Southern,SouthEast,Western", "NorthEast", "Center,Eastern,Southern,SouthEast,Western,NorthEast", "__OXXO_XO", ((string[])(null)));
 #line hidden
         }
@@ -786,6 +801,7 @@ this.GameShouldDetectOWinFor("eastern column", "Center,Eastern,Southern,SouthEas
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'O\' win for: diagonal slope")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "diagonal slope")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "diagonal slope")]
@@ -795,7 +811,7 @@ this.GameShouldDetectOWinFor("eastern column", "Center,Eastern,Southern,SouthEas
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedGameBoard", "OX_XO__XO")]
         public virtual void GameShouldDetectOWinFor_DiagonalSlope()
         {
-#line 214
+#line 215
 this.GameShouldDetectOWinFor("diagonal slope", "Northern,NorthWest,Southern,Center,Western", "SouthEast", "Northern,NorthWest,Southern,Center,Western,SouthEast", "OX_XO__XO", ((string[])(null)));
 #line hidden
         }
@@ -803,6 +819,7 @@ this.GameShouldDetectOWinFor("diagonal slope", "Northern,NorthWest,Southern,Cent
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should detect \'O\' win for: diagonal grade")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "diagonal grade")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "diagonal grade")]
@@ -812,7 +829,7 @@ this.GameShouldDetectOWinFor("diagonal slope", "Northern,NorthWest,Southern,Cent
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedGameBoard", "_XOXO_OX_")]
         public virtual void GameShouldDetectOWinFor_DiagonalGrade()
         {
-#line 214
+#line 215
 this.GameShouldDetectOWinFor("diagonal grade", "Northern,SouthWest,Southern,Center,Western", "NorthEast", "Northern,SouthWest,Southern,Center,Western,NorthEast", "_XOXO_OX_", ((string[])(null)));
 #line hidden
         }
@@ -820,13 +837,14 @@ this.GameShouldDetectOWinFor("diagonal grade", "Northern,SouthWest,Southern,Cent
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should reset correctly")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldResetCorrectly()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should reset correctly", ((string[])(null)));
-#line 230
+#line 231
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -837,19 +855,19 @@ this.FeatureBackground();
                         "Southern"});
             table23.AddRow(new string[] {
                         "Eastern"});
-#line 231
+#line 232
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table23, "Given ");
-#line 236
- testRunner.When("I reset the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 237
- testRunner.Then("The current player should be \'X\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I reset the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 238
- testRunner.Then("The move history should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The current player should be \'X\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 239
- testRunner.Then("The game state should be \'InPlay\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The move history should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 240
- testRunner.Then("The game should not be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The game state should be \'InPlay\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 241
+ testRunner.Then("The game should not be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 242
  testRunner.Then("The total moves made should be \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -868,7 +886,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-#line 242
+#line 243
  testRunner.Then("The game board should look like", ((string)(null)), table24, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -891,7 +909,7 @@ this.FeatureBackground();
                         "Southern"});
             table25.AddRow(new string[] {
                         "SouthEast"});
-#line 247
+#line 248
  testRunner.Then("The available legal moves should be", ((string)(null)), table25, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -900,19 +918,20 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for move correctly")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldRaiseGameChangeEventForMoveCorrectly()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for move correctly", ((string[])(null)));
-#line 260
-this.ScenarioSetup(scenarioInfo);
-#line 5
-this.FeatureBackground();
 #line 261
- testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line 262
- testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 263
+ testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 264
  testRunner.When("I make the move \'Center\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -923,11 +942,11 @@ this.FeatureBackground();
                         "Move",
                         "InPlay",
                         "O"});
-#line 264
+#line 265
  testRunner.Then("The following game state changed events are raised", ((string)(null)), table26, "Then ");
-#line 267
- testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 268
+ testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 269
  testRunner.Then("The following number of GameReset events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -936,13 +955,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for win correctly")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldRaiseGameChangeEventForWinCorrectly()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for win correctly", ((string[])(null)));
-#line 270
+#line 271
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -955,11 +975,11 @@ this.FeatureBackground();
                         "Southern"});
             table27.AddRow(new string[] {
                         "Eastern"});
-#line 271
+#line 272
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table27, "Given ");
-#line 277
- testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 278
+ testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 279
  testRunner.When("I make the move \'Center\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -970,11 +990,11 @@ this.FeatureBackground();
                         "Over",
                         "XWin",
                         "O"});
-#line 279
+#line 280
  testRunner.Then("The following game state changed events are raised", ((string)(null)), table28, "Then ");
-#line 282
- testRunner.Then("The following number of GameOver events are raised: \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 283
+ testRunner.Then("The following number of GameOver events are raised: \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 284
  testRunner.Then("The following number of GameReset events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -983,13 +1003,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for reset correctly")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldRaiseGameChangeEventForResetCorrectly()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for reset correctly", ((string[])(null)));
-#line 285
+#line 286
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1002,11 +1023,11 @@ this.FeatureBackground();
                         "Southern"});
             table29.AddRow(new string[] {
                         "Eastern"});
-#line 286
+#line 287
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table29, "Given ");
-#line 292
- testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 293
+ testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 294
  testRunner.When("I reset the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1017,11 +1038,11 @@ this.FeatureBackground();
                         "Reset",
                         "InPlay",
                         "X"});
-#line 294
+#line 295
  testRunner.Then("The following game state changed events are raised", ((string)(null)), table30, "Then ");
-#line 297
- testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 298
+ testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 299
  testRunner.Then("The following number of GameReset events are raised: \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1030,13 +1051,14 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for undomove correctly")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         public virtual void GameShouldRaiseGameChangeEventForUndomoveCorrectly()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for undomove correctly", ((string[])(null)));
-#line 300
+#line 301
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 6
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1049,11 +1071,11 @@ this.FeatureBackground();
                         "Southern"});
             table31.AddRow(new string[] {
                         "Eastern"});
-#line 301
+#line 302
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table31, "Given ");
-#line 307
- testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 308
+ testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 309
  testRunner.When("I undo last move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1064,11 +1086,11 @@ this.FeatureBackground();
                         "UndoMove",
                         "InPlay",
                         "O"});
-#line 309
+#line 310
  testRunner.Then("The following game state changed events are raised", ((string)(null)), table32, "Then ");
-#line 312
- testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 313
+ testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 314
  testRunner.Then("The following number of GameReset events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

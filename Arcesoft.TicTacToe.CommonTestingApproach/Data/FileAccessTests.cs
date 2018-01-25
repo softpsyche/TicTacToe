@@ -15,6 +15,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
     /// which we should trust to work since they are MS classes already under test somewhere else). 
     /// </summary>
     [TestClass]
+    [TestCategory("CommonTestingApproach")]
     public class FileAccessTests
     {
         private TicTacToe.Data.FileAccess FileAccess { get; set; }

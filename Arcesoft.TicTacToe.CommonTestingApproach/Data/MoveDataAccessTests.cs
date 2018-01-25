@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
 {
     [TestClass]
+    [TestCategory("CommonTestingApproach")]
     public class MoveDataAccessTests
     {
         private Mock<IMoveRepository> MoveRepositoryMock { get; set; }

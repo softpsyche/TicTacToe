@@ -1,4 +1,5 @@
-﻿@Unit
+﻿@BetterTestingApproach
+@Unit
 Feature: Game
 Verify that the tic tac toe game follows the domain specifications
 

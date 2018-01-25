@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arcesoft.TicTacToe.NaiveTestingApproach.Data
+namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
 {
     [TestClass]
     public class MoveDataAccessTests

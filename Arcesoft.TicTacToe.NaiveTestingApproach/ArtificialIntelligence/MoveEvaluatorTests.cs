@@ -10,7 +10,7 @@ using Arcesoft.TicTacToe.RandomNumberGeneration;
 using Arcesoft.TicTacToe.ArtificialIntelligence;
 using Arcesoft.TicTacToe.Entities;
 
-namespace Arcesoft.TicTacToe.NaiveTestingApproach.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence
 {
     [TestClass]
     internal class MoveEvaluatorTests

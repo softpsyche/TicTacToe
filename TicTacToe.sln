@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcesoft.TicTacToe.Common",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{CF528FBE-4750-4BE6-9626-7791923B1267}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcesoft.TicTacToe.NaiveTestingApproach", "Arcesoft.TicTacToe.NaiveTestingApproach\Arcesoft.TicTacToe.NaiveTestingApproach.csproj", "{4920D4FB-5B5F-4A32-BA3F-DD9799E69EF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcesoft.TicTacToe.CommonTestingApproach", "Arcesoft.TicTacToe.NaiveTestingApproach\Arcesoft.TicTacToe.CommonTestingApproach.csproj", "{4920D4FB-5B5F-4A32-BA3F-DD9799E69EF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcesoft.TicTacToe.BetterTestingApproach", "Arcesoft.TicTacToe.BetterTestingApproach\Arcesoft.TicTacToe.BetterTestingApproach.csproj", "{20F93B1A-61BB-4E73-B39C-C2B533F12226}"
 EndProject

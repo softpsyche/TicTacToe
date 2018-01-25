@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arcesoft.TicTacToe.NaiveTestingApproach.Data
+namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
 {
     /// <summary>
     /// NOTE: these tests are questionable in so much as they are unit tests because they cross a boundary (albeit a relatively minor one)

@@ -15,28 +15,21 @@ namespace Arcesoft.TicTacToe.DependencyInjection
     {
         public void BindDependencies(Container container)
         {
-            try
-            {
-                //game
-                container.Register<ITicTacToeFactory, TicTacToeFactory>();
-                container.Register<IGame, Game>();
+            //game
+            container.Register<ITicTacToeFactory, TicTacToeFactory>();
+            container.Register<IGame, Game>();
 
-                //data
-                container.Register<IMoveDatabase, MoveDatabase>();
-                container.Register<IMoveDataAccess, MoveDataAccess>();
-                container.Register<IMoveRepository, MoveRepository>();
-                container.Register<IFileAccess, FileAccess>();
+            //data
+            container.Register<IMoveDatabase, MoveDatabase>();
+            container.Register<IMoveDataAccess, MoveDataAccess>();
+            container.Register<IMoveRepository, MoveRepository>();
+            container.Register<IFileAccess, FileAccess>();
 
-                //ai
-                container.Register<IMoveEvaluator, MoveEvaluator>();
+            //ai
+            container.Register<IMoveEvaluator, MoveEvaluator>();
 
-                //random number generation
-                container.Register<IRandom, DefaultRandomNumberGenerator>();
-            }
-            catch (Exception ex)
-            {
-                var yo = ex;
-            }
+            //random number generation
+            container.Register<IRandom, DefaultRandomNumberGenerator>();
         }
     }
 }

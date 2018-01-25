@@ -84,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\FileAccessTests.cs" />
     <Compile Include="Data\MoveDataAccessTests.cs" />
     <Compile Include="Data\MoveDatabaseTests.cs" />
     <Compile Include="ArtificialIntelligence\MoveEvaluatorTests.cs" />

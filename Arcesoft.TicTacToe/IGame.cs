@@ -9,7 +9,7 @@ namespace Arcesoft.TicTacToe
 {
     public interface IGame
     {
-        event EventHandler<EventArgs> GameOver;
+        event EventHandler GameOver;
         event EventHandler GameReset;
         event EventHandler<GameStateChangedEventArgs> GameStateChanged;
 

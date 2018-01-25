@@ -19,13 +19,13 @@ namespace Arcesoft.TicTacToe.GameImplementation
         private ISynchronizeInvoke synchronizingObject = null;
         #endregion
         #region Events
-        public event EventHandler<EventArgs> GameOver;
+        public event EventHandler GameOver;
         public event EventHandler GameReset;
         public event EventHandler<GameStateChangedEventArgs> GameStateChanged;
 
         private void OnGameOver()
         {
-            EventHandler<EventArgs> temp = GameOver;
+            EventHandler temp = GameOver;
 
             if (temp != null)
             {
@@ -116,7 +116,7 @@ namespace Arcesoft.TicTacToe.GameImplementation
         {
             if (_moves.Count == 0)
             {
-                throw new InvalidOperationException("No moves have been made yet.");
+                throw new GameException("No moves have been made yet.");
             }
 
             //undo the board move...

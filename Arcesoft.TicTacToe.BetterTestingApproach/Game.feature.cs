@@ -916,6 +916,94 @@ this.FeatureBackground();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should undo move correctly")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void GameShouldUndoMoveCorrectly()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should undo move correctly", ((string[])(null)));
+#line 260
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Move"});
+            table26.AddRow(new string[] {
+                        "Northern"});
+            table26.AddRow(new string[] {
+                        "Western"});
+            table26.AddRow(new string[] {
+                        "Center"});
+            table26.AddRow(new string[] {
+                        "Eastern"});
+#line 261
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table26, "Given ");
+#line 267
+ testRunner.Given("I make the move \'Southern\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 268
+ testRunner.When("I undo last move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 269
+ testRunner.Then("The current player should be \'X\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Move"});
+            table27.AddRow(new string[] {
+                        "Northern"});
+            table27.AddRow(new string[] {
+                        "Western"});
+            table27.AddRow(new string[] {
+                        "Center"});
+            table27.AddRow(new string[] {
+                        "Eastern"});
+#line 270
+ testRunner.Then("The move history should be", ((string)(null)), table27, "Then ");
+#line 276
+ testRunner.Then("The game state should be \'InPlay\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 277
+ testRunner.Then("The game should not be over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 278
+ testRunner.Then("The total moves made should be \'4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+                        "A",
+                        "B",
+                        "C"});
+            table28.AddRow(new string[] {
+                        "",
+                        "X",
+                        ""});
+            table28.AddRow(new string[] {
+                        "O",
+                        "X",
+                        "O"});
+            table28.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+#line 279
+ testRunner.Then("The game board should look like", ((string)(null)), table28, "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Move"});
+            table29.AddRow(new string[] {
+                        "NorthWest"});
+            table29.AddRow(new string[] {
+                        "NorthEast"});
+            table29.AddRow(new string[] {
+                        "SouthWest"});
+            table29.AddRow(new string[] {
+                        "Southern"});
+            table29.AddRow(new string[] {
+                        "SouthEast"});
+#line 284
+ testRunner.Then("The available legal moves should be", ((string)(null)), table29, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for move correctly")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
@@ -923,30 +1011,30 @@ this.FeatureBackground();
         public virtual void GameShouldRaiseGameChangeEventForMoveCorrectly()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for move correctly", ((string[])(null)));
-#line 261
+#line 293
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
-#line 262
+#line 294
  testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 263
+#line 295
  testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 264
+#line 296
  testRunner.When("I make the move \'Center\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
                         "GameChange",
                         "GameState",
                         "CurrentPlayer"});
-            table26.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "Move",
                         "InPlay",
                         "O"});
-#line 265
- testRunner.Then("The following game state changed events are raised", ((string)(null)), table26, "Then ");
-#line 268
+#line 297
+ testRunner.Then("The following game state changed events are raised", ((string)(null)), table30, "Then ");
+#line 300
  testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 269
+#line 301
  testRunner.Then("The following number of GameReset events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -960,103 +1048,7 @@ this.FeatureBackground();
         public virtual void GameShouldRaiseGameChangeEventForWinCorrectly()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for win correctly", ((string[])(null)));
-#line 271
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
-#line hidden
-            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Move"});
-            table27.AddRow(new string[] {
-                        "Northern"});
-            table27.AddRow(new string[] {
-                        "Western"});
-            table27.AddRow(new string[] {
-                        "Southern"});
-            table27.AddRow(new string[] {
-                        "Eastern"});
-#line 272
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table27, "Given ");
-#line 278
- testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 279
- testRunner.When("I make the move \'Center\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
-                        "GameChange",
-                        "GameState",
-                        "CurrentPlayer"});
-            table28.AddRow(new string[] {
-                        "Over",
-                        "XWin",
-                        "O"});
-#line 280
- testRunner.Then("The following game state changed events are raised", ((string)(null)), table28, "Then ");
-#line 283
- testRunner.Then("The following number of GameOver events are raised: \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 284
- testRunner.Then("The following number of GameReset events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for reset correctly")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void GameShouldRaiseGameChangeEventForResetCorrectly()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for reset correctly", ((string[])(null)));
-#line 286
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
-#line hidden
-            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Move"});
-            table29.AddRow(new string[] {
-                        "Northern"});
-            table29.AddRow(new string[] {
-                        "Western"});
-            table29.AddRow(new string[] {
-                        "Southern"});
-            table29.AddRow(new string[] {
-                        "Eastern"});
-#line 287
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table29, "Given ");
-#line 293
- testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 294
- testRunner.When("I reset the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
-                        "GameChange",
-                        "GameState",
-                        "CurrentPlayer"});
-            table30.AddRow(new string[] {
-                        "Reset",
-                        "InPlay",
-                        "X"});
-#line 295
- testRunner.Then("The following game state changed events are raised", ((string)(null)), table30, "Then ");
-#line 298
- testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 299
- testRunner.Then("The following number of GameReset events are raised: \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for undomove correctly")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void GameShouldRaiseGameChangeEventForUndomoveCorrectly()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for undomove correctly", ((string[])(null)));
-#line 301
+#line 303
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
@@ -1071,26 +1063,122 @@ this.FeatureBackground();
                         "Southern"});
             table31.AddRow(new string[] {
                         "Eastern"});
-#line 302
+#line 304
  testRunner.Given("I start a new game with the following moves", ((string)(null)), table31, "Given ");
-#line 308
+#line 310
  testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 309
- testRunner.When("I undo last move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 311
+ testRunner.When("I make the move \'Center\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                         "GameChange",
                         "GameState",
                         "CurrentPlayer"});
             table32.AddRow(new string[] {
+                        "Over",
+                        "XWin",
+                        "O"});
+#line 312
+ testRunner.Then("The following game state changed events are raised", ((string)(null)), table32, "Then ");
+#line 315
+ testRunner.Then("The following number of GameOver events are raised: \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 316
+ testRunner.Then("The following number of GameReset events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for reset correctly")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void GameShouldRaiseGameChangeEventForResetCorrectly()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for reset correctly", ((string[])(null)));
+#line 318
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Move"});
+            table33.AddRow(new string[] {
+                        "Northern"});
+            table33.AddRow(new string[] {
+                        "Western"});
+            table33.AddRow(new string[] {
+                        "Southern"});
+            table33.AddRow(new string[] {
+                        "Eastern"});
+#line 319
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table33, "Given ");
+#line 325
+ testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 326
+ testRunner.When("I reset the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                        "GameChange",
+                        "GameState",
+                        "CurrentPlayer"});
+            table34.AddRow(new string[] {
+                        "Reset",
+                        "InPlay",
+                        "X"});
+#line 327
+ testRunner.Then("The following game state changed events are raised", ((string)(null)), table34, "Then ");
+#line 330
+ testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 331
+ testRunner.Then("The following number of GameReset events are raised: \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Game should raise game change event for undomove correctly")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void GameShouldRaiseGameChangeEventForUndomoveCorrectly()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Game should raise game change event for undomove correctly", ((string[])(null)));
+#line 333
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Move"});
+            table35.AddRow(new string[] {
+                        "Northern"});
+            table35.AddRow(new string[] {
+                        "Western"});
+            table35.AddRow(new string[] {
+                        "Southern"});
+            table35.AddRow(new string[] {
+                        "Eastern"});
+#line 334
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table35, "Given ");
+#line 340
+ testRunner.Given("I start listening to all game events", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 341
+ testRunner.When("I undo last move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                        "GameChange",
+                        "GameState",
+                        "CurrentPlayer"});
+            table36.AddRow(new string[] {
                         "UndoMove",
                         "InPlay",
                         "O"});
-#line 310
- testRunner.Then("The following game state changed events are raised", ((string)(null)), table32, "Then ");
-#line 313
+#line 342
+ testRunner.Then("The following game state changed events are raised", ((string)(null)), table36, "Then ");
+#line 345
  testRunner.Then("The following number of GameOver events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 314
+#line 346
  testRunner.Then("The following number of GameReset events are raised: \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

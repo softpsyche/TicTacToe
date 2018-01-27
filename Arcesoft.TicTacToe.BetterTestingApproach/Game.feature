@@ -257,6 +257,38 @@ Scenario: Game should reset correctly
 		| Southern  |
 		| SouthEast |
 
+Scenario: Game should undo move correctly
+	Given I start a new game with the following moves
+		| Move     |
+		| Northern |
+		| Western  |
+		| Center   |
+		| Eastern  |
+	Given I make the move 'Southern'
+	When I undo last move
+	Then The current player should be 'X'
+	Then The move history should be
+        | Move     |
+        | Northern |
+		| Western  |
+		| Center   |
+		| Eastern  |
+	Then The game state should be 'InPlay'
+	Then The game should not be over
+	Then The total moves made should be '4'
+	Then The game board should look like
+		| A | B | C |
+		|   | X |   |
+		| O | X | O |
+		|   |   |   |
+	Then The available legal moves should be
+		| Move      |
+		| NorthWest |
+		| NorthEast |
+		| SouthWest |
+		| Southern  |
+		| SouthEast |
+
 #Move,Over,Reset,Undomove
 Scenario: Game should raise game change event for move correctly
 	Given I start a new game
@@ -309,8 +341,7 @@ Scenario: Game should raise game change event for undomove correctly
 	When I undo last move
 	Then The following game state changed events are raised
 		| GameChange | GameState | CurrentPlayer |
-		| UndoMove    | InPlay    | O             |
+		| UndoMove   | InPlay    | O             |
 	Then The following number of GameOver events are raised: '0'
 	Then The following number of GameReset events are raised: '0'
-
 

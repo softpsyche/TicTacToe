@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtificialIntelligence\Strategies\BruteForce.cs" />
     <Compile Include="Data\FileAccess.cs" />
     <Compile Include="Data\IFileAccess.cs" />
     <Compile Include="Data\IMoveDatabase.cs" />

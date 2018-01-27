@@ -9,7 +9,7 @@ namespace Arcesoft.TicTacToe
 {
     public interface IArtificialIntelligence
     {
-        //string CommentOnGameState(IGame game);
+        //string MakeComment(IGame game);
 
         void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true);
     }

@@ -65,6 +65,7 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             Game.MoveHistory.ShouldBeEquivalentTo(ToMoves(table));
         }
 
+        [Given(@"I make the move '(.*)'")]
         [When(@"I make the move '(.*)'")]
         public void WhenIMakeTheMove(Move move)
         {

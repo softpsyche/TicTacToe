@@ -10,8 +10,7 @@ using Arcesoft.TicTacToe.Entities;
 
 namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
-    [Serializable]
-    internal class MoveEvaluator:IMoveEvaluator
+    internal class MoveEvaluator : IMoveEvaluator
     {
         private ITicTacToeFactory _gameFactory;
         private IRandom _random;
@@ -21,10 +20,10 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             _gameFactory = gameFactory;
             _random = random;
         }
-        public MoveResult CalculateBestMove(IGame game)
-        {
-            return CalculateBestMoveInternal(_gameFactory.NewGame(game.MoveHistory));
-        }
+        //public MoveResult CalculateBestMove(IGame game, bool randomlySelectIfMoreThanOne)
+        //{
+        //    return CalculateBestMoveInternal(_gameFactory.NewGame(game.MoveHistory), randomlySelectIfMoreThanOne);
+        //}
 
         public IEnumerable<BoardState> FindAllMoves(IGame game = null)
         {
@@ -37,30 +36,68 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         }
 
         #region Private Methods
-        private MoveResult CalculateBestMoveInternal(IGame game)
+        //private MoveResult CalculateBestMoveInternal(IGame game, bool randomlySelectIfMoreThanOne)
+        //{
+        //    Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
+        //    var legalMoves = game.GetLegalMoves();
+
+        //    foreach (var move in legalMoves)
+        //    {
+        //        game.Move(move);
+
+        //        if (game.GameIsOver)
+        //        {
+        //            gameMoveResults.Add(new MoveResult(move, game.GameState));
+        //        }
+        //        else
+        //        {
+        //            //recurse to find this moves finale
+        //            gameMoveResults.Add(new MoveResult(move,
+        //                CalculateBestMove(game, randomlySelectIfMoreThanOne).BoardStateAfterMove));
+        //        }
+
+        //        game.UndoLastMove();
+        //    }
+
+        //    return gameMoveResults[FindBestMoveIndex(gameMoveResults, game.CurrentPlayer)];
+        //}   
+        private MoveResult GetMinMaxResponseForGame(IGame game, Collection<BoardState> boardLayoutAndGameMoveResult)
         {
             Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
+            int bestMoveIndex;
             var legalMoves = game.GetLegalMoves();
 
             foreach (var move in legalMoves)
             {
+                MoveResult gameMoveResult;
+                Player player = game.CurrentPlayer;
                 game.Move(move);
 
                 if (game.GameIsOver)
                 {
-                    gameMoveResults.Add(new MoveResult(move, game.GameState));
+                    gameMoveResult = new MoveResult(move, game.GameState);
                 }
                 else
                 {
                     //recurse to find this moves finale
-                    gameMoveResults.Add(new MoveResult(move,
-                        CalculateBestMove(game).BoardStateAfterMove));
+                    gameMoveResult = new MoveResult(move, GetMinMaxResponseForGame(game, boardLayoutAndGameMoveResult).BoardStateAfterMove);
                 }
 
+                //add the result here..
+                gameMoveResults.Add(gameMoveResult);
+
+                //undo that last move...
                 game.UndoLastMove();
+
+                boardLayoutAndGameMoveResult.Add(new BoardState(
+                    gameMoveResult,
+                    game.GameBoardString,
+                    player));
             }
 
-            return gameMoveResults[FindBestMoveIndex(gameMoveResults, game.CurrentPlayer)];
+            bestMoveIndex = FindBestMoveIndex(gameMoveResults, game.CurrentPlayer);
+
+            return gameMoveResults[bestMoveIndex];
         }
         private int FindBestMoveIndex(Collection<MoveResult> gameMoveResults, Player side)
         {
@@ -107,11 +144,11 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
 
             if (winningMovesIndexes.Count > 0)
             {
-                return winningMovesIndexes[_random.Next( winningMovesIndexes.Count)];
+                return winningMovesIndexes[_random.Next(winningMovesIndexes.Count)];
             }
             else if (tieMovesIndexes.Count > 0)
             {
-                return tieMovesIndexes[_random.Next( tieMovesIndexes.Count)];
+                return tieMovesIndexes[_random.Next(tieMovesIndexes.Count)];
             }
             else if (losingMovesIndexes.Count > 0)
             {
@@ -120,46 +157,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             else
                 throw new ArgumentException("gameMoveResults collection is either empty or corrupt");
         }
-        private MoveResult GetMinMaxResponseForGame(IGame game, Collection<BoardState> boardLayoutAndGameMoveResult)
-        {
-            Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
-            int bestMoveIndex;
-            var legalMoves = game.GetLegalMoves();
-
-            foreach (var move in legalMoves)
-            {
-                MoveResult gameMoveResult;
-                Player player = game.CurrentPlayer;
-                game.Move(move);
-
-                if (game.GameIsOver)
-                {
-                    gameMoveResult = new MoveResult(move, game.GameState);
-                }
-                else
-                {
-                    //recurse to find this moves finale
-                    gameMoveResult = new MoveResult(move, GetMinMaxResponseForGame(game, boardLayoutAndGameMoveResult).BoardStateAfterMove);
-                }
-
-                //add the result here..
-                gameMoveResults.Add(gameMoveResult);
-
-                //undo that last move...
-                game.UndoLastMove();
-
-                boardLayoutAndGameMoveResult.Add(new BoardState(
-                    gameMoveResult,
-                    game.GameBoardString,
-                    player));
-            }
-
-            bestMoveIndex = FindBestMoveIndex(gameMoveResults, game.CurrentPlayer);
-
-            return gameMoveResults[bestMoveIndex];
-        }
         #endregion
-
     }
     
 }

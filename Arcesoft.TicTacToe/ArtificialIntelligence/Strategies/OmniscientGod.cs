@@ -10,14 +10,14 @@ using Arcesoft.TicTacToe.Data;
 namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
 {
     /// <summary>
-    /// Its like playing against a god. All knowing, all seeing, never losing. Very boring
+    /// Its like playing against a god. All knowing, all seeing, never losing. Very boring. This one 
     /// </summary>
     internal class OmniscientGod : IArtificialIntelligence
     {
         private IMoveDataAccess _moveDataAccess;
         private IRandom _random;
 
-        public OmniscientGod(IMoveDataAccess moveDataAccess,IRandom random)
+        public OmniscientGod(IMoveDataAccess moveDataAccess, IRandom random)
         {
             _moveDataAccess = moveDataAccess;
             _random = random;
@@ -38,7 +38,8 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
 
             if (moveResponse == null)
             {
-                throw new GameException($"Unable to make a move because there are no available moves for game board {game.GameBoardString}");
+                //this should NEVER happen if the game is not over. This is a true exceptional case
+                throw new Exception($"Unable to make a move because there are no available moves for game board {game.GameBoardString}");
             }
 
             game.Move(moveResponse.Response);

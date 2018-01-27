@@ -85,6 +85,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtificialIntelligence.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArtificialIntelligence.feature</DependentUpon>
+    </Compile>
     <Compile Include="CommonSteps.cs" />
     <Compile Include="Game.feature.cs">
       <AutoGen>True</AutoGen>
@@ -98,6 +103,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ArtificialIntelligence.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ArtificialIntelligence.feature.cs</LastGenOutput>
+    </None>
     <None Include="Game.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Game.feature.cs</LastGenOutput>

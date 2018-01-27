@@ -9,7 +9,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
     internal interface IMoveEvaluator
     {
-        MoveResult CalculateBestMove(IGame game);
+        //MoveResult CalculateBestMove(IGame game, bool randomlySelectIfMoreThanOne);
 
         IEnumerable<BoardState> FindAllMoves(IGame game = null);
     }

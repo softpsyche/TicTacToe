@@ -10,24 +10,15 @@ using Arcesoft.TicTacToe.Entities;
 namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
     [Serializable]
-    internal struct MoveResult
+    internal class MoveResult
     {
-        Move _moveMade;
-        GameState _boardStateAfterMove;
-
-        public Move MoveMade
-        {
-            get { return _moveMade; }
-        }
-        public GameState BoardStateAfterMove
-        {
-            get { return _boardStateAfterMove; }
-        }
+        public Move MoveMade { get; private set; }
+        public GameState BoardStateAfterMove { get; private set; }
         
         public MoveResult(Move moveMade, GameState boardStateAfterMove)
         {
-            _moveMade = moveMade;
-            _boardStateAfterMove = boardStateAfterMove;
+            MoveMade = moveMade;
+            BoardStateAfterMove = boardStateAfterMove;
         }
         public override string ToString()
         {

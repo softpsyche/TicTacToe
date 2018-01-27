@@ -12,22 +12,14 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
 {
     internal class MoveEvaluator : IMoveEvaluator
     {
-        private ITicTacToeFactory _gameFactory;
         private IRandom _random;
 
-        public MoveEvaluator(ITicTacToeFactory gameFactory, IRandom random)
+        public MoveEvaluator(IRandom random)
         {
-            _gameFactory = gameFactory;
             _random = random;
         }
-        //public MoveResult CalculateBestMove(IGame game, bool randomlySelectIfMoreThanOne)
-        //{
-        //    return CalculateBestMoveInternal(_gameFactory.NewGame(game.MoveHistory), randomlySelectIfMoreThanOne);
-        //}
-
-        public IEnumerable<BoardState> FindAllMoves(IGame game = null)
+        public IEnumerable<BoardState> FindAllMoves(IGame game)
         {
-            game = game ?? _gameFactory.NewGame();
             Collection<BoardState> results = new Collection<BoardState>();
 
             GetMinMaxResponseForGame(game, results);
@@ -36,31 +28,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         }
 
         #region Private Methods
-        //private MoveResult CalculateBestMoveInternal(IGame game, bool randomlySelectIfMoreThanOne)
-        //{
-        //    Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
-        //    var legalMoves = game.GetLegalMoves();
-
-        //    foreach (var move in legalMoves)
-        //    {
-        //        game.Move(move);
-
-        //        if (game.GameIsOver)
-        //        {
-        //            gameMoveResults.Add(new MoveResult(move, game.GameState));
-        //        }
-        //        else
-        //        {
-        //            //recurse to find this moves finale
-        //            gameMoveResults.Add(new MoveResult(move,
-        //                CalculateBestMove(game, randomlySelectIfMoreThanOne).BoardStateAfterMove));
-        //        }
-
-        //        game.UndoLastMove();
-        //    }
-
-        //    return gameMoveResults[FindBestMoveIndex(gameMoveResults, game.CurrentPlayer)];
-        //}   
+        
         private MoveResult GetMinMaxResponseForGame(IGame game, Collection<BoardState> boardLayoutAndGameMoveResult)
         {
             Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
@@ -159,7 +127,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         }
         #endregion
     }
-    
+
 }
 
 

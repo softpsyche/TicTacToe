@@ -11,6 +11,6 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
     {
         //MoveResult CalculateBestMove(IGame game, bool randomlySelectIfMoreThanOne);
 
-        IEnumerable<BoardState> FindAllMoves(IGame game = null);
+        IEnumerable<BoardState> FindAllMoves(IGame game);
     }
 }

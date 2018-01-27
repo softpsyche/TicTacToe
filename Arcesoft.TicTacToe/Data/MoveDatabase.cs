@@ -15,7 +15,8 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
     /// Represents an in-memory database of all the possible tic-tac-toe board configurations. 
     /// </summary>
     internal class MoveDatabase : IMoveDatabase
-    {  
+    {
+        private ITicTacToeFactory _ticTacToeFactory;
         private IMoveEvaluator _moveEvaluator;
         private IFileAccess _fileAccess;
         private MovesDataTable _movesDataTable;
@@ -23,8 +24,9 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         private static readonly string DefaultMoveDataBaseFileName = "MoveDatabase.ttt";
         internal string DefaultMoveDatabaseFilePath => AppDomain.CurrentDomain.BaseDirectory + @"\" + DefaultMoveDataBaseFileName;
 
-        public MoveDatabase(IMoveEvaluator moveEvaluator, IFileAccess fileAccess)
+        public MoveDatabase(ITicTacToeFactory ticTacToeFactory, IMoveEvaluator moveEvaluator, IFileAccess fileAccess)
         {
+            _ticTacToeFactory = ticTacToeFactory;
             _moveEvaluator = moveEvaluator;
             _fileAccess = fileAccess;
         }
@@ -61,7 +63,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
         private MovesDataTable BuildMovesDataTable()
         {
             MovesDataTable movesDataTable = new MovesDataTable();
-            var boardStates = _moveEvaluator.FindAllMoves();
+            var boardStates = _moveEvaluator.FindAllMoves(_ticTacToeFactory.NewGame());
 
             foreach (var boardState
                 in boardStates)

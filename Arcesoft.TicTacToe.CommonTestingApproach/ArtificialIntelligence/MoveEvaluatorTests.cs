@@ -16,7 +16,6 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence
     [TestCategory("CommonTestingApproach")]
     internal class MoveEvaluatorTests
     {
-        private Mock<ITicTacToeFactory> TicTacToeFactoryMock { get; set; }
         private Mock<IRandom> RandomMock { get; set; }
         private Mock<IGame> GameMock { get; set; }
         private MoveEvaluator MoveEvaluator { get; set; }
@@ -25,11 +24,9 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence
         [TestInitialize]
         public void Initialize()
         {
-            TicTacToeFactoryMock = new Mock<ITicTacToeFactory>();
             RandomMock = new Mock<IRandom>();
-            GameMock = new Mock<IGame>();
 
-            MoveEvaluator = new MoveEvaluator(TicTacToeFactoryMock.Object, RandomMock.Object);
+            MoveEvaluator = new MoveEvaluator(RandomMock.Object);
         }
 
         [TestMethod]

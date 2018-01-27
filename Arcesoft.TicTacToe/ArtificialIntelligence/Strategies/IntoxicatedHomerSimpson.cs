@@ -37,7 +37,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             }
             else//in other cases he will just move randomly
             {
-                moveResponse = availableMoves.RandomFromList(_random);
+                moveResponse = availableMoves.RandomFromListOrDefault(_random);
             }
 
             game.Move(moveResponse);

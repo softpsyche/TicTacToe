@@ -17,6 +17,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
     [TestCategory("CommonTestingApproach")]
     public class MoveDatabaseTests
     {
+        private Mock<ITicTacToeFactory> TicTacToeFactoryMock { get; set; }
         private Mock<IMoveEvaluator> MoveEvaluatorMock { get; set; }
         private Mock<IFileAccess> FileAccessMock { get; set; }
         private MoveDatabase MoveDatabase { get; set; }
@@ -33,6 +34,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
             FileAccessMock = new Mock<IFileAccess>();
 
             MoveDatabase = new MoveDatabase(
+                TicTacToeFactoryMock.Object,
                 MoveEvaluatorMock.Object, 
                 FileAccessMock.Object);
 

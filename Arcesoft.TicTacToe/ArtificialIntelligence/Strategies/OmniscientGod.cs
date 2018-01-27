@@ -32,9 +32,9 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
 
             var moves = _moveDataAccess.FindMoveResponses(game.GameBoardString, game.CurrentPlayer);
             MoveResponse moveResponse =
-                moves.Where(a => a.IsWin).RandomFromList(_random) ??
-                moves.Where(a => a.IsTie).RandomFromList(_random) ??
-                moves.Where(a => a.IsLoss).RandomFromList(_random);
+                moves.Where(a => a.IsWin).RandomFromListOrDefault(_random) ??
+                moves.Where(a => a.IsTie).RandomFromListOrDefault(_random) ??
+                moves.Where(a => a.IsLoss).RandomFromListOrDefault(_random);
 
             if (moveResponse == null)
             {

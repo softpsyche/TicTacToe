@@ -84,6 +84,9 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
 
             switch (GetUserCommand(AIMenu.Menu))
             {
+                case AIMenu.BruteForce:
+                    ai = _gameFactory.NewArtificialIntelligence(ArtificialIntelligenceTypes.BruteForce);
+                    break;
                 case AIMenu.OmniscientGod:
                     ai = _gameFactory.NewArtificialIntelligence(ArtificialIntelligenceTypes.OmniscientGod);
                     break;

@@ -43,6 +43,8 @@ namespace Arcesoft.TicTacToe.GameImplementation
         {
             switch (type)
             {
+                case ArtificialIntelligenceTypes.BruteForce:
+                    return _container.GetInstance<BruteForce>();
                 case ArtificialIntelligenceTypes.OmniscientGod:
                     return _container.GetInstance<OmniscientGod>();
                 case ArtificialIntelligenceTypes.IntoxicatedHomerSimpson:

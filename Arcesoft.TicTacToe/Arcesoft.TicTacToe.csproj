@@ -55,7 +55,6 @@
     <Compile Include="Data\IMovesDataTable.cs" />
     <Compile Include="Data\MoveDatabase.cs" />
     <Compile Include="Data\MoveResponse.cs" />
-    <Compile Include="ArtificialIntelligence\Strategies\IntoxicatedHomerSimpson.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\OmniscientGod.cs" />
     <Compile Include="Entities\ArtificialIntelligenceTypes.cs" />
     <Compile Include="IArtificialIntelligence.cs" />
@@ -73,7 +72,7 @@
     <Compile Include="ArtificialIntelligence\BoardState.cs" />
     <Compile Include="GameImplementation\Game.cs" />
     <Compile Include="GameException.cs" />
-    <Compile Include="ArtificialIntelligence\MoveResult.cs" />
+    <Compile Include="Entities\MoveResult.cs" />
     <Compile Include="Entities\Move.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="ITicTacToeFactory.cs" />

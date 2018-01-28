@@ -32,6 +32,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
         {
             MoveEvaluatorMock = new Mock<IMoveEvaluator>();
             FileAccessMock = new Mock<IFileAccess>();
+            TicTacToeFactoryMock = new Mock<ITicTacToeFactory>();
 
             MoveDatabase = new MoveDatabase(
                 TicTacToeFactoryMock.Object,
@@ -61,7 +62,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
 
             //assert
             var expectedTable = new MovesDataTable();
-            expectedTable.AddMovesRow(ABoardLayout, APlayer.ToString(), (int)AMoveResult.MoveMade, AMoveResult.BoardStateAfterMove.ToString());
+            expectedTable.AddMovesRow(ABoardLayout, APlayer.ToString(), (int)AMoveResult.MoveMade, AMoveResult.GameStateAfterMove.ToString());
 
             result.Rows.Count.Should().Be(1);
             result.Rows[0].ItemArray.ShouldAllBeEquivalentTo(expectedTable.Rows[0].ItemArray);
@@ -79,7 +80,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
                 .Returns(true);
 
             var expectedTable = new MovesDataTable();
-            expectedTable.AddMovesRow(ABoardLayout, APlayer.ToString(), (int)AMoveResult.MoveMade, AMoveResult.BoardStateAfterMove.ToString());
+            expectedTable.AddMovesRow(ABoardLayout, APlayer.ToString(), (int)AMoveResult.MoveMade, AMoveResult.GameStateAfterMove.ToString());
             FileAccessMock
                 .Setup(a => a.DeserializeBinary<MovesDataTable>(MoveDatabase.DefaultMoveDatabaseFilePath))
                 .Returns(expectedTable);

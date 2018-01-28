@@ -23,6 +23,11 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             _random = random;
         }
 
+        public IEnumerable<MoveResult> FindMoveResults(IGame game)
+        {
+            throw new NotImplementedException();
+        }
+
         public void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true)
         {
             if (game.GameIsOver)

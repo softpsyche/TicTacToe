@@ -26,14 +26,15 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             //someone elses object they pass in (in case of exceptions)
             var gameCopy = _ticTacToeFactory.NewGame(game.MoveHistory);
 
-            var bestMoves = CalculateBestMoves(_ticTacToeFactory.NewGame(game.MoveHistory));
+            var moveResults = FindMoveResults(_ticTacToeFactory.NewGame(game.MoveHistory));
+
+            var bestMoves = SelectBestMovesForPlayer(moveResults, game.CurrentPlayer);
 
             var moveResult = randomlySelectIfMoreThanOne ? bestMoves.RandomFromListOrDefault(_random) : bestMoves.First();
             game.Move(moveResult.MoveMade);
         }
 
-        #region Private
-        private IEnumerable<MoveResult> CalculateBestMoves(IGame game)
+        public IEnumerable<MoveResult> FindMoveResults(IGame game)
         {
             Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
             var legalMoves = game.GetLegalMoves();
@@ -48,35 +49,40 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
                 }
                 else
                 {
+                    var bestMoveResultsForCurrentPlayer = SelectBestMovesForPlayer(FindMoveResults(game), game.CurrentPlayer);
+
                     //recurse to find this moves finale
                     gameMoveResults.Add(new MoveResult(move,
-                        CalculateBestMoves(game).FirstOrDefault().BoardStateAfterMove));
+                        bestMoveResultsForCurrentPlayer.FirstOrDefault().GameStateAfterMove));
                 }
 
                 game.UndoLastMove();
             }
 
-            return SelectBestMovesForPlayer(gameMoveResults, game.CurrentPlayer);
+            return gameMoveResults;
         }
+
+        #region Private
+
         private IEnumerable<MoveResult> SelectBestMovesForPlayer(IEnumerable<MoveResult> gameMoveResults, Player player)
         {
             var winState = (player == Player.X) ? GameState.XWin : GameState.OWin;
             var loseState = (player == Player.X) ? GameState.OWin : GameState.XWin;
 
             //gotta know when to hold em...
-            var bestMoves = gameMoveResults.Where(a => a.BoardStateAfterMove == winState);
+            var bestMoves = gameMoveResults.Where(a => a.GameStateAfterMove == winState);
             if (bestMoves.Any())
             {
                 return bestMoves;
             }
 
-            bestMoves = gameMoveResults.Where(a => a.BoardStateAfterMove == GameState.Tie);
+            bestMoves = gameMoveResults.Where(a => a.GameStateAfterMove == GameState.Tie);
             if (bestMoves.Any())
             {
                 return bestMoves;
             }
 
-            return gameMoveResults.Where(a => a.BoardStateAfterMove == loseState);
+            return gameMoveResults.Where(a => a.GameStateAfterMove == loseState);
         }
 
         #endregion

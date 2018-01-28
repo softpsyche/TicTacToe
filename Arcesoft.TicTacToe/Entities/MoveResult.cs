@@ -7,22 +7,22 @@ using System.IO;
 using System.Xml;
 using Arcesoft.TicTacToe.Entities;
 
-namespace Arcesoft.TicTacToe.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.Entities
 {
     [Serializable]
-    internal class MoveResult
+    public class MoveResult
     {
         public Move MoveMade { get; private set; }
-        public GameState BoardStateAfterMove { get; private set; }
+        public GameState GameStateAfterMove { get; private set; }
         
-        public MoveResult(Move moveMade, GameState boardStateAfterMove)
+        public MoveResult(Move moveMade, GameState gameStateAfterMove)
         {
             MoveMade = moveMade;
-            BoardStateAfterMove = boardStateAfterMove;
+            GameStateAfterMove = gameStateAfterMove;
         }
         public override string ToString()
         {
-            return $"Move Made: ({MoveMade}) Board State: {BoardStateAfterMove}";
+            return $"Move Made: ({MoveMade}) Game State: {GameStateAfterMove}";
         }
     }
 }

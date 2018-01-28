@@ -76,6 +76,30 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             }
         }
 
+        protected IArtificialIntelligence ArtificialIntelligence
+        {
+            get
+            {
+                return GetScenarioContextItemOrDefault<IArtificialIntelligence>(nameof(ArtificialIntelligence));
+            }
+            set
+            {
+                CurrentContext.Set(value, nameof(ArtificialIntelligence));
+            }
+        }
+
+        protected IEnumerable<MoveResult> MoveResults
+        {
+            get
+            {
+                return GetScenarioContextItemOrDefault<IEnumerable<MoveResult>>(nameof(MoveResults));
+            }
+            set
+            {
+                CurrentContext.Set(value, nameof(MoveResults));
+            }
+        }
+
         protected GameEventListener GameEventListener
         {
             get

@@ -89,7 +89,7 @@
     <Compile Include="Data\MoveDatabaseTests.cs" />
     <Compile Include="ArtificialIntelligence\MoveEvaluatorTests.cs" />
     <Compile Include="Data\MoveRepositoryTests.cs" />
-    <Compile Include="ArtificialIntelligence\Strategies\IntoxicatedHomerSimpsonTests.cs" />
+    <Compile Include="ArtificialIntelligence\Strategies\BruteForceTests.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\OmniscientGodTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

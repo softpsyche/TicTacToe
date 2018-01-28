@@ -85,10 +85,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtificialIntelligence.feature.cs">
+    <Compile Include="ArtificialIntelligence\BruteForce.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ArtificialIntelligence.feature</DependentUpon>
+      <DependentUpon>BruteForce.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ArtificialIntelligence\OmniscientGod.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OmniscientGod.feature</DependentUpon>
     </Compile>
     <Compile Include="CommonSteps.cs" />
     <Compile Include="Game.feature.cs">
@@ -103,9 +108,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ArtificialIntelligence.feature">
+    <None Include="ArtificialIntelligence\BruteForce.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ArtificialIntelligence.feature.cs</LastGenOutput>
+      <LastGenOutput>BruteForce.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ArtificialIntelligence\OmniscientGod.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>OmniscientGod.feature.cs</LastGenOutput>
     </None>
     <None Include="Game.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

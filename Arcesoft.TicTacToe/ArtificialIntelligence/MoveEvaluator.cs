@@ -48,7 +48,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
                 else
                 {
                     //recurse to find this moves finale
-                    gameMoveResult = new MoveResult(move, GetMinMaxResponseForGame(game, boardLayoutAndGameMoveResult).BoardStateAfterMove);
+                    gameMoveResult = new MoveResult(move, GetMinMaxResponseForGame(game, boardLayoutAndGameMoveResult).GameStateAfterMove);
                 }
 
                 //add the result here..
@@ -77,7 +77,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             {
                 for (int count = 0; count < gameMoveResults.Count; count++)
                 {
-                    switch (gameMoveResults[count].BoardStateAfterMove)
+                    switch (gameMoveResults[count].GameStateAfterMove)
                     {
                         case GameState.OWin:
                             winningMovesIndexes.Add(count);
@@ -95,7 +95,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             {
                 for (int count = 0; count < gameMoveResults.Count; count++)
                 {
-                    switch (gameMoveResults[count].BoardStateAfterMove)
+                    switch (gameMoveResults[count].GameStateAfterMove)
                     {
                         case GameState.XWin:
                             winningMovesIndexes.Add(count);

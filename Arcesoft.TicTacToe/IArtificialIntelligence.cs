@@ -1,4 +1,5 @@
-﻿using Arcesoft.TicTacToe.Entities;
+﻿using Arcesoft.TicTacToe.ArtificialIntelligence;
+using Arcesoft.TicTacToe.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace Arcesoft.TicTacToe
         //string MakeComment(IGame game);
 
         void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true);
+
+        IEnumerable<MoveResult> FindMoveResults(IGame game);
     }
 }

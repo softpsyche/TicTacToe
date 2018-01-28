@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strategies
 {
-    class IntoxicatedHomerSimpsonTests
+    class BruteForceTests
     {
     }
 }

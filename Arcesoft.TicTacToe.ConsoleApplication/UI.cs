@@ -90,9 +90,6 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
                 case AIMenu.OmniscientGod:
                     ai = _gameFactory.NewArtificialIntelligence(ArtificialIntelligenceTypes.OmniscientGod);
                     break;
-                case AIMenu.HomerSimpson:
-                    ai = _gameFactory.NewArtificialIntelligence(ArtificialIntelligenceTypes.IntoxicatedHomerSimpson);
-                    break;
                 case UIMenu.Quit:
                     return;
             }

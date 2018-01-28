@@ -78,7 +78,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
                         boardState.BoardLayout,
                         boardState.Player.ToString(),
                         (int)boardState.MoveResult.MoveMade,
-                        boardState.MoveResult.BoardStateAfterMove.ToString());
+                        boardState.MoveResult.GameStateAfterMove.ToString());
 
                     movesDataTable.AcceptChanges();
                 }

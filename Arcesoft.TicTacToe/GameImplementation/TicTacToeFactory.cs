@@ -47,8 +47,6 @@ namespace Arcesoft.TicTacToe.GameImplementation
                     return _container.GetInstance<BruteForce>();
                 case ArtificialIntelligenceTypes.OmniscientGod:
                     return _container.GetInstance<OmniscientGod>();
-                case ArtificialIntelligenceTypes.IntoxicatedHomerSimpson:
-                    return _container.GetInstance<IntoxicatedHomerSimpson>();
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), $"Unable to create AI for type '{type}'. No implementation found for this type.");
             }

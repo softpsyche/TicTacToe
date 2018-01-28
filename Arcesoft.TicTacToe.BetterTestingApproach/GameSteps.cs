@@ -133,6 +133,44 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             Game.UndoLastMove();
         }
 
+        [Given(@"I have the artificial intelligence '(.*)'")]
+        public void GivenIHaveTheArtificialIntelligence(string ai)
+        {
+            ArtificialIntelligence = TicTacToeFactory.NewArtificialIntelligence(ai);
+        }
+
+        [When(@"I have the AI find move results for the current game")]
+        public void WhenIHaveTheAIFindMoveResultsForTheCurrentGame()
+        {
+            Invoke(() => MoveResults = ArtificialIntelligence.FindMoveResults(Game));
+        }
+
+        [Then(@"The move results should contain the following")]
+        public void ThenTheMoveResultsShouldContainTheFollowing(Table table)
+        {
+            table.CompareToSet(MoveResults);
+        }
+
+        [Then(@"The last move made should be one of the following moves '(.*)'")]
+        public void ThenTheLastMoveMadeShouldBeOneOfTheFollowingMoves(string moves)
+        {
+            ToMoves(moves).Should().Contain(Game.MoveHistory.Last());
+        }
+
+        [Given(@"I have the AI make the next random best move")]
+        [When(@"I have the AI make the next random best move")]
+        public void WhenIHaveTheAIMakeTheNextRandomBestMove()
+        {
+            ArtificialIntelligence.MakeMove(Game, true);
+        }
+
+        [Given(@"I have the AI make the next first best move")]
+        [When(@"I have the AI make the next first best move")]
+        public void WhenIHaveTheAIMakeTheNextFirstBestMove()
+        {
+            ArtificialIntelligence.MakeMove(Game, false);
+        }
+
 
     }
 }

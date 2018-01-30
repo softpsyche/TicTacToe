@@ -97,403 +97,483 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach.ArtificialIntelligence
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should find tie move results for game as player X")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should find no moves if game is already over")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void ShouldFindTieMoveResultsForGameAsPlayerX()
+        public virtual void BruteForceAIShouldFindNoMovesIfGameIsAlreadyOver()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should find tie move results for game as player X", ((string[])(null)));
-#line 17
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should find no moves if game is already over", ((string[])(null)));
+#line 12
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
-#line 18
- testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 19
- testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "MoveMade",
-                        "GameStateAfterMove"});
+                        "Move"});
             table1.AddRow(new string[] {
-                        "NorthWest",
-                        "Tie"});
+                        "Northern"});
             table1.AddRow(new string[] {
-                        "Northern",
-                        "Tie"});
+                        "Eastern"});
             table1.AddRow(new string[] {
-                        "NorthEast",
-                        "Tie"});
+                        "Center"});
             table1.AddRow(new string[] {
-                        "Western",
-                        "Tie"});
+                        "Western"});
             table1.AddRow(new string[] {
-                        "Center",
-                        "Tie"});
-            table1.AddRow(new string[] {
-                        "Eastern",
-                        "Tie"});
-            table1.AddRow(new string[] {
-                        "SouthWest",
-                        "Tie"});
-            table1.AddRow(new string[] {
-                        "Southern",
-                        "Tie"});
-            table1.AddRow(new string[] {
-                        "SouthEast",
-                        "Tie"});
+                        "Southern"});
+#line 13
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table1, "Given ");
 #line 20
- testRunner.Then("The move results should contain the following", ((string)(null)), table1, "Then ");
+ testRunner.Given("I expect an exception to be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 21
+ testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
+ testRunner.Then("The move results should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should find winning move results for game as player X when Os first move is weste" +
-            "rn")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should find tie move results for game as player X")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void ShouldFindWinningMoveResultsForGameAsPlayerXWhenOsFirstMoveIsWestern()
+        public virtual void BruteForceAIShouldFindTieMoveResultsForGameAsPlayerX()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should find winning move results for game as player X when Os first move is weste" +
-                    "rn", ((string[])(null)));
-#line 32
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should find tie move results for game as player X", ((string[])(null)));
+#line 30
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
+#line 31
+ testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 32
+ testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Move"});
+                        "MoveMade",
+                        "GameStateAfterMove"});
             table2.AddRow(new string[] {
-                        "Center"});
+                        "NorthWest",
+                        "Tie"});
             table2.AddRow(new string[] {
-                        "Western"});
+                        "Northern",
+                        "Tie"});
             table2.AddRow(new string[] {
-                        "NorthWest"});
+                        "NorthEast",
+                        "Tie"});
             table2.AddRow(new string[] {
-                        "SouthEast"});
+                        "Western",
+                        "Tie"});
+            table2.AddRow(new string[] {
+                        "Center",
+                        "Tie"});
+            table2.AddRow(new string[] {
+                        "Eastern",
+                        "Tie"});
+            table2.AddRow(new string[] {
+                        "SouthWest",
+                        "Tie"});
+            table2.AddRow(new string[] {
+                        "Southern",
+                        "Tie"});
+            table2.AddRow(new string[] {
+                        "SouthEast",
+                        "Tie"});
 #line 33
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table2, "Given ");
-#line 39
- testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Then("The move results should contain the following", ((string)(null)), table2, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should find winning move results for game as player X when Os firs" +
+            "t move is western")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void BruteForceAIShouldFindWinningMoveResultsForGameAsPlayerXWhenOsFirstMoveIsWestern()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should find winning move results for game as player X when Os firs" +
+                    "t move is western", ((string[])(null)));
+#line 45
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "MoveMade",
-                        "GameStateAfterMove"});
+                        "Move"});
             table3.AddRow(new string[] {
-                        "Northern",
-                        "XWin"});
+                        "Center"});
             table3.AddRow(new string[] {
-                        "NorthEast",
-                        "XWin"});
+                        "Western"});
             table3.AddRow(new string[] {
-                        "Eastern",
-                        "Tie"});
+                        "NorthWest"});
             table3.AddRow(new string[] {
-                        "SouthWest",
-                        "Tie"});
-            table3.AddRow(new string[] {
-                        "Southern",
-                        "Tie"});
-#line 40
- testRunner.Then("The move results should contain the following", ((string)(null)), table3, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should find winning move results for game as player X when Os first move is easte" +
-            "rn")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void ShouldFindWinningMoveResultsForGameAsPlayerXWhenOsFirstMoveIsEastern()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should find winning move results for game as player X when Os first move is easte" +
-                    "rn", ((string[])(null)));
-#line 48
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
+                        "SouthEast"});
+#line 46
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table3, "Given ");
+#line 52
+ testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Move"});
+                        "MoveMade",
+                        "GameStateAfterMove"});
             table4.AddRow(new string[] {
-                        "Center"});
+                        "Northern",
+                        "XWin"});
             table4.AddRow(new string[] {
-                        "Eastern"});
+                        "NorthEast",
+                        "XWin"});
             table4.AddRow(new string[] {
-                        "SouthEast"});
+                        "Eastern",
+                        "Tie"});
             table4.AddRow(new string[] {
-                        "NorthWest"});
-#line 49
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table4, "Given ");
-#line 55
- testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                        "SouthWest",
+                        "Tie"});
+            table4.AddRow(new string[] {
+                        "Southern",
+                        "Tie"});
+#line 53
+ testRunner.Then("The move results should contain the following", ((string)(null)), table4, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should find winning move results for game as player X when Os firs" +
+            "t move is eastern")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void BruteForceAIShouldFindWinningMoveResultsForGameAsPlayerXWhenOsFirstMoveIsEastern()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should find winning move results for game as player X when Os firs" +
+                    "t move is eastern", ((string[])(null)));
+#line 61
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "MoveMade",
-                        "GameStateAfterMove"});
+                        "Move"});
             table5.AddRow(new string[] {
-                        "Northern",
-                        "Tie"});
+                        "Center"});
             table5.AddRow(new string[] {
-                        "NorthEast",
-                        "Tie"});
+                        "Eastern"});
             table5.AddRow(new string[] {
-                        "Western",
-                        "Tie"});
+                        "SouthEast"});
             table5.AddRow(new string[] {
-                        "SouthWest",
-                        "XWin"});
-            table5.AddRow(new string[] {
-                        "Southern",
-                        "XWin"});
-#line 56
- testRunner.Then("The move results should contain the following", ((string)(null)), table5, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should find winning move results for game as player X when Os first move is north" +
-            "ern")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void ShouldFindWinningMoveResultsForGameAsPlayerXWhenOsFirstMoveIsNorthern()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should find winning move results for game as player X when Os first move is north" +
-                    "ern", ((string[])(null)));
-#line 64
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
+                        "NorthWest"});
+#line 62
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table5, "Given ");
+#line 68
+ testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Move"});
+                        "MoveMade",
+                        "GameStateAfterMove"});
             table6.AddRow(new string[] {
-                        "Center"});
+                        "Northern",
+                        "Tie"});
             table6.AddRow(new string[] {
-                        "Northern"});
+                        "NorthEast",
+                        "Tie"});
             table6.AddRow(new string[] {
-                        "NorthWest"});
+                        "Western",
+                        "Tie"});
             table6.AddRow(new string[] {
-                        "SouthEast"});
-#line 65
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table6, "Given ");
-#line 71
- testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                        "SouthWest",
+                        "XWin"});
+            table6.AddRow(new string[] {
+                        "Southern",
+                        "XWin"});
+#line 69
+ testRunner.Then("The move results should contain the following", ((string)(null)), table6, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should find winning move results for game as player X when Os firs" +
+            "t move is northern")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void BruteForceAIShouldFindWinningMoveResultsForGameAsPlayerXWhenOsFirstMoveIsNorthern()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should find winning move results for game as player X when Os firs" +
+                    "t move is northern", ((string[])(null)));
+#line 77
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                        "MoveMade",
-                        "GameStateAfterMove"});
+                        "Move"});
             table7.AddRow(new string[] {
-                        "Eastern",
-                        "Tie"});
+                        "Center"});
             table7.AddRow(new string[] {
-                        "Western",
-                        "XWin"});
+                        "Northern"});
             table7.AddRow(new string[] {
-                        "NorthEast",
-                        "Tie"});
+                        "NorthWest"});
             table7.AddRow(new string[] {
-                        "SouthWest",
-                        "XWin"});
-            table7.AddRow(new string[] {
-                        "Southern",
-                        "Tie"});
-#line 72
- testRunner.Then("The move results should contain the following", ((string)(null)), table7, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should find winning move results for game as player X when Os first move is south" +
-            "ern")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void ShouldFindWinningMoveResultsForGameAsPlayerXWhenOsFirstMoveIsSouthern()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should find winning move results for game as player X when Os first move is south" +
-                    "ern", ((string[])(null)));
-#line 80
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
+                        "SouthEast"});
+#line 78
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table7, "Given ");
+#line 84
+ testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Move"});
+                        "MoveMade",
+                        "GameStateAfterMove"});
             table8.AddRow(new string[] {
-                        "Center"});
+                        "Eastern",
+                        "Tie"});
             table8.AddRow(new string[] {
-                        "Southern"});
+                        "Western",
+                        "XWin"});
             table8.AddRow(new string[] {
-                        "SouthWest"});
+                        "NorthEast",
+                        "Tie"});
             table8.AddRow(new string[] {
-                        "NorthEast"});
-#line 81
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table8, "Given ");
-#line 87
- testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                        "SouthWest",
+                        "XWin"});
+            table8.AddRow(new string[] {
+                        "Southern",
+                        "Tie"});
+#line 85
+ testRunner.Then("The move results should contain the following", ((string)(null)), table8, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should find winning move results for game as player X when Os firs" +
+            "t move is southern")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void BruteForceAIShouldFindWinningMoveResultsForGameAsPlayerXWhenOsFirstMoveIsSouthern()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should find winning move results for game as player X when Os firs" +
+                    "t move is southern", ((string[])(null)));
+#line 93
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
-                        "MoveMade",
-                        "GameStateAfterMove"});
+                        "Move"});
             table9.AddRow(new string[] {
-                        "NorthWest",
-                        "XWin"});
+                        "Center"});
             table9.AddRow(new string[] {
-                        "Northern",
-                        "Tie"});
+                        "Southern"});
             table9.AddRow(new string[] {
-                        "Eastern",
-                        "Tie"});
+                        "SouthWest"});
             table9.AddRow(new string[] {
-                        "Western",
-                        "XWin"});
-            table9.AddRow(new string[] {
-                        "SouthEast",
-                        "Tie"});
-#line 88
- testRunner.Then("The move results should contain the following", ((string)(null)), table9, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should find winning move results for game as player O when Xs two moves are easte" +
-            "rn and western")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void ShouldFindWinningMoveResultsForGameAsPlayerOWhenXsTwoMovesAreEasternAndWestern()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should find winning move results for game as player O when Xs two moves are easte" +
-                    "rn and western", ((string[])(null)));
-#line 96
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
+                        "NorthEast"});
+#line 94
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table9, "Given ");
+#line 100
+ testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Move"});
-            table10.AddRow(new string[] {
-                        "Western"});
-            table10.AddRow(new string[] {
-                        "Center"});
-            table10.AddRow(new string[] {
-                        "Eastern"});
-#line 97
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table10, "Given ");
-#line 102
- testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "MoveMade",
                         "GameStateAfterMove"});
-            table11.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "NorthWest",
-                        "OWin"});
-            table11.AddRow(new string[] {
+                        "XWin"});
+            table10.AddRow(new string[] {
                         "Northern",
-                        "OWin"});
-            table11.AddRow(new string[] {
-                        "NorthEast",
-                        "OWin"});
-            table11.AddRow(new string[] {
-                        "SouthWest",
-                        "OWin"});
-            table11.AddRow(new string[] {
-                        "Southern",
-                        "OWin"});
-            table11.AddRow(new string[] {
+                        "Tie"});
+            table10.AddRow(new string[] {
+                        "Eastern",
+                        "Tie"});
+            table10.AddRow(new string[] {
+                        "Western",
+                        "XWin"});
+            table10.AddRow(new string[] {
                         "SouthEast",
-                        "OWin"});
-#line 103
- testRunner.Then("The move results should contain the following", ((string)(null)), table11, "Then ");
+                        "Tie"});
+#line 101
+ testRunner.Then("The move results should contain the following", ((string)(null)), table10, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should find winning move results for game as player O when Xs two moves are north" +
-            "ern and southern")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should find winning move results for game as player O when Xs two " +
+            "moves are eastern and western")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
-        public virtual void ShouldFindWinningMoveResultsForGameAsPlayerOWhenXsTwoMovesAreNorthernAndSouthern()
+        public virtual void BruteForceAIShouldFindWinningMoveResultsForGameAsPlayerOWhenXsTwoMovesAreEasternAndWestern()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should find winning move results for game as player O when Xs two moves are north" +
-                    "ern and southern", ((string[])(null)));
-#line 112
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should find winning move results for game as player O when Xs two " +
+                    "moves are eastern and western", ((string[])(null)));
+#line 109
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Move"});
-            table12.AddRow(new string[] {
-                        "Northern"});
-            table12.AddRow(new string[] {
+            table11.AddRow(new string[] {
+                        "Western"});
+            table11.AddRow(new string[] {
                         "Center"});
-            table12.AddRow(new string[] {
-                        "Southern"});
-#line 113
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table12, "Given ");
-#line 118
+            table11.AddRow(new string[] {
+                        "Eastern"});
+#line 110
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table11, "Given ");
+#line 115
  testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "MoveMade",
                         "GameStateAfterMove"});
-            table13.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "NorthWest",
                         "OWin"});
-            table13.AddRow(new string[] {
+            table12.AddRow(new string[] {
+                        "Northern",
+                        "OWin"});
+            table12.AddRow(new string[] {
                         "NorthEast",
                         "OWin"});
-            table13.AddRow(new string[] {
-                        "Western",
-                        "OWin"});
-            table13.AddRow(new string[] {
-                        "Eastern",
-                        "OWin"});
-            table13.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "SouthWest",
                         "OWin"});
-            table13.AddRow(new string[] {
+            table12.AddRow(new string[] {
+                        "Southern",
+                        "OWin"});
+            table12.AddRow(new string[] {
                         "SouthEast",
                         "OWin"});
-#line 119
- testRunner.Then("The move results should contain the following", ((string)(null)), table13, "Then ");
+#line 116
+ testRunner.Then("The move results should contain the following", ((string)(null)), table12, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        public virtual void ShouldMakeNextRandomBestMoveAvailable(string testName, string initialMoves, string expectedMoves, string[] exampleTags)
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should find winning move results for game as player O when Xs two " +
+            "moves are northern and southern")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void BruteForceAIShouldFindWinningMoveResultsForGameAsPlayerOWhenXsTwoMovesAreNorthernAndSouthern()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should make next random best move available", exampleTags);
-#line 128
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should find winning move results for game as player O when Xs two " +
+                    "moves are northern and southern", ((string[])(null)));
+#line 125
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
-#line 129
- testRunner.Given(string.Format("I start a new game with the following moves \'{0}\'", initialMoves), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 130
- testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Move"});
+            table13.AddRow(new string[] {
+                        "Northern"});
+            table13.AddRow(new string[] {
+                        "Center"});
+            table13.AddRow(new string[] {
+                        "Southern"});
+#line 126
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table13, "Given ");
 #line 131
+ testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "MoveMade",
+                        "GameStateAfterMove"});
+            table14.AddRow(new string[] {
+                        "NorthWest",
+                        "OWin"});
+            table14.AddRow(new string[] {
+                        "NorthEast",
+                        "OWin"});
+            table14.AddRow(new string[] {
+                        "Western",
+                        "OWin"});
+            table14.AddRow(new string[] {
+                        "Eastern",
+                        "OWin"});
+            table14.AddRow(new string[] {
+                        "SouthWest",
+                        "OWin"});
+            table14.AddRow(new string[] {
+                        "SouthEast",
+                        "OWin"});
+#line 132
+ testRunner.Then("The move results should contain the following", ((string)(null)), table14, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should throw exception when making move is game is already over")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
+        public virtual void BruteForceAIShouldThrowExceptionWhenMakingMoveIsGameIsAlreadyOver()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should throw exception when making move is game is already over", ((string[])(null)));
+#line 141
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Move"});
+            table15.AddRow(new string[] {
+                        "Northern"});
+            table15.AddRow(new string[] {
+                        "Eastern"});
+            table15.AddRow(new string[] {
+                        "Center"});
+            table15.AddRow(new string[] {
+                        "Western"});
+            table15.AddRow(new string[] {
+                        "Southern"});
+#line 142
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table15, "Given ");
+#line 149
+ testRunner.Given("I expect an exception to be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 150
+ testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Message"});
+            table16.AddRow(new string[] {
+                        "Unable to make a move because the game is over."});
+#line 151
+ testRunner.Then("I expect the following GameException to be thrown", ((string)(null)), table16, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        public virtual void BruteForceAIShouldMakeNextRandomBestMoveAvailable(string testName, string initialMoves, string expectedMoves, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Brute force AI should make next random best move available", exampleTags);
+#line 155
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 156
+ testRunner.Given(string.Format("I start a new game with the following moves \'{0}\'", initialMoves), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 157
+ testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 158
  testRunner.Then(string.Format("The last move made should be one of the following moves \'{0}\'", expectedMoves), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should make next random best move available: for X when best option is winning")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should make next random best move available: for X when best optio" +
+            "n is winning")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
@@ -501,31 +581,33 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "for X when best option is winning")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InitialMoves", "Center,Western,NorthWest,SouthEast")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedMoves", "Northern,NorthEast")]
-        public virtual void ShouldMakeNextRandomBestMoveAvailable_ForXWhenBestOptionIsWinning()
+        public virtual void BruteForceAIShouldMakeNextRandomBestMoveAvailable_ForXWhenBestOptionIsWinning()
         {
-#line 128
-this.ShouldMakeNextRandomBestMoveAvailable("for X when best option is winning", "Center,Western,NorthWest,SouthEast", "Northern,NorthEast", ((string[])(null)));
+#line 155
+this.BruteForceAIShouldMakeNextRandomBestMoveAvailable("for X when best option is winning", "Center,Western,NorthWest,SouthEast", "Northern,NorthEast", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should make next random best move available: for X when best option is tieing")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should make next random best move available: for X when best optio" +
+            "n is tieing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "for X when best option is tieing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "for X when best option is tieing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InitialMoves", "Center,NorthWest")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedMoves", "Northern,NorthEast,Eastern,Western,SouthEast,Southern")]
-        public virtual void ShouldMakeNextRandomBestMoveAvailable_ForXWhenBestOptionIsTieing()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedMoves", "Northern,NorthEast,Eastern,Western,SouthEast,Southern,SouthWest")]
+        public virtual void BruteForceAIShouldMakeNextRandomBestMoveAvailable_ForXWhenBestOptionIsTieing()
         {
-#line 128
-this.ShouldMakeNextRandomBestMoveAvailable("for X when best option is tieing", "Center,NorthWest", "Northern,NorthEast,Eastern,Western,SouthEast,Southern", ((string[])(null)));
+#line 155
+this.BruteForceAIShouldMakeNextRandomBestMoveAvailable("for X when best option is tieing", "Center,NorthWest", "Northern,NorthEast,Eastern,Western,SouthEast,Southern,SouthWest", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should make next random best move available: for X when best option is losing")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should make next random best move available: for X when best optio" +
+            "n is losing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
@@ -533,15 +615,16 @@ this.ShouldMakeNextRandomBestMoveAvailable("for X when best option is tieing", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "for X when best option is losing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InitialMoves", "Western,Center,Eastern,Northern")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedMoves", "NorthWest,NorthEast,SouthEast,Southern,SouthWest")]
-        public virtual void ShouldMakeNextRandomBestMoveAvailable_ForXWhenBestOptionIsLosing()
+        public virtual void BruteForceAIShouldMakeNextRandomBestMoveAvailable_ForXWhenBestOptionIsLosing()
         {
-#line 128
-this.ShouldMakeNextRandomBestMoveAvailable("for X when best option is losing", "Western,Center,Eastern,Northern", "NorthWest,NorthEast,SouthEast,Southern,SouthWest", ((string[])(null)));
+#line 155
+this.BruteForceAIShouldMakeNextRandomBestMoveAvailable("for X when best option is losing", "Western,Center,Eastern,Northern", "NorthWest,NorthEast,SouthEast,Southern,SouthWest", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should make next random best move available: for O when best option is winning")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should make next random best move available: for O when best optio" +
+            "n is winning")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
@@ -549,15 +632,16 @@ this.ShouldMakeNextRandomBestMoveAvailable("for X when best option is losing", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "for O when best option is winning")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InitialMoves", "Eastern,Center,Western")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedMoves", "NorthEast,Northern,NorthWest,SouthEast,Southern,SouthWest")]
-        public virtual void ShouldMakeNextRandomBestMoveAvailable_ForOWhenBestOptionIsWinning()
+        public virtual void BruteForceAIShouldMakeNextRandomBestMoveAvailable_ForOWhenBestOptionIsWinning()
         {
-#line 128
-this.ShouldMakeNextRandomBestMoveAvailable("for O when best option is winning", "Eastern,Center,Western", "NorthEast,Northern,NorthWest,SouthEast,Southern,SouthWest", ((string[])(null)));
+#line 155
+this.BruteForceAIShouldMakeNextRandomBestMoveAvailable("for O when best option is winning", "Eastern,Center,Western", "NorthEast,Northern,NorthWest,SouthEast,Southern,SouthWest", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should make next random best move available: for O when best option is tieing")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should make next random best move available: for O when best optio" +
+            "n is tieing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
@@ -565,15 +649,16 @@ this.ShouldMakeNextRandomBestMoveAvailable("for O when best option is winning", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "for O when best option is tieing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InitialMoves", "Center")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedMoves", "NorthEast,NorthWest,SouthEast,SouthWest")]
-        public virtual void ShouldMakeNextRandomBestMoveAvailable_ForOWhenBestOptionIsTieing()
+        public virtual void BruteForceAIShouldMakeNextRandomBestMoveAvailable_ForOWhenBestOptionIsTieing()
         {
-#line 128
-this.ShouldMakeNextRandomBestMoveAvailable("for O when best option is tieing", "Center", "NorthEast,NorthWest,SouthEast,SouthWest", ((string[])(null)));
+#line 155
+this.BruteForceAIShouldMakeNextRandomBestMoveAvailable("for O when best option is tieing", "Center", "NorthEast,NorthWest,SouthEast,SouthWest", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Should make next random best move available: for O when best option is losing")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Brute force AI should make next random best move available: for O when best optio" +
+            "n is losing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BruteForce")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BetterTestingApproach")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Unit")]
@@ -581,10 +666,10 @@ this.ShouldMakeNextRandomBestMoveAvailable("for O when best option is tieing", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Test Name", "for O when best option is losing")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InitialMoves", "Center,Eastern,NorthEast")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ExpectedMoves", "Northern,NorthWest,Western,SouthEast,Southern,SouthWest")]
-        public virtual void ShouldMakeNextRandomBestMoveAvailable_ForOWhenBestOptionIsLosing()
+        public virtual void BruteForceAIShouldMakeNextRandomBestMoveAvailable_ForOWhenBestOptionIsLosing()
         {
-#line 128
-this.ShouldMakeNextRandomBestMoveAvailable("for O when best option is losing", "Center,Eastern,NorthEast", "Northern,NorthWest,Western,SouthEast,Southern,SouthWest", ((string[])(null)));
+#line 155
+this.BruteForceAIShouldMakeNextRandomBestMoveAvailable("for O when best option is losing", "Center,Eastern,NorthEast", "Northern,NorthWest,Western,SouthEast,Southern,SouthWest", ((string[])(null)));
 #line hidden
         }
     }

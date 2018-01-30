@@ -8,11 +8,12 @@ using TechTalk.SpecFlow.Assist;
 using Moq;
 using FluentAssertions;
 using Arcesoft.TicTacToe.Entities;
+using Arcesoft.TicTacToe.Data;
 
 namespace Arcesoft.TicTacToe.BetterTestingApproach
 {
     [Binding]
-    public class GameSteps : Steps
+    internal class GameSteps : Steps
     {
         [Then(@"The current player should be '(.*)'")]
         public void ThenTheCurrentPlayerShouldBe(Player player)
@@ -161,16 +162,37 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         [When(@"I have the AI make the next random best move")]
         public void WhenIHaveTheAIMakeTheNextRandomBestMove()
         {
-            ArtificialIntelligence.MakeMove(Game, true);
+            Invoke(() => ArtificialIntelligence.MakeMove(Game, true));
         }
 
         [Given(@"I have the AI make the next first best move")]
         [When(@"I have the AI make the next first best move")]
         public void WhenIHaveTheAIMakeTheNextFirstBestMove()
         {
-            ArtificialIntelligence.MakeMove(Game, false);
+            Invoke(() => ArtificialIntelligence.MakeMove(Game, false));
         }
 
 
+        [Then(@"The move results should be empty")]
+        public void ThenTheMoveResultsShouldBeEmpty()
+        {
+            MoveResults.Should().BeEmpty();
+        }
+
+        [Given(@"I mock IMoveDatabase")]
+        public void GivenIMockIMoveDatabase()
+        {
+            MockMoveDatabase = new Mock<IMoveDatabase>();
+
+            Container.RegisterSingleton(MockMoveDatabase.Object);
+        }
+
+        [Given(@"I setup the IMoveDatabase\.MovesDataTable to return the following")]
+        public void GivenISetupTheIMoveDatabase_MovesDataTableToReturnTheFollowing(Table table)
+        {
+            MockMoveDatabase
+                .Setup(a => a.MovesDataTable)
+                .Returns(table.ToMovesDataTable());
+        }
     }
 }

@@ -87,8 +87,6 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
             return movesDataTable;
         }
 
-
-
         private MovesDataTable TryLoadMovesDatabaseFromDisk(String filePath = null)
         {
             filePath = filePath ?? DefaultMoveDatabaseFilePath;

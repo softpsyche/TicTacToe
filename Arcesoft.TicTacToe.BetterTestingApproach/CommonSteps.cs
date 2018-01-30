@@ -13,7 +13,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Arcesoft.TicTacToe.BetterTestingApproach
 {
     [Binding]
-    public class CommonSteps : Steps
+    internal class CommonSteps : Steps
     {
         [Given(@"I expect an exception to be thrown")]
         public void GivenIExpectAnExceptionToBeThrown()
@@ -26,10 +26,12 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         public void GivenIHaveAContainer()
         {
             var container = new Container();
+            container.Options.AllowOverridingRegistrations = true;
 
             new DependencyInjection.Binder().BindDependencies(container);
 
-            container.Verify();
+            //this locks the container so no tx for us...
+            //container.Verify();
 
             Container = container;
         }
@@ -70,6 +72,12 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
 
                 Game = TicTacToeFactory.NewGame(moves);
             });
+        }
+
+        [Then(@"I expect the following Exception to be thrown")]
+        public void ThenIExpectTheFollowingExceptionToBeThrown(Table table)
+        {
+            table.CompareToInstance(Exception);
         }
 
         [Then(@"I expect the following GameException to be thrown")]

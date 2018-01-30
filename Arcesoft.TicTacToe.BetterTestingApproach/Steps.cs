@@ -1,6 +1,8 @@
-﻿using Arcesoft.TicTacToe.Entities;
+﻿using Arcesoft.TicTacToe.Data;
+using Arcesoft.TicTacToe.Entities;
 using Arcesoft.TicTacToe.GameImplementation;
 using FluentAssertions;
+using Moq;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,7 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Arcesoft.TicTacToe.BetterTestingApproach
 {
-    public abstract class Steps
+    internal abstract class Steps
     {
         protected ScenarioContext CurrentContext => ScenarioContext.Current;
 
@@ -97,6 +99,18 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             set
             {
                 CurrentContext.Set(value, nameof(MoveResults));
+            }
+        }
+
+        protected Mock<IMoveDatabase> MockMoveDatabase
+        {
+            get
+            {
+                return GetScenarioContextItemOrDefault<Mock<IMoveDatabase>>(nameof(MockMoveDatabase));
+            }
+            set
+            {
+                CurrentContext.Set(value, nameof(MockMoveDatabase));
             }
         }
 

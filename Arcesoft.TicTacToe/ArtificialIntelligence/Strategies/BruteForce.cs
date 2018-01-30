@@ -22,6 +22,11 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
 
         public void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true)
         {
+            if (game.GameIsOver)
+            {
+                throw new GameException($"Unable to make a move because the game is over.");
+            }
+
             //we make a copy because its polite to not inadvertantly mess up 
             //someone elses object they pass in (in case of exceptions)
             var gameCopy = _ticTacToeFactory.NewGame(game.MoveHistory);

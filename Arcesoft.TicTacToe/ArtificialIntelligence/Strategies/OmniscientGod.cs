@@ -23,11 +23,6 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             _random = random;
         }
 
-        public IEnumerable<MoveResult> FindMoveResults(IGame game)
-        {
-            throw new NotImplementedException();
-        }
-
         public void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true)
         {
             if (game.GameIsOver)
@@ -48,6 +43,14 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             }
 
             game.Move(moveResponse.Response);
+        }
+
+        public IEnumerable<MoveResult> FindMoveResults(IGame game)
+        {
+            return _moveDataAccess
+                .FindMoveResponses(game.GameBoardString, game.CurrentPlayer)
+                .Select(a => new MoveResult(a.Response, a.Outcome))
+                .ToList();
         }
     }
 }

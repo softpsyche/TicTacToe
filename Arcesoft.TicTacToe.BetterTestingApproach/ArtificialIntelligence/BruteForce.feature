@@ -8,13 +8,26 @@ Background:
 	Given I have a tictactoe factory
 	Given I have the artificial intelligence 'BruteForce'
 
+
+Scenario: Brute force AI should find no moves if game is already over
+	Given I start a new game with the following moves
+		| Move     |
+		| Northern |
+		| Eastern  |
+		| Center   |
+		| Western  |
+		| Southern |
+	Given I expect an exception to be thrown
+	When I have the AI find move results for the current game
+	Then The move results should be empty
+
 #This is a pretty slow test...Left here as an example on how this sort of 
 #testing can create a tax on performance even though its still a test that does not cross any
 #process boundaries.
 #it is perhaps a bad test if we consider we have some other options to get similar
 #coverage that might be faster.
 #however, this also proves that moving first in tic tac toe is preferable...
-Scenario: Should find tie move results for game as player X
+Scenario: Brute force AI should find tie move results for game as player X
 	Given I start a new game
 	When I have the AI find move results for the current game
 	Then The move results should contain the following
@@ -29,7 +42,7 @@ Scenario: Should find tie move results for game as player X
 		| Southern  | Tie                |
 		| SouthEast | Tie                |
 
-Scenario: Should find winning move results for game as player X when Os first move is western
+Scenario: Brute force AI should find winning move results for game as player X when Os first move is western
 	Given I start a new game with the following moves
 		| Move      |
 		| Center    |
@@ -45,7 +58,7 @@ Scenario: Should find winning move results for game as player X when Os first mo
 		| SouthWest | Tie                |
 		| Southern  | Tie                |
 
-Scenario: Should find winning move results for game as player X when Os first move is eastern
+Scenario: Brute force AI should find winning move results for game as player X when Os first move is eastern
 	Given I start a new game with the following moves
 		| Move      |
 		| Center    |
@@ -61,7 +74,7 @@ Scenario: Should find winning move results for game as player X when Os first mo
 		| SouthWest | XWin               |
 		| Southern  | XWin               |
 
-Scenario: Should find winning move results for game as player X when Os first move is northern
+Scenario: Brute force AI should find winning move results for game as player X when Os first move is northern
 	Given I start a new game with the following moves
 		| Move      |
 		| Center    |
@@ -77,7 +90,7 @@ Scenario: Should find winning move results for game as player X when Os first mo
 		| SouthWest | XWin               |
 		| Southern  | Tie                |
 
-Scenario: Should find winning move results for game as player X when Os first move is southern
+Scenario: Brute force AI should find winning move results for game as player X when Os first move is southern
 	Given I start a new game with the following moves
 		| Move      |
 		| Center    |
@@ -93,7 +106,7 @@ Scenario: Should find winning move results for game as player X when Os first mo
 		| Western   | XWin               |
 		| SouthEast | Tie                |
 
-Scenario: Should find winning move results for game as player O when Xs two moves are eastern and western
+Scenario: Brute force AI should find winning move results for game as player O when Xs two moves are eastern and western
 	Given I start a new game with the following moves
 		| Move    |
 		| Western |
@@ -109,7 +122,7 @@ Scenario: Should find winning move results for game as player O when Xs two move
 		| Southern  | OWin               |
 		| SouthEast | OWin               |
 
-Scenario: Should find winning move results for game as player O when Xs two moves are northern and southern
+Scenario: Brute force AI should find winning move results for game as player O when Xs two moves are northern and southern
 	Given I start a new game with the following moves
 		| Move     |
 		| Northern |
@@ -125,15 +138,29 @@ Scenario: Should find winning move results for game as player O when Xs two move
 		| SouthWest | OWin               |
 		| SouthEast | OWin               |
 
-Scenario Outline: Should make next random best move available
+Scenario: Brute force AI should throw exception when making move is game is already over
+	Given I start a new game with the following moves
+		| Move     |
+		| Northern |
+		| Eastern  |
+		| Center   |
+		| Western  |
+		| Southern |
+	Given I expect an exception to be thrown
+	When I have the AI make the next random best move
+	Then I expect the following GameException to be thrown
+         | Message                                         |
+         | Unable to make a move because the game is over. |
+
+Scenario Outline: Brute force AI should make next random best move available
 	Given I start a new game with the following moves '<InitialMoves>'
 	When I have the AI make the next random best move
 	Then The last move made should be one of the following moves '<ExpectedMoves>'
 	Examples: 
-		| Test Name                         | InitialMoves                       | ExpectedMoves                                             |
-		| for X when best option is winning | Center,Western,NorthWest,SouthEast | Northern,NorthEast                                        |
-		| for X when best option is tieing  | Center,NorthWest                   | Northern,NorthEast,Eastern,Western,SouthEast,Southern     |
-		| for X when best option is losing  | Western,Center,Eastern,Northern    | NorthWest,NorthEast,SouthEast,Southern,SouthWest          |
-		| for O when best option is winning | Eastern,Center,Western             | NorthEast,Northern,NorthWest,SouthEast,Southern,SouthWest |
-		| for O when best option is tieing  | Center                             | NorthEast,NorthWest,SouthEast,SouthWest                   |
-		| for O when best option is losing  | Center,Eastern,NorthEast           | Northern,NorthWest,Western,SouthEast,Southern,SouthWest   |                                                      
+		| Test Name                         | InitialMoves                       | ExpectedMoves                                                   |
+		| for X when best option is winning | Center,Western,NorthWest,SouthEast | Northern,NorthEast                                              |
+		| for X when best option is tieing  | Center,NorthWest                   | Northern,NorthEast,Eastern,Western,SouthEast,Southern,SouthWest |
+		| for X when best option is losing  | Western,Center,Eastern,Northern    | NorthWest,NorthEast,SouthEast,Southern,SouthWest                |
+		| for O when best option is winning | Eastern,Center,Western             | NorthEast,Northern,NorthWest,SouthEast,Southern,SouthWest       |
+		| for O when best option is tieing  | Center                             | NorthEast,NorthWest,SouthEast,SouthWest                         |
+		| for O when best option is losing  | Center,Eastern,NorthEast           | Northern,NorthWest,Western,SouthEast,Southern,SouthWest         |                                                      

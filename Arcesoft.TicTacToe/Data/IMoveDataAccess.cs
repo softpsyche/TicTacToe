@@ -9,8 +9,6 @@ namespace Arcesoft.TicTacToe.Data
 {
     internal interface IMoveDataAccess
     {
-        Move FindBestMove(string currentBoardPosition, Player currentPlayer, Boolean random = true);
-
         IEnumerable<MoveResponse> FindMoveResponses(string currentBoardPosition, Player currentPlayer);
     }
 }

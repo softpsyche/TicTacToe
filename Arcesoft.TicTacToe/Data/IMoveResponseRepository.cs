@@ -9,7 +9,9 @@ namespace Arcesoft.TicTacToe.Data
 {
     internal interface IMoveResponseRepository
     {
-        void InsertMoveResponse(MoveResponse moveResponse);
+        void DeleteAllMoveResponses();
+
+        void InsertMoveResponses(IEnumerable<MoveResponse> moveResponses);
 
         MoveResponse TryFindMoveResponse(string board, Player player, Move response);
         

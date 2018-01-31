@@ -25,13 +25,21 @@ namespace Arcesoft.TicTacToe.Data
 
         private ILiteDatabase Database() => _liteDatabaseFactory.OpenOrCreate(MoveRepositoryName);
 
-        public void InsertMoveResponse(MoveResponse moveResponse)
+        public void DeleteAllMoveResponses()
+        {
+            using (var db = Database())
+            {
+                db.DropCollection<MoveResponseRecord>();
+            }
+        }
+
+        public void InsertMoveResponses(IEnumerable<MoveResponse> moveResponses)
         {
             using (var db = Database())
             {
                 db.EnsureIndex<MoveResponseRecord, string>(a => a.Id);
 
-                db.Insert(ToMoveResponseRecord(moveResponse));
+                db.InsertBulk(ToMoveResponseRecords(moveResponses));
             }
         }
 
@@ -68,6 +76,11 @@ namespace Arcesoft.TicTacToe.Data
             {
                 return db.Count<MoveResponse>();
             }
+        }
+
+        private IEnumerable<MoveResponseRecord> ToMoveResponseRecords(IEnumerable<MoveResponse> moveResponses)
+        {
+            return moveResponses.Select(a => ToMoveResponseRecord(a)).ToList();
         }
 
         private MoveResponseRecord ToMoveResponseRecord(MoveResponse moveResponse)

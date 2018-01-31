@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtificialIntelligence\Strategies\BruteForce.cs" />
+    <Compile Include="Database\BoardStateComparer.cs" />
     <Compile Include="Database\ILiteDatabase.cs" />
     <Compile Include="Database\ILiteDatabaseFactory.cs" />
     <Compile Include="IDatabaseBuilder.cs" />
@@ -75,7 +76,7 @@
     <Compile Include="IGame.cs" />
     <Compile Include="Database\MoveEvaluator.cs" />
     <Compile Include="GameImplementation\Board.cs" />
-    <Compile Include="ArtificialIntelligence\BoardState.cs" />
+    <Compile Include="Database\BoardState.cs" />
     <Compile Include="GameImplementation\Game.cs" />
     <Compile Include="GameException.cs" />
     <Compile Include="Entities\MoveResult.cs" />

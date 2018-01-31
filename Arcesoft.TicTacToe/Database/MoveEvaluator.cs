@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace Arcesoft.TicTacToe.Database
 
             GetMinMaxResponseForGame(game, results);
 
-            return results;
+            return results.Distinct(new BoardStateComparer());
         }
 
         #region Private Methods

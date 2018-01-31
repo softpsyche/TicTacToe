@@ -31,24 +31,19 @@ namespace Arcesoft.TicTacToe.Database
 
         public void PopulateMoveResponses()
         {
-
-            var boardStates = _moveEvaluator.FindAllMoves(_ticTacToeFactory.NewGame());
-
-            foreach (var boardState in boardStates)
-            {
-                if (_moveRepository.TryFindMoveResponse(boardState.BoardLayout, boardState.Player, boardState.MoveResult.MoveMade) == null)
+            var moveResponses = _moveEvaluator.FindAllMoves(_ticTacToeFactory.NewGame())
+                .Select(a => new MoveResponse()
                 {
-                    var moveResponse = new MoveResponse()
-                    {
-                        Board = boardState.BoardLayout,
-                        Outcome = boardState.MoveResult.GameStateAfterMove,
-                        Player = boardState.Player,
-                        Response = boardState.MoveResult.MoveMade
-                    };
+                    Board = a.BoardLayout,
+                    Outcome = a.MoveResult.GameStateAfterMove,
+                    Player = a.Player,
+                    Response = a.MoveResult.MoveMade
+                })
+                .ToList();
 
-                    _moveRepository.InsertMoveResponse(moveResponse);
-                }
-            }
+            _moveRepository.DeleteAllMoveResponses();
+
+            _moveRepository.InsertMoveResponses(moveResponses);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.IO;
 using System.Xml;
 using Arcesoft.TicTacToe.Entities;
 
-namespace Arcesoft.TicTacToe.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.Database
 {
     [Serializable]
     internal class BoardState

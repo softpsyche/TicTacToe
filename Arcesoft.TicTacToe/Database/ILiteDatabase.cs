@@ -11,7 +11,11 @@ namespace Arcesoft.TicTacToe.Database
     {
         int Count<TItem>();
 
-        void Insert<T>(T instance);
+        void DropCollection<T>();
+
+        //void Insert<T>(T instance);
+
+        void InsertBulk<T>(IEnumerable<T> instances);
 
         TItem FindById<TItem,TItemId>(TItemId id);
 

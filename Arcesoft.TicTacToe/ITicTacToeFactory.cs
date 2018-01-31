@@ -13,6 +13,8 @@ namespace Arcesoft.TicTacToe
 
         IGame NewGame(IEnumerable<Move> moves);
 
+        IDatabaseBuilder NewDatabaseBuilder();
+
         IArtificialIntelligence NewArtificialIntelligence(string type);
     }
 }

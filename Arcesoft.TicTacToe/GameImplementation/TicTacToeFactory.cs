@@ -17,10 +17,16 @@ namespace Arcesoft.TicTacToe.GameImplementation
             _container = container;
         }
 
+        public IDatabaseBuilder NewDatabaseBuilder()
+        {
+            return _container.GetInstance<IDatabaseBuilder>();
+        }
+
         public IGame NewGame()
         {
             return _container.GetInstance<IGame>();
         }
+
         public IGame NewGame(IEnumerable<Move> moves)
         {
             var game = NewGame();
@@ -39,6 +45,7 @@ namespace Arcesoft.TicTacToe.GameImplementation
 
             return game;
         }
+
         public IArtificialIntelligence NewArtificialIntelligence(string type)
         {
             switch (type)

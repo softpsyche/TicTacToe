@@ -9,6 +9,7 @@ using Moq;
 using FluentAssertions;
 using Arcesoft.TicTacToe.Entities;
 using Arcesoft.TicTacToe.Data;
+using Arcesoft.TicTacToe.Database;
 
 namespace Arcesoft.TicTacToe.BetterTestingApproach
 {
@@ -182,7 +183,7 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         [Given(@"I mock IMoveDatabase")]
         public void GivenIMockIMoveDatabase()
         {
-            MockMoveDatabase = new Mock<IMoveDatabase>();
+            MockMoveDatabase = new Mock<IDatabaseBuilder>();
 
             Container.RegisterSingleton(MockMoveDatabase.Object);
         }
@@ -190,9 +191,9 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         [Given(@"I setup the IMoveDatabase\.MovesDataTable to return the following")]
         public void GivenISetupTheIMoveDatabase_MovesDataTableToReturnTheFollowing(Table table)
         {
-            MockMoveDatabase
-                .Setup(a => a.MovesDataTable)
-                .Returns(table.ToMovesDataTable());
+            //MockMoveDatabase
+            //    .Setup(a => a.MovesDataTable)
+            //    .Returns(table.ToMovesDataTable());
         }
     }
 }

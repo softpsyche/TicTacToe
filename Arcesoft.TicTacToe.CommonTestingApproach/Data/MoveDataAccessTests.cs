@@ -17,7 +17,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
     [TestCategory("CommonTestingApproach")]
     public class MoveDataAccessTests
     {
-        private Mock<IMoveRepository> MoveRepositoryMock { get; set; }
+        private Mock<IMoveResponseRepository> MoveRepositoryMock { get; set; }
         /// <summary>
         /// The system under test
         /// </summary>
@@ -28,7 +28,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
         [TestInitialize]
         public void Initialize()
         {
-            MoveRepositoryMock = new Mock<IMoveRepository>();
+            MoveRepositoryMock = new Mock<IMoveResponseRepository>();
 
             MoveDataAccess = new MoveDataAccess(MoveRepositoryMock.Object);
         }
@@ -40,7 +40,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
             var moveResponses = GivenIHaveTheFollowingMoveResponses(GameState.XWin, GameState.OWin, GameState.Tie).ToList();
 
             MoveRepositoryMock
-                .Setup(a => a.FindBoardStates(ABoardPosition, Player.X))
+                .Setup(a => a.FindMoveResponses(ABoardPosition, Player.X))
                 .Returns(moveResponses);
 
             //Act

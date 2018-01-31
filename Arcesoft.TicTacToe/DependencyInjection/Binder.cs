@@ -8,6 +8,7 @@ using Arcesoft.TicTacToe.GameImplementation;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
 using SimpleInjector;
 using Arcesoft.TicTacToe.Data;
+using Arcesoft.TicTacToe.Database;
 
 namespace Arcesoft.TicTacToe.DependencyInjection
 {
@@ -20,16 +21,16 @@ namespace Arcesoft.TicTacToe.DependencyInjection
             container.Register<IGame, Game>();
 
             //data
-            container.Register<IMoveDatabase, MoveDatabase>();
+            container.Register<IDatabaseBuilder, DatabaseBuilder>();
             container.Register<IMoveDataAccess, MoveDataAccess>();
-            container.Register<IMoveRepository, MoveRepository>();
-            container.Register<IFileAccess, FileAccess>();
-
-            //ai
-            container.Register<IMoveEvaluator, MoveEvaluator>();
+            container.Register<IMoveResponseRepository, MoveResponseRepository>();
 
             //random number generation
             container.Register<IRandom, DefaultRandomNumberGenerator>();
+
+            //database
+            container.Register<ILiteDatabaseFactory, LiteDatabaseFactory>();
+            container.Register<IMoveEvaluator, MoveEvaluator>();
         }
     }
 }

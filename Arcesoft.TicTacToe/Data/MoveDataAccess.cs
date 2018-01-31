@@ -15,16 +15,16 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence
     [Serializable]
     internal class MoveDataAccess : IMoveDataAccess
     {
-        private readonly IMoveRepository _moveRepository;
+        private readonly IMoveResponseRepository _moveRepository;
 
-        public MoveDataAccess(IMoveRepository moveRepository)
+        public MoveDataAccess(IMoveResponseRepository moveRepository)
         {
             _moveRepository = moveRepository;
         }
 
         public IEnumerable<MoveResponse> FindMoveResponses(string currentBoardPosition, Player currentPlayer)
         {
-            return _moveRepository.FindBoardStates(currentBoardPosition, currentPlayer);
+            return _moveRepository.FindMoveResponses(currentBoardPosition, currentPlayer);
         }
     }
 }

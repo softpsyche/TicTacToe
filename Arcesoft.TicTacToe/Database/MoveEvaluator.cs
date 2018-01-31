@@ -7,9 +7,14 @@ using System.IO;
 using System.Xml;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
 using Arcesoft.TicTacToe.Entities;
+using System.Diagnostics.CodeAnalysis;
+using Arcesoft.TicTacToe.ArtificialIntelligence;
 
-namespace Arcesoft.TicTacToe.ArtificialIntelligence
+namespace Arcesoft.TicTacToe.Database
 {
+    //We will exclude this from code coverage for this example because we assume that the 'Database'
+    //is already actually built. 
+    [ExcludeFromCodeCoverage()]
     internal class MoveEvaluator : IMoveEvaluator
     {
         private IRandom _random;

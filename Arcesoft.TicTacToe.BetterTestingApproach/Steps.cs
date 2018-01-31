@@ -1,4 +1,5 @@
 ﻿using Arcesoft.TicTacToe.Data;
+using Arcesoft.TicTacToe.Database;
 using Arcesoft.TicTacToe.Entities;
 using Arcesoft.TicTacToe.GameImplementation;
 using FluentAssertions;
@@ -102,11 +103,11 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             }
         }
 
-        protected Mock<IMoveDatabase> MockMoveDatabase
+        protected Mock<IDatabaseBuilder> MockMoveDatabase
         {
             get
             {
-                return GetScenarioContextItemOrDefault<Mock<IMoveDatabase>>(nameof(MockMoveDatabase));
+                return GetScenarioContextItemOrDefault<Mock<IDatabaseBuilder>>(nameof(MockMoveDatabase));
             }
             set
             {

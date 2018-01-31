@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arcesoft.TicTacToe.Data
+namespace Arcesoft.TicTacToe.Database
 {
-    internal interface IMoveDatabase
+    internal interface ILiteDatabaseFactory
     {
-        IMovesDataTable MovesDataTable { get; }
+        ILiteDatabase OpenOrCreate(string name);
     }
 }

@@ -11,6 +11,8 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
     public class UI
     {
         private readonly ITicTacToeFactory _gameFactory;
+        private readonly IDatabaseBuilder _databaseBuilder;
+
         private static class Commands
         {
             public const string NewGame = "n";
@@ -18,9 +20,10 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
             public const string Quit = "q";
         }
 
-        public UI(ITicTacToeFactory gameFactory)
+        public UI(ITicTacToeFactory gameFactory, IDatabaseBuilder databaseBuilder)
         {
             _gameFactory = gameFactory;
+            _databaseBuilder = databaseBuilder;
         }
 
         public void Run()
@@ -39,6 +42,9 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
             {
                 switch (GetUserCommand(MainMenu.Menu))
                 {
+                    case MainMenu.PopulateGameDatabase:
+                        Populate();
+                        break;
                     case MainMenu.NewGameHuman:
                         RunGame();
                         break;
@@ -50,6 +56,15 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
                         break;
                 }
             }
+        }
+
+        private void Populate()
+        {
+            Console.WriteLine("Populating database, this may take a few minutes...");
+
+            _databaseBuilder.PopulateMoveResponses();
+
+            Console.WriteLine("Finished populating database");
         }
 
         private void RunGame()

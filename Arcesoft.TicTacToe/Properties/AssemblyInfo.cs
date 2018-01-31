@@ -37,3 +37,5 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 [assembly: InternalsVisibleTo("Arcesoft.TicTacToe.CommonTestingApproach")]
 [assembly: InternalsVisibleTo("Arcesoft.TicTacToe.BetterTestingApproach")]
+
+[assembly: InternalsVisibleTo("Arcesoft.TicTacToe.ConsoleApplication")]

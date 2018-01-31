@@ -1,5 +1,6 @@
 ﻿using Arcesoft.TicTacToe.ArtificialIntelligence;
 using Arcesoft.TicTacToe.Data;
+using Arcesoft.TicTacToe.Database;
 using Arcesoft.TicTacToe.Entities;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,20 +18,19 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
     [TestCategory("CommonTestingApproach")]
     public class MoveRepositoryTests
     {
-        private Mock<IMoveDatabase> MoveDatabaseMock { get; set; }
+        private Mock<IDatabaseBuilder> MoveDatabaseMock { get; set; }
         private Mock<IMovesDataTable> MovesDataTableMock { get; set; }
-        private MoveRepository MoveRepository { get; set; }
+        private MoveResponseRepository MoveRepository { get; set; }
 
         [TestInitialize]
         public void Initialize()
         {
-            MoveDatabaseMock = new Mock<IMoveDatabase>();
+            MoveDatabaseMock = new Mock<IDatabaseBuilder>();
             MovesDataTableMock = new Mock<IMovesDataTable>();
-            MoveDatabaseMock.Setup(a => a.MovesDataTable).Returns(MovesDataTableMock.Object);
+            //MoveDatabaseMock.Setup(a => a.MovesDataTable).Returns(MovesDataTableMock.Object);
 
-            MoveRepository = new MoveRepository(MoveDatabaseMock.Object);
+            //MoveRepository = new MoveRepository(MoveDatabaseMock.Object);
         }
-
 
         [TestMethod]
         public void ShouldFindBoardStates()
@@ -52,7 +52,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
                 .Returns(dataRows);
 
             //act
-            var result = MoveRepository.FindBoardStates(currentBoardPosition, currentPlayer);
+            var result = MoveRepository.FindMoveResponses(currentBoardPosition, currentPlayer);
 
             //assert
             var expectedMoveResponses = new[]

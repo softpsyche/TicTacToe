@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteDB, Version=4.1.1.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.4.1.1\lib\net40\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -47,19 +50,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtificialIntelligence\Strategies\BruteForce.cs" />
-    <Compile Include="Data\FileAccess.cs" />
-    <Compile Include="Data\IFileAccess.cs" />
-    <Compile Include="Data\IMoveDatabase.cs" />
-    <Compile Include="ArtificialIntelligence\IMoveEvaluator.cs" />
-    <Compile Include="Data\IMoveRepository.cs" />
+    <Compile Include="Database\ILiteDatabase.cs" />
+    <Compile Include="Database\ILiteDatabaseFactory.cs" />
+    <Compile Include="IDatabaseBuilder.cs" />
+    <Compile Include="Database\IMoveEvaluator.cs" />
+    <Compile Include="Database\LiteDatabase.cs" />
+    <Compile Include="Database\LiteDatabaseFactory.cs" />
+    <Compile Include="Database\MoveResponseRecord.cs" />
+    <Compile Include="Data\IMoveResponseRepository.cs" />
     <Compile Include="Data\IMovesDataTable.cs" />
-    <Compile Include="Data\MoveDatabase.cs" />
+    <Compile Include="Database\DatabaseBuilder.cs" />
     <Compile Include="Data\MoveResponse.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\OmniscientGod.cs" />
     <Compile Include="Entities\ArtificialIntelligenceTypes.cs" />
     <Compile Include="IArtificialIntelligence.cs" />
     <Compile Include="Data\IMoveDataAccess.cs" />
-    <Compile Include="ArtificialIntelligence\MoveRepository.cs" />
+    <Compile Include="Data\MoveResponseRepository.cs" />
     <Compile Include="GameImplementation\TicTacToeFactory.cs" />
     <Compile Include="DependencyInjection\Binder.cs" />
     <Compile Include="Entities\GameChange.cs" />
@@ -67,7 +73,7 @@
     <Compile Include="Entities\GameStateChangedEventArgs.cs" />
     <Compile Include="GameImplementation\Square.cs" />
     <Compile Include="IGame.cs" />
-    <Compile Include="ArtificialIntelligence\MoveEvaluator.cs" />
+    <Compile Include="Database\MoveEvaluator.cs" />
     <Compile Include="GameImplementation\Board.cs" />
     <Compile Include="ArtificialIntelligence\BoardState.cs" />
     <Compile Include="GameImplementation\Game.cs" />

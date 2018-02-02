@@ -14,22 +14,10 @@ namespace Arcesoft.TicTacToe.RandomNumberGeneration
         {
             random = new Random();
         }
-        //public DefaultRandomNumberGenerator(Int32 seed)
-        //{
-        //    random = new Random(seed);
-        //}
 
         public Int32 Next(Int32 maxValue)
         {
             return random.Next(maxValue);
-        }
-        public Int32 Next(Int32 minValue, Int32 maxValue)
-        {
-            return random.Next(minValue, maxValue);
-        }
-        public Double NextDouble()
-        {
-            return random.NextDouble();
         }
     }
 }

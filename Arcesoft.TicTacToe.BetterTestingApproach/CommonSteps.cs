@@ -88,6 +88,11 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             table.CompareToInstance(Exception);
         }
 
+        [Given(@"I start a new game in the following state")]
+        public void GivenIStartANewGameInTheFollowingState(Table table)
+        {
+            Invoke(() => Game = TicTacToeFactory.NewGame(ToPlausibleMoveListFromBoardState(table)));
+        }
 
         [Given(@"Todo")]
         [When(@"Todo")]

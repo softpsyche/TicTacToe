@@ -101,6 +101,12 @@
       <DependentUpon>OmniscientGod.feature</DependentUpon>
     </Compile>
     <Compile Include="CommonSteps.cs" />
+    <Compile Include="DatabaseBuilder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseBuilder.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseBuilderSteps.cs" />
     <Compile Include="Game.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,7 +116,6 @@
     <Compile Include="GameSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps.cs" />
-    <Compile Include="TableExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -121,6 +126,10 @@
     <None Include="ArtificialIntelligence\OmniscientGod.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>OmniscientGod.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DatabaseBuilder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DatabaseBuilder.feature.cs</LastGenOutput>
     </None>
     <None Include="Game.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

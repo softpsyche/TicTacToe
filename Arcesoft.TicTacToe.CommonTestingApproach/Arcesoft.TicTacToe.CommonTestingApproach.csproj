@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\MoveDataAccessTests.cs" />
-    <Compile Include="Data\MoveRepositoryTests.cs" />
+    <Compile Include="Data\MoveResponseRepositoryTests.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\BruteForceTests.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\OmniscientGodTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

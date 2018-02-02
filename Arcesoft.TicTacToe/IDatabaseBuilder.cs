@@ -9,6 +9,6 @@ namespace Arcesoft.TicTacToe
 {
     public interface IDatabaseBuilder
     {
-        void PopulateMoveResponses();
+        void PopulateMoveResponses(IGame game = null);
     }
 }

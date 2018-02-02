@@ -42,7 +42,6 @@ namespace Arcesoft.TicTacToe.GameImplementation
                 SetBoardState();
             }
         }
-        public bool IsEmpty => board.All(a => a == Square.Empty);
         public bool IsFull => board.Any(a => a == Square.Empty) == false;
         public GameState State => boardState;
         public string BoardLine1 => TranslateBoardSquare(board[0]) + TranslateBoardSquare(board[1]) + TranslateBoardSquare(board[2]);
@@ -63,20 +62,6 @@ namespace Arcesoft.TicTacToe.GameImplementation
                     throw new InvalidEnumArgumentException("Invalid/Unknown Square enumeration.");
 			}
 		}
-        private Square TranslateBoardString(String boardString)
-        {
-            switch (boardString.ToUpper())
-            {
-                case "_":
-                    return Square.Empty;
-                case "O":
-                    return Square.O;
-                case "X":
-                    return Square.X;
-                default:
-                    throw new GameException(string.Format("Invalid/Unknown board string '{0}'",boardString));
-            }
-        }
 		#endregion
 		#region Private Methods
 		private void SetBoardState()
@@ -142,32 +127,6 @@ namespace Arcesoft.TicTacToe.GameImplementation
 			boardState = GameState.InPlay;
 		}
         public override string ToString() => BoardLine1 + BoardLine2 + BoardLine3;
-
-        public void Load(String boardString)
-        {
-            if (String.IsNullOrWhiteSpace(boardString))
-                throw new GameException("Cannot load empty or null boardstring. Invalid boardstring.");
-
-            if (boardString.Length != 9)
-                throw new GameException("Board string must be 9 characters long. Invalid boardstring.");
-
-            var moves = boardString.ToCharArray()
-                .Select(a => TranslateBoardString(a.ToString())).ToList();
-
-            var xMoves = moves.Count(a => a == Square.X);
-            var oMoves = moves.Count(a => a == Square.O);
-
-            if ((Math.Abs(xMoves - oMoves) > 1) && (oMoves > xMoves))
-                throw new GameException("Board contains impossible move configuration. Invalid boardstring.");
-
-            //NOTE: there are other checks for valid board positions, perhaps running this versus our database would be
-            //move prudent...
-
-            Clear();
-
-            board = moves.ToArray();
-            SetBoardState();
-        }
 		#endregion
 	}
 }

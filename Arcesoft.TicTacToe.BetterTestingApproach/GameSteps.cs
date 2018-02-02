@@ -10,6 +10,7 @@ using FluentAssertions;
 using Arcesoft.TicTacToe.Entities;
 using Arcesoft.TicTacToe.Data;
 using Arcesoft.TicTacToe.Database;
+using System.Linq.Expressions;
 
 namespace Arcesoft.TicTacToe.BetterTestingApproach
 {
@@ -180,20 +181,37 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             MoveResults.Should().BeEmpty();
         }
 
-        [Given(@"I mock IMoveDatabase")]
-        public void GivenIMockIMoveDatabase()
+        [Given(@"I mock the ILiteDatabase")]
+        public void GivenIMockTheILiteDatabase()
         {
-            MockMoveDatabase = new Mock<IDatabaseBuilder>();
+            MockLiteDatabaseFactory = new Mock<ILiteDatabaseFactory>();
+            MockLiteDatabase = new Mock<ILiteDatabase>();
 
-            Container.RegisterSingleton(MockMoveDatabase.Object);
+            Container.RegisterSingleton(MockLiteDatabaseFactory.Object);
+
+            MockLiteDatabaseFactory
+                .Setup(a => a.OpenOrCreate(MoveResponseRepository.MoveRepositoryName))
+                .Returns(MockLiteDatabase.Object);
         }
 
-        [Given(@"I setup the IMoveDatabase\.MovesDataTable to return the following")]
-        public void GivenISetupTheIMoveDatabase_MovesDataTableToReturnTheFollowing(Table table)
+
+        [Given(@"I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses")]
+        public void GivenISetupTheMockILiteDatabaseToFindTheFollowingMoveResponses(Table table)
         {
-            //MockMoveDatabase
-            //    .Setup(a => a.MovesDataTable)
-            //    .Returns(table.ToMovesDataTable());
+            var moveResponseRecords = table.CreateSet<MoveResponseRecord>();
+            //var id = moveResponseRecords.Select(a => a.Id).Distinct().SingleOrDefault();
+
+
+            Func<Expression<Func<MoveResponseRecord, bool>>, bool> verifyingFunk = (expression) =>
+             {
+                 return true;
+                //return id.Equals(expression.Compile().Invoke(new MoveResponseRecord()));
+            };
+
+            MockLiteDatabase
+                //.Setup(a => a.FindByIndex(It.IsAny<Expression<Func<MoveResponseRecord, bool>>>()))
+                .Setup(a => a.FindByIndex(It.Is<Expression<Func<MoveResponseRecord, bool>>>(b => verifyingFunk(b))))
+                .Returns(moveResponseRecords);
         }
     }
 }

@@ -17,11 +17,6 @@ namespace Arcesoft.TicTacToe.Database
             _liteDatabase = liteDatabase;
         }
 
-        //public void Insert<T>(T instance)
-        //{
-        //    Collection<T>().Insert(instance);
-        //}
-
         public void DropCollection<T>()
         {
             _liteDatabase.DropCollection(typeof(T).Name);

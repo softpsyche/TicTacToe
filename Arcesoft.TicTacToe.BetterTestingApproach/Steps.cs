@@ -103,15 +103,15 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             }
         }
 
-        protected Mock<IDatabaseBuilder> MockMoveDatabase
+        protected IDatabaseBuilder DatabaseBuilder
         {
             get
             {
-                return GetScenarioContextItemOrDefault<Mock<IDatabaseBuilder>>(nameof(MockMoveDatabase));
+                return GetScenarioContextItemOrDefault<IDatabaseBuilder>();
             }
             set
             {
-                CurrentContext.Set(value, nameof(MockMoveDatabase));
+                CurrentContext.Set(value);
             }
         }
 
@@ -124,6 +124,42 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             set
             {
                 CurrentContext.Set(value);
+            }
+        }
+
+        protected Mock<IDatabaseBuilder> MockMoveDatabase
+        {
+            get
+            {
+                return GetScenarioContextItemOrDefault<Mock<IDatabaseBuilder>>(nameof(MockMoveDatabase));
+            }
+            set
+            {
+                CurrentContext.Set(value, nameof(MockMoveDatabase));
+            }
+        }
+
+        protected Mock<ILiteDatabaseFactory> MockLiteDatabaseFactory
+        {
+            get
+            {
+                return GetScenarioContextItemOrDefault<Mock<ILiteDatabaseFactory>>(nameof(MockLiteDatabaseFactory));
+            }
+            set
+            {
+                CurrentContext.Set(value, nameof(MockLiteDatabaseFactory));
+            }
+        }
+
+        protected Mock<ILiteDatabase> MockLiteDatabase
+        {
+            get
+            {
+                return GetScenarioContextItemOrDefault<Mock<ILiteDatabase>>(nameof(MockLiteDatabase));
+            }
+            set
+            {
+                CurrentContext.Set(value, nameof(MockLiteDatabase));
             }
         }
 
@@ -160,6 +196,47 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             }
         }
 
+        protected IEnumerable<Move> ToPlausibleMoveListFromBoardState(Table table)
+        {
+            var boardString = ToBoardString(table);
+            List<Move> plausibleMoveList = new List<Move>();
+            List<Move> xMoves = new List<Move>();
+            List<Move> oMoves = new List<Move>();
+
+            for (int i = 0; i < boardString.Length; i++)
+            {
+                switch (boardString[i])
+                {
+                    case Board.SquareXChar:
+                        xMoves.Add((Move)i);
+                        break;
+                    case Board.SquareOChar:
+                        oMoves.Add((Move)i);
+                        break;
+                }
+            }
+
+            Player curPlayer = Player.X;
+            var totalMoves = xMoves.Count + oMoves.Count;
+            for (int i = 0; i < totalMoves; i++)
+            {
+                if (curPlayer == Player.X)
+                {
+                    plausibleMoveList.Add(xMoves.First());
+                    xMoves.Remove(xMoves.First());
+                    curPlayer = Player.O;
+                }
+                else
+                {
+                    plausibleMoveList.Add(oMoves.First());
+                    oMoves.Remove(oMoves.First());
+                    curPlayer = Player.X;
+                }
+
+            }
+
+            return plausibleMoveList;
+        }
         protected string ToBoardString(Table table)
         {
             StringBuilder sb = new StringBuilder();

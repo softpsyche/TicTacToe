@@ -8,7 +8,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
 
 namespace Arcesoft.TicTacToe.Database
 {
@@ -29,9 +28,9 @@ namespace Arcesoft.TicTacToe.Database
             _moveRepository = moveRepository;
         }
 
-        public void PopulateMoveResponses()
+        public void PopulateMoveResponses(IGame game = null)
         {
-            var moveResponses = _moveEvaluator.FindAllMoves(_ticTacToeFactory.NewGame())
+            var moveResponses = _moveEvaluator.FindAllMoves(game ?? _ticTacToeFactory.NewGame())
                 .Select(a => new MoveResponse()
                 {
                     Board = a.BoardLayout,

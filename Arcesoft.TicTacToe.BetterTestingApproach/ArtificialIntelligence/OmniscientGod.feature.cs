@@ -90,7 +90,7 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach.ArtificialIntelligence
 #line 7
  testRunner.Given("I have a container", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.Given("I mock IMoveDatabase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I mock the ILiteDatabase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
  testRunner.Given("I have a tictactoe factory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
@@ -168,7 +168,8 @@ this.FeatureBackground();
                         "Eastern",
                         "XWin"});
 #line 28
- testRunner.Given("I setup the IMoveDatabase.MovesDataTable to return the following", ((string)(null)), table3, "Given ");
+ testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
+                    "ponses", ((string)(null)), table3, "Given ");
 #line 31
  testRunner.Given("I expect an exception to be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 32
@@ -221,7 +222,8 @@ this.FeatureBackground();
                         "Northern",
                         "OWin"});
 #line 39
- testRunner.Given("I setup the IMoveDatabase.MovesDataTable to return the following", ((string)(null)), table5, "Given ");
+ testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
+                    "ponses", ((string)(null)), table5, "Given ");
 #line 44
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 45
@@ -266,7 +268,8 @@ this.FeatureBackground();
                         "Northern",
                         "OWin"});
 #line 49
- testRunner.Given("I setup the IMoveDatabase.MovesDataTable to return the following", ((string)(null)), table6, "Given ");
+ testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
+                    "ponses", ((string)(null)), table6, "Given ");
 #line 54
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 55
@@ -311,7 +314,8 @@ this.FeatureBackground();
                         "Northern",
                         "OWin"});
 #line 59
- testRunner.Given("I setup the IMoveDatabase.MovesDataTable to return the following", ((string)(null)), table7, "Given ");
+ testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
+                    "ponses", ((string)(null)), table7, "Given ");
 #line 64
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 65
@@ -362,7 +366,8 @@ this.FeatureBackground();
                         "Northern",
                         "OWin"});
 #line 71
- testRunner.Given("I setup the IMoveDatabase.MovesDataTable to return the following", ((string)(null)), table9, "Given ");
+ testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
+                    "ponses", ((string)(null)), table9, "Given ");
 #line 76
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 77
@@ -412,7 +417,8 @@ this.FeatureBackground();
                         "Northern",
                         "XWin"});
 #line 83
- testRunner.Given("I setup the IMoveDatabase.MovesDataTable to return the following", ((string)(null)), table11, "Given ");
+ testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
+                    "ponses", ((string)(null)), table11, "Given ");
 #line 88
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 89
@@ -462,7 +468,8 @@ this.FeatureBackground();
                         "Northern",
                         "XWin"});
 #line 95
- testRunner.Given("I setup the IMoveDatabase.MovesDataTable to return the following", ((string)(null)), table13, "Given ");
+ testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
+                    "ponses", ((string)(null)), table13, "Given ");
 #line 100
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 101
@@ -498,16 +505,6 @@ this.FeatureBackground();
                         "Response",
                         "Outcome"});
             table15.AddRow(new string[] {
-                        "_________",
-                        "O",
-                        "Eastern",
-                        ""});
-            table15.AddRow(new string[] {
-                        "____XO___",
-                        "O",
-                        "Eastern",
-                        ""});
-            table15.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Southern",
@@ -521,15 +518,11 @@ this.FeatureBackground();
                         "____X____",
                         "X",
                         "Eastern",
-                        ""});
-            table15.AddRow(new string[] {
-                        "X___O___X",
-                        "O",
-                        "Eastern",
-                        ""});
+                        "Tie"});
 #line 108
- testRunner.Given("I setup the IMoveDatabase.MovesDataTable to return the following", ((string)(null)), table15, "Given ");
-#line 116
+ testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
+                    "ponses", ((string)(null)), table15, "Given ");
+#line 113
  testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -541,7 +534,7 @@ this.FeatureBackground();
             table16.AddRow(new string[] {
                         "Western",
                         "XWin"});
-#line 117
+#line 114
  testRunner.Then("The move results should contain the following", ((string)(null)), table16, "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -9,13 +9,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Arcesoft.TicTacToe.Data.TicTacToeDataSet;
 
 namespace Arcesoft.TicTacToe.Data
 {
     internal class MoveResponseRepository : IMoveResponseRepository
     {
-        private const string MoveRepositoryName = "TicTacToe.db";
+        internal const string MoveRepositoryName = "TicTacToe.db";
         private ILiteDatabaseFactory _liteDatabaseFactory;
 
         public MoveResponseRepository(ILiteDatabaseFactory liteDatabaseFactory)
@@ -43,21 +42,6 @@ namespace Arcesoft.TicTacToe.Data
             }
         }
 
-        public MoveResponse TryFindMoveResponse(string board, Player player, Move response)
-        {
-            using (var db = Database())
-            {
-                var record = new MoveResponseRecord()
-                {
-                    Board = board,
-                    Player = player,
-                    Response = response
-                };
-
-                return ToMoveResponse(db.FindById<MoveResponseRecord, string>(record.Id));
-            }
-        }
-
         public IEnumerable<MoveResponse> FindMoveResponses(string currentBoardPosition, Player currentPlayer)
         {
             using (var db = Database())
@@ -67,14 +51,6 @@ namespace Arcesoft.TicTacToe.Data
                     .Where(a => a.Player == currentPlayer);
 
                 return ToMoveResponses(responses);
-            }
-        }
-
-        public int FindMoveResponseCount()
-        {
-            using (var db = Database())
-            {
-                return db.Count<MoveResponse>();
             }
         }
 

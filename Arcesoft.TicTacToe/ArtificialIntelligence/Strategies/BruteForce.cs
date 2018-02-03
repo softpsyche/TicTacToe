@@ -31,12 +31,12 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             //someone elses object they pass in (in case of exceptions)
             var gameCopy = _ticTacToeFactory.NewGame(game.MoveHistory);
 
-            var moveResults = FindMoveResults(_ticTacToeFactory.NewGame(game.MoveHistory));
+            var moveResults = FindMoveResults(gameCopy);
 
-            var bestMoves = SelectBestMovesForPlayer(moveResults, game.CurrentPlayer);
+            var bestMoves = SelectBestMovesForPlayer(moveResults, gameCopy.CurrentPlayer);
 
             var moveResult = randomlySelectIfMoreThanOne ? bestMoves.RandomFromListOrDefault(_random) : bestMoves.First();
-            game.Move(moveResult.MoveMade);
+            gameCopy.Move(moveResult.MoveMade);
         }
 
         public IEnumerable<MoveResult> FindMoveResults(IGame game)

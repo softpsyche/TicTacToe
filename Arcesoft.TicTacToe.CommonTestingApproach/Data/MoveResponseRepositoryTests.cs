@@ -45,15 +45,5 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.Data
             MockLiteDatabase
                 .Verify(a => a.DropCollection<MoveResponseRecord>(), Times.Once());
         }
-
-        [TestMethod]
-        public void ShouldVerifyAllWorks()
-        {
-            var listy = new List<string>();
-
-            var result = listy.All(a => a.Equals("John wayne"));
-
-            result.Should().BeTrue();
-        }
     }
 }

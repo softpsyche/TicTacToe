@@ -17,6 +17,9 @@ namespace Arcesoft.TicTacToe.DependencyInjection
     {
         public void BindDependencies(Container container)
         {
+            //general
+            container.RegisterSingleton<IServiceProvider>(container);
+
             //game
             container.Register<ITicTacToeFactory, TicTacToeFactory>();
             container.Register<IGame, Game>();

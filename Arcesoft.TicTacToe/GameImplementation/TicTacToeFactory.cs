@@ -11,20 +11,20 @@ namespace Arcesoft.TicTacToe.GameImplementation
 {
     public class TicTacToeFactory : ITicTacToeFactory
     {
-        private readonly Container _container;
-        public TicTacToeFactory(Container container)
+        private readonly IServiceProvider _serviceProvider;
+        public TicTacToeFactory(IServiceProvider serviceProvider)
         {
-            _container = container;
+            _serviceProvider = serviceProvider;
         }
 
         public IDatabaseBuilder NewDatabaseBuilder()
         {
-            return _container.GetInstance<IDatabaseBuilder>();
+            return LocateService<IDatabaseBuilder>();
         }
 
         public IGame NewGame()
         {
-            return _container.GetInstance<IGame>();
+            return LocateService<IGame>();
         }
 
         public IGame NewGame(IEnumerable<Move> moves)
@@ -51,12 +51,20 @@ namespace Arcesoft.TicTacToe.GameImplementation
             switch (type)
             {
                 case ArtificialIntelligenceTypes.BruteForce:
-                    return _container.GetInstance<BruteForce>();
+                    return LocateService<BruteForce>();
                 case ArtificialIntelligenceTypes.OmniscientGod:
-                    return _container.GetInstance<OmniscientGod>();
+                    return LocateService<OmniscientGod>();
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), $"Unable to create AI for type '{type}'. No implementation found for this type.");
             }
+        }
+
+        private T LocateService<T>()
+            where T : class
+        {
+            var service = _serviceProvider.GetService(typeof(T));
+
+            return service as T;
         }
     }
 }

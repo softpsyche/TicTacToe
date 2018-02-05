@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 
 namespace Arcesoft.TicTacToe.Database
 {
+    //But what to do with poor Hugo? Too crazy for Boys Town, too much of a boy for Crazy Town.
+    //This guy talks to a direct process boundary (i.e. a database). A suggestion which makes sense
+    //is to create a very lean integration test that verifies that this guy works as expected. 
+    //in this case, we essentially wrappered the calls to the underlying store so there is very
+    //little logic in this class. It is mostly a pass-thru. 
     internal class LiteDatabase : ILiteDatabase
     {
         private LiteDB.LiteDatabase _liteDatabase;

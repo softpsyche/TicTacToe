@@ -31,15 +31,23 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             //someone elses object they pass in (in case of exceptions)
             var gameCopy = _ticTacToeFactory.NewGame(game.MoveHistory);
 
-            var moveResults = FindMoveResults(gameCopy);
+            var moveResults = FindMoveResultsRecursively(gameCopy);
 
             var bestMoves = SelectBestMovesForPlayer(moveResults, gameCopy.CurrentPlayer);
 
             var moveResult = randomlySelectIfMoreThanOne ? bestMoves.RandomFromListOrDefault(_random) : bestMoves.First();
-            gameCopy.Move(moveResult.MoveMade);
+
+            game.Move(moveResult.MoveMade);
         }
 
         public IEnumerable<MoveResult> FindMoveResults(IGame game)
+        {
+            //we make a copy because its polite to not inadvertantly mess up 
+            //someone elses object they pass in (in case of exceptions)
+            return FindMoveResultsRecursively(_ticTacToeFactory.NewGame(game.MoveHistory));
+        }
+
+        private IEnumerable<MoveResult> FindMoveResultsRecursively(IGame game)
         {
             Collection<MoveResult> gameMoveResults = new Collection<MoveResult>();
             var legalMoves = game.GetLegalMoves();
@@ -54,7 +62,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
                 }
                 else
                 {
-                    var bestMoveResultsForCurrentPlayer = SelectBestMovesForPlayer(FindMoveResults(game), game.CurrentPlayer);
+                    var bestMoveResultsForCurrentPlayer = SelectBestMovesForPlayer(FindMoveResultsRecursively(game), game.CurrentPlayer);
 
                     //recurse to find this moves finale
                     gameMoveResults.Add(new MoveResult(move,

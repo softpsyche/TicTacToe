@@ -32,7 +32,7 @@ Scenario: Omniscient god AI should raise error when no available moves are found
 	When I have the AI make the next random best move
 	Then I expect the following Exception to be thrown
          | Message                                         |
-         | Unable to make a move because there are no available moves for game board _________ |
+         | Unable to make a move because there are no available moves for game board _________. Possible corrupt move data access or game. |
 
 Scenario: Omniscient god AI should select winning X move
 	Given I start a new game

@@ -39,7 +39,7 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             if (moveResponse == null)
             {
                 //this should NEVER happen if the game is not over. This is a true exceptional case
-                throw new Exception($"Unable to make a move because there are no available moves for game board {game.GameBoardString}");
+                throw new Exception($"Unable to make a move because there are no available moves for game board {game.GameBoardString}. Possible corrupt move data access or game.");
             }
 
             game.Move(moveResponse.Response);

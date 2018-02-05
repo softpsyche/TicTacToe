@@ -98,7 +98,6 @@ namespace Arcesoft.TicTacToe.GameImplementation
 
         #endregion
         #region Methods
-
         public void Reset()
         {
             _board.Clear();
@@ -107,6 +106,7 @@ namespace Arcesoft.TicTacToe.GameImplementation
 
             OnGameStateChanged(GameChange.Reset);
         }
+
 		public bool IsMoveValid(Move move)
 		{
             return (!GameIsOver) && (_board.SquareIsEmpty(move));

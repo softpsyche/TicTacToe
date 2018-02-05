@@ -179,7 +179,7 @@ this.FeatureBackground();
                         "Message"});
             table4.AddRow(new string[] {
                         "Unable to make a move because there are no available moves for game board _______" +
-                            "__"});
+                            "__. Possible corrupt move data access or game."});
 #line 33
  testRunner.Then("I expect the following Exception to be thrown", ((string)(null)), table4, "Then ");
 #line hidden

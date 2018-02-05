@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Arcesoft.TicTacToe.Database
 {
     /// <summary>
-    /// Represents an in-memory database of all the possible tic-tac-toe board configurations. 
+    /// Populates a database
     /// </summary>
     [ExcludeFromCodeCoverage()]//We will exclude this from code coverage for this example because we assume that the 'Database' is already actually built. 
     internal class DatabaseBuilder : IDatabaseBuilder

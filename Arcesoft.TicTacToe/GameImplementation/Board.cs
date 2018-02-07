@@ -97,6 +97,16 @@ namespace Arcesoft.TicTacToe.GameImplementation
                 return;
             if (CheckAndSetBoardStateForLine(6, 4, 2))
                 return;
+            //Bug Scenario
+            //Comment out the if statement above to introduce bug where win is not found
+
+            //Bug Scenario:
+            //uncomment code below to introduce this bug that allows a win for
+            //  X__
+            //  X__
+            //  __X
+            //if (CheckAndSetBoardStateForLine(0, 3, 8))
+            //    return;
 
             boardState = IsFull ? GameState.Tie : GameState.InPlay;
         }

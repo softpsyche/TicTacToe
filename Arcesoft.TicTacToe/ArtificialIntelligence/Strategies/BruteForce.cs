@@ -27,6 +27,12 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
                 throw new GameException($"Unable to make a move because the game is over.");
             }
 
+            //Bug Scenario
+            //replace the gameCopy with the actual passed in game to introduce implementation
+            //level bug that does not use a copy of the game to find the answer but the actual
+            //passed in object. This becomes a good example of a test that makes more sense
+            //as a true unit test. 
+
             //we make a copy because its polite to not inadvertantly mess up 
             //someone elses object they pass in (in case of exceptions)
             var gameCopy = _ticTacToeFactory.NewGame(game.MoveHistory);

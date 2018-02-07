@@ -23,6 +23,7 @@ namespace Arcesoft.TicTacToe.DependencyInjection
             //game
             container.Register<ITicTacToeFactory, TicTacToeFactory>();
             container.Register<IGame, Game>();
+            container.Register<IBestMoveSelector, BestMoveSelector>();
 
             //data
             container.Register<IDatabaseBuilder, DatabaseBuilder>();

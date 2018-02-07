@@ -91,6 +91,7 @@
     <Compile Include="Data\MoveResponseRepositoryTests.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\BruteForceTests.cs" />
     <Compile Include="ArtificialIntelligence\Strategies\OmniscientGodTests.cs" />
+    <Compile Include="GameImplementation\BestMoveSelectorTests.cs" />
     <Compile Include="GameImplementation\BoardTests.cs" />
     <Compile Include="GameImplementation\GameTests.cs" />
     <Compile Include="GameImplementation\TicTacToeFactoryTests.cs" />

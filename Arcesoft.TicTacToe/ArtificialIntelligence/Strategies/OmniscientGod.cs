@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Arcesoft.TicTacToe.Entities;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
 using Arcesoft.TicTacToe.Data;
+using Arcesoft.TicTacToe.GameImplementation;
 
 namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
 {
@@ -15,12 +16,12 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
     internal class OmniscientGod : IArtificialIntelligence
     {
         private IMoveDataAccess _moveDataAccess;
-        private IRandom _random;
+        private IBestMoveSelector _bestMoveSelector;
 
-        public OmniscientGod(IMoveDataAccess moveDataAccess, IRandom random)
+        public OmniscientGod(IMoveDataAccess moveDataAccess, IBestMoveSelector bestMoveSelector)
         {
             _moveDataAccess = moveDataAccess;
-            _random = random;
+            _bestMoveSelector = bestMoveSelector;
         }
 
         public void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true)
@@ -31,18 +32,24 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
             }
 
             var moves = _moveDataAccess.FindMoveResponses(game.GameBoardString, game.CurrentPlayer);
-            MoveResponse moveResponse =
-                moves.Where(a => a.IsWin).RandomFromListOrDefault(_random) ??
-                moves.Where(a => a.IsTie).RandomFromListOrDefault(_random) ??
-                moves.Where(a => a.IsLoss).RandomFromListOrDefault(_random);
+            var moveResult = _bestMoveSelector.FindRandomBestMoveResultForPlayerOrDefault(moves, game.CurrentPlayer);
 
-            if (moveResponse == null)
+            if (randomlySelectIfMoreThanOne)
+            {
+                moveResult = _bestMoveSelector.FindRandomBestMoveResultForPlayerOrDefault(moves, game.CurrentPlayer);
+            }
+            else
+            {
+                moveResult = _bestMoveSelector.FindBestMoveResultsForPlayer(moves, game.CurrentPlayer).First();
+            }
+
+            if (moveResult == null)
             {
                 //this should NEVER happen if the game is not over. This is a true exceptional case
                 throw new Exception($"Unable to make a move because there are no available moves for game board {game.GameBoardString}. Possible corrupt move data access or game.");
             }
 
-            game.Move(moveResponse.Response);
+            game.Move(moveResult.MoveMade);
         }
 
         public IEnumerable<MoveResult> FindMoveResults(IGame game)

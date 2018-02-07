@@ -1,4 +1,5 @@
 ﻿using Arcesoft.TicTacToe.Entities;
+using Arcesoft.TicTacToe.GameImplementation;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,12 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
     internal class BruteForce : IArtificialIntelligence
     {
         private ITicTacToeFactory _ticTacToeFactory;
-        private readonly IRandom _random;
+        private IBestMoveSelector _bestMoveSelector;
 
-        public BruteForce(ITicTacToeFactory ticTacToeFactory, IRandom random)
+        public BruteForce(ITicTacToeFactory ticTacToeFactory,IBestMoveSelector bestMoveSelector)
         {
             _ticTacToeFactory = ticTacToeFactory;
-            _random = random;
+            _bestMoveSelector = bestMoveSelector;
         }
 
         public void MakeMove(IGame game, bool randomlySelectIfMoreThanOne = true)
@@ -33,9 +34,15 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
 
             var moveResults = FindMoveResultsRecursively(gameCopy);
 
-            var bestMoves = SelectBestMovesForPlayer(moveResults, gameCopy.CurrentPlayer);
-
-            var moveResult = randomlySelectIfMoreThanOne ? bestMoves.RandomFromListOrDefault(_random) : bestMoves.First();
+            IMoveResult moveResult;
+            if (randomlySelectIfMoreThanOne)
+            {
+                moveResult = _bestMoveSelector.FindRandomBestMoveResultForPlayerOrDefault(moveResults, gameCopy.CurrentPlayer);
+            }
+            else
+            {
+                moveResult = _bestMoveSelector.FindBestMoveResultsForPlayer(moveResults, gameCopy.CurrentPlayer).First();
+            }
 
             game.Move(moveResult.MoveMade);
         }
@@ -62,7 +69,8 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
                 }
                 else
                 {
-                    var bestMoveResultsForCurrentPlayer = SelectBestMovesForPlayer(FindMoveResultsRecursively(game), game.CurrentPlayer);
+                    var bestMoveResultsForCurrentPlayer = _bestMoveSelector
+                        .FindBestMoveResultsForPlayer(FindMoveResultsRecursively(game), game.CurrentPlayer);
 
                     //recurse to find this moves finale
                     gameMoveResults.Add(new MoveResult(move,
@@ -74,30 +82,5 @@ namespace Arcesoft.TicTacToe.ArtificialIntelligence.Strategies
 
             return gameMoveResults;
         }
-
-        #region Private
-
-        private IEnumerable<MoveResult> SelectBestMovesForPlayer(IEnumerable<MoveResult> gameMoveResults, Player player)
-        {
-            var winState = (player == Player.X) ? GameState.XWin : GameState.OWin;
-            var loseState = (player == Player.X) ? GameState.OWin : GameState.XWin;
-
-            //gotta know when to hold em...
-            var bestMoves = gameMoveResults.Where(a => a.GameStateAfterMove == winState);
-            if (bestMoves.Any())
-            {
-                return bestMoves;
-            }
-
-            bestMoves = gameMoveResults.Where(a => a.GameStateAfterMove == GameState.Tie);
-            if (bestMoves.Any())
-            {
-                return bestMoves;
-            }
-
-            return gameMoveResults.Where(a => a.GameStateAfterMove == loseState);
-        }
-
-        #endregion
     }
 }

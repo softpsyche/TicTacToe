@@ -53,6 +53,9 @@
     <Compile Include="Database\BoardStateComparer.cs" />
     <Compile Include="Database\ILiteDatabase.cs" />
     <Compile Include="Database\ILiteDatabaseFactory.cs" />
+    <Compile Include="Entities\IMoveResult.cs" />
+    <Compile Include="GameImplementation\BestMoveSelector.cs" />
+    <Compile Include="GameImplementation\IBestMoveSelector.cs" />
     <Compile Include="IDatabaseBuilder.cs" />
     <Compile Include="Database\IMoveEvaluator.cs" />
     <Compile Include="Database\LiteDatabase.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Entities\MoveResult.cs" />
     <Compile Include="Entities\Move.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="IMoveResultExtensions.cs" />
     <Compile Include="ITicTacToeFactory.cs" />
     <Compile Include="RandomNumberGeneration\DefaultRandomNumberGenerator.cs" />
     <Compile Include="RandomNumberGeneration\IRandom.cs" />

@@ -13,13 +13,6 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
         private readonly ITicTacToeFactory _gameFactory;
         private readonly IDatabaseBuilder _databaseBuilder;
 
-        private static class Commands
-        {
-            public const string NewGame = "n";
-            public const string AIGame = "a";
-            public const string Quit = "q";
-        }
-
         public UI(ITicTacToeFactory gameFactory, IDatabaseBuilder databaseBuilder)
         {
             _gameFactory = gameFactory;
@@ -103,6 +96,12 @@ namespace Arcesoft.TicTacToe.ConsoleApplication
                     ai = _gameFactory.NewArtificialIntelligence(ArtificialIntelligenceTypes.BruteForce);
                     break;
                 case AIMenu.OmniscientGod:
+                    //because some people were whining about it...
+                    if (_databaseBuilder.DatabaseIsEmpty())
+                    {
+                        Populate();
+                    }
+
                     ai = _gameFactory.NewArtificialIntelligence(ArtificialIntelligenceTypes.OmniscientGod);
                     break;
                 case UIMenu.Quit:

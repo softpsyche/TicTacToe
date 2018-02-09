@@ -28,6 +28,12 @@ namespace Arcesoft.TicTacToe.Database
             _moveRepository = moveRepository;
         }
 
+        public bool DatabaseIsEmpty()
+        {
+            //kind of a hack, but should work...
+            return _moveRepository.FindMoveResponses("_________", Entities.Player.X).Any() == false;
+        }
+
         public void PopulateMoveResponses(IGame game = null)
         {
             var moveResponses = _moveEvaluator.FindAllMoves(game ?? _ticTacToeFactory.NewGame())

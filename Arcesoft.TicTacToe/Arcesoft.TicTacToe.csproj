@@ -84,7 +84,6 @@
     <Compile Include="Entities\MoveResult.cs" />
     <Compile Include="Entities\Move.cs" />
     <Compile Include="Entities\Player.cs" />
-    <Compile Include="IMoveResultExtensions.cs" />
     <Compile Include="ITicTacToeFactory.cs" />
     <Compile Include="RandomNumberGeneration\DefaultRandomNumberGenerator.cs" />
     <Compile Include="RandomNumberGeneration\IRandom.cs" />

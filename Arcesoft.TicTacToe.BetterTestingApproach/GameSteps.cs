@@ -199,17 +199,14 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         public void GivenISetupTheMockILiteDatabaseToFindTheFollowingMoveResponses(Table table)
         {
             var moveResponseRecords = table.CreateSet<MoveResponseRecord>();
-            //var id = moveResponseRecords.Select(a => a.Id).Distinct().SingleOrDefault();
-
 
             Func<Expression<Func<MoveResponseRecord, bool>>, bool> verifyingFunk = (expression) =>
              {
                  return true;
-                //return id.Equals(expression.Compile().Invoke(new MoveResponseRecord()));
             };
 
+            //this can be easier make it easire please
             MockLiteDatabase
-                //.Setup(a => a.FindByIndex(It.IsAny<Expression<Func<MoveResponseRecord, bool>>>()))
                 .Setup(a => a.FindByIndex(It.Is<Expression<Func<MoveResponseRecord, bool>>>(b => verifyingFunk(b))))
                 .Returns(moveResponseRecords);
         }

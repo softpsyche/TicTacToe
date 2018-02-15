@@ -192,12 +192,9 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         [Given(@"I setup the mock IMoveResponseRepository\.FindMoveResponses method to return the following MoveResponses for game board ""(.*)"" and player ""(.*)""")]
         public void GivenISetupTheMockIMoveResponseRepository_FindMoveResponsesMethodToReturnTheFollowingMoveResponsesForGameBoardAndPlayer(string board, Player player, Table table)
         {
-            var moveResponseRecords = table.CreateSet<MoveResponse>();
-
-            //this can be easier make it easire please
             MockMoveResponseRepository
                 .Setup(a => a.FindMoveResponses(board, player))
-                .Returns(moveResponseRecords);
+                .Returns(table.CreateSet<MoveResponse>());
         }
 
         [Given(@"I mock the ILiteDatabase")]

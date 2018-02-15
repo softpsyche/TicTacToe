@@ -5,7 +5,7 @@ Feature: OmniscientGod
 
 Background: 
 	Given I have a container
-	Given I mock the ILiteDatabase
+	Given I mock the IMoveResponseRepository
 	Given I have a tictactoe factory
 	Given I have the artificial intelligence 'OmniscientGod'
 
@@ -25,18 +25,18 @@ Scenario: Omniscient god AI should throw exception when making move is game is a
 
 Scenario: Omniscient god AI should raise error when no available moves are found
 	Given I start a new game
-	Given I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses
-		| Board     | Player | Response | Outcome |
-		| ____X____ | O      | Eastern  | XWin    |
+	#Given I setup the mock IMoveResponseRepository.FindMoveResponses method to return the following MoveResponses for game board "_________" and player "X"
+	#	| Board     | Player | Response | Outcome |
+	#	| ____X____ | O      | Eastern  | XWin    |
 	Given I expect an exception to be thrown
 	When I have the AI make the next random best move
 	Then I expect the following Exception to be thrown
-         | Message                                         |
+         | Message                                                                                                                         |
          | Unable to make a move because there are no available moves for game board _________. Possible corrupt move data access or game. |
 
 Scenario: Omniscient god AI should select winning X move
 	Given I start a new game
-	Given I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses
+	Given I setup the mock IMoveResponseRepository.FindMoveResponses method to return the following MoveResponses for game board "_________" and player "X"
 		| Board     | Player | Response | Outcome |
 		| _________ | X      | Eastern  | XWin    |
 		| _________ | X      | Southern | Tie     |
@@ -46,7 +46,7 @@ Scenario: Omniscient god AI should select winning X move
 
 Scenario: Omniscient god AI should select tie X move
 	Given I start a new game
-	Given I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses
+	Given I setup the mock IMoveResponseRepository.FindMoveResponses method to return the following MoveResponses for game board "_________" and player "X"
 		| Board     | Player | Response | Outcome |
 		| _________ | X      | Eastern  | OWin    |
 		| _________ | X      | Southern | Tie     |
@@ -56,7 +56,7 @@ Scenario: Omniscient god AI should select tie X move
 
 Scenario: Omniscient god AI should select losing X move
 	Given I start a new game
-	Given I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses
+	Given I setup the mock IMoveResponseRepository.FindMoveResponses method to return the following MoveResponses for game board "_________" and player "X"
 		| Board     | Player | Response | Outcome |
 		| _________ | X      | Eastern  | OWin    |
 		| _________ | X      | Southern | OWin    |
@@ -68,7 +68,7 @@ Scenario: Omniscient god AI should select winning O move
 	Given I start a new game with the following moves
 		| Move   |
 		| Center |
-	Given I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses
+	Given I setup the mock IMoveResponseRepository.FindMoveResponses method to return the following MoveResponses for game board "____X____" and player "O"
 		| Board     | Player | Response | Outcome |
 		| ____X____ | O      | Eastern  | XWin    |
 		| ____X____ | O      | Southern | Tie     |
@@ -80,7 +80,7 @@ Scenario: Omniscient god AI should select tie O move
 	Given I start a new game with the following moves
 		| Move   |
 		| Center |
-	Given I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses
+	Given I setup the mock IMoveResponseRepository.FindMoveResponses method to return the following MoveResponses for game board "____X____" and player "O"
 		| Board     | Player | Response | Outcome |
 		| ____X____ | O      | Eastern  | XWin    |
 		| ____X____ | O      | Southern | Tie     |
@@ -92,7 +92,7 @@ Scenario: Omniscient god AI should select losing O move
 	Given I start a new game with the following moves
 		| Move   |
 		| Center |
-	Given I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses
+	Given I setup the mock IMoveResponseRepository.FindMoveResponses method to return the following MoveResponses for game board "____X____" and player "O"
 		| Board     | Player | Response | Outcome |
 		| ____X____ | O      | Eastern  | XWin    |
 		| ____X____ | O      | Southern | XWin    |
@@ -100,20 +100,20 @@ Scenario: Omniscient god AI should select losing O move
 	When I have the AI make the next random best move
 	Then The last move made should be one of the following moves 'Eastern,Southern,Northern'
 
-
 Scenario: Omniscient god AI should find move results
 	Given I start a new game with the following moves
 		| Move   |
 		| Center |
-	Given I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses
+	Given I setup the mock IMoveResponseRepository.FindMoveResponses method to return the following MoveResponses for game board "____X____" and player "O"
 		| Board     | Player | Response | Outcome |
 		| ____X____ | O      | Southern | Tie     |
 		| ____X____ | O      | Western  | XWin    |
-		| ____X____ | X      | Eastern  | Tie     |
+		| ____X____ | O      | Eastern  | Tie     |
 	When I have the AI find move results for the current game
 	Then The move results should contain the following
          | MoveMade | GameStateAfterMove |
          | Southern | Tie                |
          | Western  | XWin               |
+         | Eastern  | Tie                |
 
 

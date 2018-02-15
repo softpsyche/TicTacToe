@@ -139,6 +139,18 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             }
         }
 
+        protected Mock<IMoveResponseRepository> MockMoveResponseRepository
+        {
+            get
+            {
+                return GetScenarioContextItemOrDefault<Mock<IMoveResponseRepository>>(nameof(MockMoveResponseRepository));
+            }
+            set
+            {
+                CurrentContext.Set(value, nameof(MockMoveResponseRepository));
+            }
+        }
+
         protected Mock<ILiteDatabaseFactory> MockLiteDatabaseFactory
         {
             get

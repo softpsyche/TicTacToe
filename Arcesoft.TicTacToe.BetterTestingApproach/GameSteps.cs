@@ -181,6 +181,25 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             MoveResults.Should().BeEmpty();
         }
 
+        [Given(@"I mock the IMoveResponseRepository")]
+        public void GivenIMockTheIMoveResponseRepository()
+        {
+            MockMoveResponseRepository = new Mock<IMoveResponseRepository>();
+
+            Container.RegisterSingleton(MockMoveResponseRepository.Object);
+        }
+
+        [Given(@"I setup the mock IMoveResponseRepository\.FindMoveResponses method to return the following MoveResponses for game board ""(.*)"" and player ""(.*)""")]
+        public void GivenISetupTheMockIMoveResponseRepository_FindMoveResponsesMethodToReturnTheFollowingMoveResponsesForGameBoardAndPlayer(string board, Player player, Table table)
+        {
+            var moveResponseRecords = table.CreateSet<MoveResponse>();
+
+            //this can be easier make it easire please
+            MockMoveResponseRepository
+                .Setup(a => a.FindMoveResponses(board, player))
+                .Returns(moveResponseRecords);
+        }
+
         [Given(@"I mock the ILiteDatabase")]
         public void GivenIMockTheILiteDatabase()
         {
@@ -195,20 +214,5 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         }
 
 
-        [Given(@"I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses")]
-        public void GivenISetupTheMockILiteDatabaseToFindTheFollowingMoveResponses(Table table)
-        {
-            var moveResponseRecords = table.CreateSet<MoveResponseRecord>();
-
-            Func<Expression<Func<MoveResponseRecord, bool>>, bool> verifyingFunk = (expression) =>
-             {
-                 return true;
-            };
-
-            //this can be easier make it easire please
-            MockLiteDatabase
-                .Setup(a => a.FindByIndex(It.Is<Expression<Func<MoveResponseRecord, bool>>>(b => verifyingFunk(b))))
-                .Returns(moveResponseRecords);
-        }
     }
 }

@@ -102,8 +102,6 @@ namespace Arcesoft.TicTacToe.GameImplementation
         {
             _board.Clear();
 
-            //Bug Scenario
-            //comment out this line to make reset not clear out moves, introducing a bug. 
             _moves.Clear();
 
             OnGameStateChanged(GameChange.Reset);
@@ -170,17 +168,21 @@ namespace Arcesoft.TicTacToe.GameImplementation
                     //Bug Scenario
                     //introduce a weird bug that fails to add a move if the legalMoves count is 6
                     //by commenting out the one line and uncommenting out the one below
-                    //if (legalMoves.Count != 6)
-                    //{
-                    //    legalMoves.Add(move);
-                    //}
-
+#if (THIRD)
+                    if (legalMoves.Count != 6)
+                    {
+                        legalMoves.Add(move);
+                    }
+#else
                     legalMoves.Add(move);
+#endif
+
+
                 }
             }
 
 			return legalMoves;
 		}
-        #endregion
+#endregion
     }
 }

@@ -95,18 +95,26 @@ namespace Arcesoft.TicTacToe.GameImplementation
                 return;
             if (CheckAndSetBoardStateForLine(0, 4, 8))
                 return;
+            //Bug Scenario 1:  introduce bug where win is not found
+#if(!FIRST)
             if (CheckAndSetBoardStateForLine(6, 4, 2))
                 return;
-            //Bug Scenario
-            //Comment out the if statement above to introduce bug where win is not found
+#endif
 
-            //Bug Scenario:
+
+
+
+            //Bug Scenario: introduce this bug that allows a win for
             //uncomment code below to introduce this bug that allows a win for
             //  X__
             //  X__
             //  __X
-            //if (CheckAndSetBoardStateForLine(0, 3, 8))
-            //    return;
+#if (SECOND)
+            if (CheckAndSetBoardStateForLine(0, 3, 8))
+                return;
+#endif
+
+
 
             boardState = IsFull ? GameState.Tie : GameState.InPlay;
         }
@@ -130,6 +138,6 @@ namespace Arcesoft.TicTacToe.GameImplementation
 
             return false;
         }
-        #endregion
+#endregion
     }
 }

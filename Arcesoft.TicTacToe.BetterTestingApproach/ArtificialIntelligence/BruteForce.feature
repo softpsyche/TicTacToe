@@ -21,12 +21,12 @@ Scenario: Brute force AI should find no moves if game is already over
 	When I have the AI find move results for the current game
 	Then The move results should be empty
 
-#This is a pretty slow test...Left here as an example on how this sort of 
+#This is a pretty slow test (1 sec)...Left here as an example on how this sort of 
 #testing can create a tax on performance even though its still a test that does not cross any
 #process boundaries.
 #it is perhaps a bad test if we consider we have some other options to get similar
-#coverage that might be faster.
-#however, this also proves that moving first in tic tac toe is preferable...
+#coverage that might be faster. 
+#However, it is a pretty darn good test and can catch quite a bit of bugs
 Scenario: Brute force AI should find tie move results for game as player X
 	Given I start a new game
 	When I have the AI find move results for the current game

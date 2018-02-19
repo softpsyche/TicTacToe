@@ -12,10 +12,6 @@ namespace Arcesoft.TicTacToe
     /// </summary>
     public interface IGame
     {
-        event EventHandler GameOver;
-        event EventHandler GameReset;
-        event EventHandler<GameStateChangedEventArgs> GameStateChanged;
-
         /// <summary>
         /// Gets a string representation of the game with 'X', 'O' and '_' as empty space.
         /// The board is represented from the top left being the 0 index of the string
@@ -24,6 +20,12 @@ namespace Arcesoft.TicTacToe
         ///             012
         ///             345
         ///             678
+        ///             
+        /// Example:
+        ///             ___
+        ///             _X_
+        ///             __O
+        /// Becomes: "____X___O"
         /// </summary>
         string GameBoardString { get; }
         /// <summary>
@@ -76,5 +78,20 @@ namespace Arcesoft.TicTacToe
         /// <exception cref="GameException">If the game has no moves made, an exception will be thrown</exception>
         /// <remarks>Will raise a GameStateChangedEvent</remarks>
         void UndoLastMove();
+
+        #region Events
+        /// <summary>
+        /// Raised when the game is over
+        /// </summary>
+        event EventHandler GameOver;
+        /// <summary>
+        /// Raised when the game is reset
+        /// </summary>
+        event EventHandler GameReset;
+        /// <summary>
+        /// Raised when the game state changes due to a Move, UndoMove or Reset.
+        /// </summary>
+        event EventHandler<GameStateChangedEventArgs> GameStateChanged;
+        #endregion
     }
 }

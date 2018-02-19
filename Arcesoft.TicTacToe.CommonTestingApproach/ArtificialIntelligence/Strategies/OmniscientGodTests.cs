@@ -52,6 +52,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                 .ShouldThrow<GameException>()
                 .WithMessage($"Unable to make a move because the game is over.");
         }
+
         [TestMethod]
         public void MakeMoveShouldMakeWinningMoveForX()
         {
@@ -219,7 +220,6 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
             GameMock
                 .Verify(a => a.Move(Move.Northern), Times.Once());
         }
-
 
         [TestMethod]
         public void MakeMoveShouldMakeWinningMoveForO()

@@ -90,7 +90,7 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach.ArtificialIntelligence
 #line 7
  testRunner.Given("I have a container", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.Given("I mock the ILiteDatabase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I mock the IMoveResponseRepository", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
  testRunner.Given("I have a tictactoe factory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
@@ -156,32 +156,18 @@ this.ScenarioSetup(scenarioInfo);
 this.FeatureBackground();
 #line 27
  testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Board",
-                        "Player",
-                        "Response",
-                        "Outcome"});
-            table3.AddRow(new string[] {
-                        "____X____",
-                        "O",
-                        "Eastern",
-                        "XWin"});
-#line 28
- testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
-                    "ponses", ((string)(null)), table3, "Given ");
 #line 31
  testRunner.Given("I expect an exception to be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 32
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
-            table4.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Unable to make a move because there are no available moves for game board _______" +
                             "__. Possible corrupt move data access or game."});
 #line 33
- testRunner.Then("I expect the following Exception to be thrown", ((string)(null)), table4, "Then ");
+ testRunner.Then("I expect the following Exception to be thrown", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -201,29 +187,29 @@ this.FeatureBackground();
 #line 38
  testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Board",
                         "Player",
                         "Response",
                         "Outcome"});
-            table5.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "_________",
                         "X",
                         "Eastern",
                         "XWin"});
-            table5.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "_________",
                         "X",
                         "Southern",
                         "Tie"});
-            table5.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "_________",
                         "X",
                         "Northern",
                         "OWin"});
 #line 39
- testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
-                    "ponses", ((string)(null)), table5, "Given ");
+ testRunner.Given("I setup the mock IMoveResponseRepository.FindMoveResponses method to return the f" +
+                    "ollowing MoveResponses for game board \"_________\" and player \"X\"", ((string)(null)), table4, "Given ");
 #line 44
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 45
@@ -247,29 +233,29 @@ this.FeatureBackground();
 #line 48
  testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Board",
                         "Player",
                         "Response",
                         "Outcome"});
-            table6.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "_________",
                         "X",
                         "Eastern",
                         "OWin"});
-            table6.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "_________",
                         "X",
                         "Southern",
                         "Tie"});
-            table6.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "_________",
                         "X",
                         "Northern",
                         "OWin"});
 #line 49
- testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
-                    "ponses", ((string)(null)), table6, "Given ");
+ testRunner.Given("I setup the mock IMoveResponseRepository.FindMoveResponses method to return the f" +
+                    "ollowing MoveResponses for game board \"_________\" and player \"X\"", ((string)(null)), table5, "Given ");
 #line 54
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 55
@@ -293,29 +279,29 @@ this.FeatureBackground();
 #line 58
  testRunner.Given("I start a new game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Board",
                         "Player",
                         "Response",
                         "Outcome"});
-            table7.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "_________",
                         "X",
                         "Eastern",
                         "OWin"});
-            table7.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "_________",
                         "X",
                         "Southern",
                         "OWin"});
-            table7.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "_________",
                         "X",
                         "Northern",
                         "OWin"});
 #line 59
- testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
-                    "ponses", ((string)(null)), table7, "Given ");
+ testRunner.Given("I setup the mock IMoveResponseRepository.FindMoveResponses method to return the f" +
+                    "ollowing MoveResponses for game board \"_________\" and player \"X\"", ((string)(null)), table6, "Given ");
 #line 64
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 65
@@ -338,36 +324,36 @@ this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Move"});
-            table8.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "Center"});
 #line 68
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table8, "Given ");
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table7, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Board",
                         "Player",
                         "Response",
                         "Outcome"});
-            table9.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Eastern",
                         "XWin"});
-            table9.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Southern",
                         "Tie"});
-            table9.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Northern",
                         "OWin"});
 #line 71
- testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
-                    "ponses", ((string)(null)), table9, "Given ");
+ testRunner.Given("I setup the mock IMoveResponseRepository.FindMoveResponses method to return the f" +
+                    "ollowing MoveResponses for game board \"____X____\" and player \"O\"", ((string)(null)), table8, "Given ");
 #line 76
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 77
@@ -389,36 +375,36 @@ this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Move"});
-            table10.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Center"});
 #line 80
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table10, "Given ");
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table9, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Board",
                         "Player",
                         "Response",
                         "Outcome"});
-            table11.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Eastern",
                         "XWin"});
-            table11.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Southern",
                         "Tie"});
-            table11.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Northern",
                         "XWin"});
 #line 83
- testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
-                    "ponses", ((string)(null)), table11, "Given ");
+ testRunner.Given("I setup the mock IMoveResponseRepository.FindMoveResponses method to return the f" +
+                    "ollowing MoveResponses for game board \"____X____\" and player \"O\"", ((string)(null)), table10, "Given ");
 #line 88
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 89
@@ -440,36 +426,36 @@ this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Move"});
-            table12.AddRow(new string[] {
+            table11.AddRow(new string[] {
                         "Center"});
 #line 92
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table12, "Given ");
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table11, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Board",
                         "Player",
                         "Response",
                         "Outcome"});
-            table13.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Eastern",
                         "XWin"});
-            table13.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Southern",
                         "XWin"});
-            table13.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Northern",
                         "XWin"});
 #line 95
- testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
-                    "ponses", ((string)(null)), table13, "Given ");
+ testRunner.Given("I setup the mock IMoveResponseRepository.FindMoveResponses method to return the f" +
+                    "ollowing MoveResponses for game board \"____X____\" and player \"O\"", ((string)(null)), table12, "Given ");
 #line 100
  testRunner.When("I have the AI make the next random best move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 101
@@ -487,55 +473,58 @@ this.FeatureBackground();
         public virtual void OmniscientGodAIShouldFindMoveResults()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Omniscient god AI should find move results", ((string[])(null)));
-#line 104
+#line 103
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Move"});
-            table14.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Center"});
-#line 105
- testRunner.Given("I start a new game with the following moves", ((string)(null)), table14, "Given ");
+#line 104
+ testRunner.Given("I start a new game with the following moves", ((string)(null)), table13, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Board",
                         "Player",
                         "Response",
                         "Outcome"});
-            table15.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Southern",
                         "Tie"});
-            table15.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "____X____",
                         "O",
                         "Western",
                         "XWin"});
-            table15.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "____X____",
-                        "X",
+                        "O",
                         "Eastern",
                         "Tie"});
-#line 108
- testRunner.Given("I setup the mock ILiteDatabase.FindByIndex method to return the following MoveRes" +
-                    "ponses", ((string)(null)), table15, "Given ");
-#line 113
+#line 107
+ testRunner.Given("I setup the mock IMoveResponseRepository.FindMoveResponses method to return the f" +
+                    "ollowing MoveResponses for game board \"____X____\" and player \"O\"", ((string)(null)), table14, "Given ");
+#line 112
  testRunner.When("I have the AI find move results for the current game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "MoveMade",
                         "GameStateAfterMove"});
-            table16.AddRow(new string[] {
+            table15.AddRow(new string[] {
                         "Southern",
                         "Tie"});
-            table16.AddRow(new string[] {
+            table15.AddRow(new string[] {
                         "Western",
                         "XWin"});
-#line 114
- testRunner.Then("The move results should contain the following", ((string)(null)), table16, "Then ");
+            table15.AddRow(new string[] {
+                        "Eastern",
+                        "Tie"});
+#line 113
+ testRunner.Then("The move results should contain the following", ((string)(null)), table15, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

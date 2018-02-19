@@ -24,6 +24,8 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
         //SUT
         private OmniscientGod OmniscientGod { get; set; }
 
+        private string AGameBoardString = "Wubalubadubdub";
+
         [TestInitialize]
         public void Initialize()
         {
@@ -50,6 +52,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                 .ShouldThrow<GameException>()
                 .WithMessage($"Unable to make a move because the game is over.");
         }
+
         [TestMethod]
         public void MakeMoveShouldMakeWinningMoveForX()
         {
@@ -60,38 +63,38 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns("MrGiggidy");
+                .Returns(AGameBoardString);
 
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Entities.Player.X);
+                .Returns(Player.X);
 
             var moveResponses = new MoveResponse[]
                 {
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Northern,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Northern,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Center,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Center,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Southern,
-                        Outcome = Entities.GameState.Tie,
+                        Response = Move.Southern,
+                        Outcome = GameState.Tie,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     }
                 };
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses("MrGiggidy", Entities.Player.X))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.X))
                 .Returns(moveResponses);
 
             RandomMock
@@ -103,7 +106,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             //assert
             GameMock
-                .Verify(a => a.Move(Entities.Move.Northern), Times.Once());
+                .Verify(a => a.Move(Move.Northern), Times.Once());
         }
 
         [TestMethod]
@@ -116,38 +119,38 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns("MrGiggidy");
+                .Returns(AGameBoardString);
 
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Entities.Player.X);
+                .Returns(Player.X);
 
             var moveResponses = new MoveResponse[]
                 {
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Northern,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Northern,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Center,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Center,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Southern,
-                        Outcome = Entities.GameState.Tie,
+                        Response = Move.Southern,
+                        Outcome = GameState.Tie,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     }
                 };
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses("MrGiggidy", Entities.Player.X))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.X))
                 .Returns(moveResponses);
 
             RandomMock
@@ -159,7 +162,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             //assert
             GameMock
-                .Verify(a => a.Move(Entities.Move.Southern), Times.Once());
+                .Verify(a => a.Move(Move.Southern), Times.Once());
         }
 
         [TestMethod]
@@ -172,38 +175,38 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns("MrGiggidy");
+                .Returns(AGameBoardString);
 
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Entities.Player.X);
+                .Returns(Player.X);
 
             var moveResponses = new MoveResponse[]
                 {
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Northern,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Northern,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Center,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Center,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Southern,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Southern,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     }
                 };
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses("MrGiggidy", Entities.Player.X))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.X))
                 .Returns(moveResponses);
 
             RandomMock
@@ -215,9 +218,8 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             //assert
             GameMock
-                .Verify(a => a.Move(Entities.Move.Northern), Times.Once());
+                .Verify(a => a.Move(Move.Northern), Times.Once());
         }
-
 
         [TestMethod]
         public void MakeMoveShouldMakeWinningMoveForO()
@@ -229,38 +231,38 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns("MrGiggidy");
+                .Returns(AGameBoardString);
 
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Entities.Player.O);
+                .Returns(Player.O);
 
             var moveResponses = new MoveResponse[]
                 {
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Northern,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Northern,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Center,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Center,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Southern,
-                        Outcome = Entities.GameState.Tie,
+                        Response = Move.Southern,
+                        Outcome = GameState.Tie,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     }
                 };
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses("MrGiggidy", Entities.Player.O))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.O))
                 .Returns(moveResponses);
 
             RandomMock
@@ -272,7 +274,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             //assert
             GameMock
-                .Verify(a => a.Move(Entities.Move.Center), Times.Once());
+                .Verify(a => a.Move(Move.Center), Times.Once());
         }
 
         [TestMethod]
@@ -285,38 +287,38 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns("MrGiggidy");
+                .Returns(AGameBoardString);
 
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Entities.Player.O);
+                .Returns(Player.O);
 
             var moveResponses = new MoveResponse[]
                 {
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Northern,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Northern,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Center,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Center,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Southern,
-                        Outcome = Entities.GameState.Tie,
+                        Response = Move.Southern,
+                        Outcome = GameState.Tie,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     }
                 };
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses("MrGiggidy", Entities.Player.O))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.O))
                 .Returns(moveResponses);
 
             RandomMock
@@ -328,7 +330,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             //assert
             GameMock
-                .Verify(a => a.Move(Entities.Move.Southern), Times.Once());
+                .Verify(a => a.Move(Move.Southern), Times.Once());
         }
 
         [TestMethod]
@@ -341,38 +343,38 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns("MrGiggidy");
+                .Returns(AGameBoardString);
 
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Entities.Player.O);
+                .Returns(Player.O);
 
             var moveResponses = new MoveResponse[]
                 {
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Northern,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Northern,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Center,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Center,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Southern,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Southern,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.O
+                        Player = Player.O
                     }
                 };
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses("MrGiggidy", Entities.Player.O))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.O))
                 .Returns(moveResponses);
 
             RandomMock
@@ -384,7 +386,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             //assert
             GameMock
-                .Verify(a => a.Move(Entities.Move.Northern), Times.Once());
+                .Verify(a => a.Move(Move.Northern), Times.Once());
         }
 
         [TestMethod]
@@ -393,38 +395,38 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
             //arrange
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns("MrGiggidy");
+                .Returns(AGameBoardString);
 
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Entities.Player.X);
+                .Returns(Player.X);
 
             var moveResponses = new MoveResponse[]
                 {
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Northern,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Northern,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Center,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Center,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Southern,
-                        Outcome = Entities.GameState.Tie,
+                        Response = Move.Southern,
+                        Outcome = GameState.Tie,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     }
                 };
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses("MrGiggidy", Entities.Player.X))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.X))
                 .Returns(moveResponses);
 
             //act

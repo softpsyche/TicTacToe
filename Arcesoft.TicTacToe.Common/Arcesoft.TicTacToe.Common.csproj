@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContainerExtensions.cs" />
     <Compile Include="ConventionBinder.cs" />
     <Compile Include="IBinder.cs" />
     <Compile Include="IEnumerableExtensions.cs" />

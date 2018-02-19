@@ -1,4 +1,5 @@
 ﻿using Arcesoft.TicTacToe.Data;
+using Arcesoft.TicTacToe.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,6 +27,12 @@ namespace Arcesoft.TicTacToe.Database
             _ticTacToeFactory = ticTacToeFactory;
             _moveEvaluator = moveEvaluator;
             _moveRepository = moveRepository;
+        }
+
+        public bool DatabaseIsEmpty()
+        {
+            //kind of a hack, but should work...
+            return _moveRepository.FindMoveResponses("_________", Player.X).Any() == false;
         }
 
         public void PopulateMoveResponses(IGame game = null)

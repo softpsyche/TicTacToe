@@ -135,7 +135,6 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.GameImplementation
             var moveResults = new[]
             {
                 new MoveResult(Move.Center, GameState.Tie),
-                new MoveResult(Move.Northern, GameState.OWin),
                 new MoveResult(Move.Southern, GameState.Tie),
                 new MoveResult(Move.Eastern, GameState.XWin),
             };

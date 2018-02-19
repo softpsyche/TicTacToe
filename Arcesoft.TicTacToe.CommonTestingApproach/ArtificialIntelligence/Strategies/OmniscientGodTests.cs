@@ -64,10 +64,9 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                 .Setup(a => a.GameIsOver)
                 .Returns(false);
 
-            var aBoardPosition = "Giggidy";
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns(aBoardPosition);
+                .Returns(AGameBoardString);
 
             var aPlayer = Player.X;
             GameMock
@@ -76,7 +75,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             var moveResponses = new MoveResponse[0];
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(aBoardPosition, aPlayer))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, aPlayer))
                 .Returns(moveResponses);
 
             MoveResult moveResult = null;
@@ -90,7 +89,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
             //assert
             act
                 .ShouldThrow<Exception>()
-                .WithMessage("Unable to make a move because there are no available moves for game board Giggidy. Possible corrupt move data access or game.");
+                .WithMessage("Unable to make a move because there are no available moves for game board Wubalubadubdub. Possible corrupt move data access or game.");
         }
 
         [TestMethod]
@@ -101,10 +100,9 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                 .Setup(a => a.GameIsOver)
                 .Returns(false);
 
-            var aBoardPosition = "Giggidy";
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns(aBoardPosition);
+                .Returns(AGameBoardString);
 
             var aPlayer = Player.X;
             GameMock
@@ -113,7 +111,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             var moveResponses = new MoveResponse[0];
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(aBoardPosition, aPlayer))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, aPlayer))
                 .Returns(moveResponses);
 
             var moveResult = new MoveResult(Move.Northern, GameState.XWin);
@@ -137,10 +135,9 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                 .Setup(a => a.GameIsOver)
                 .Returns(false);
 
-            var aBoardPosition = "Giggidy";
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns(aBoardPosition);
+                .Returns(AGameBoardString);
 
             var aPlayer = Player.X;
             GameMock
@@ -149,7 +146,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
 
             var moveResponses = new MoveResponse[0];
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(aBoardPosition, aPlayer))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, aPlayer))
                 .Returns(moveResponses);
 
             var moveResult = new MoveResult(Move.Northern, GameState.XWin);

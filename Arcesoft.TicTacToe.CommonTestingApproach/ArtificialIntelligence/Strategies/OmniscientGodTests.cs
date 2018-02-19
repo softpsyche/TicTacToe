@@ -25,6 +25,8 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
         //SUT
         private OmniscientGod OmniscientGod { get; set; }
 
+        private string AGameBoardString = "Wubalubadubdub";
+
         [TestInitialize]
         public void Initialize()
         {
@@ -170,38 +172,38 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
             //arrange
             GameMock
                 .Setup(a => a.GameBoardString)
-                .Returns("MrGiggidy");
+                .Returns(AGameBoardString);
 
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Entities.Player.X);
+                .Returns(Player.X);
 
             var moveResponses = new MoveResponse[]
                 {
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Northern,
-                        Outcome = Entities.GameState.XWin,
+                        Response = Move.Northern,
+                        Outcome = GameState.XWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Center,
-                        Outcome = Entities.GameState.OWin,
+                        Response = Move.Center,
+                        Outcome = GameState.OWin,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     },
                     new MoveResponse()
                     {
-                        Response = Entities.Move.Southern,
-                        Outcome = Entities.GameState.Tie,
+                        Response = Move.Southern,
+                        Outcome = GameState.Tie,
                         Board = "_________",
-                        Player = Entities.Player.X
+                        Player = Player.X
                     }
                 };
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses("MrGiggidy", Entities.Player.X))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.X))
                 .Returns(moveResponses);
 
             //act

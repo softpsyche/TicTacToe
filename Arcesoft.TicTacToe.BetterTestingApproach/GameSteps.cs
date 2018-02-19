@@ -181,6 +181,22 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
             MoveResults.Should().BeEmpty();
         }
 
+        [Given(@"I mock the IMoveResponseRepository")]
+        public void GivenIMockTheIMoveResponseRepository()
+        {
+            MockMoveResponseRepository = new Mock<IMoveResponseRepository>();
+
+            Container.RegisterSingleton(MockMoveResponseRepository.Object);
+        }
+
+        [Given(@"I setup the mock IMoveResponseRepository\.FindMoveResponses method to return the following MoveResponses for game board ""(.*)"" and player ""(.*)""")]
+        public void GivenISetupTheMockIMoveResponseRepository_FindMoveResponsesMethodToReturnTheFollowingMoveResponsesForGameBoardAndPlayer(string board, Player player, Table table)
+        {
+            MockMoveResponseRepository
+                .Setup(a => a.FindMoveResponses(board, player))
+                .Returns(table.CreateSet<MoveResponse>());
+        }
+
         [Given(@"I mock the ILiteDatabase")]
         public void GivenIMockTheILiteDatabase()
         {
@@ -195,23 +211,5 @@ namespace Arcesoft.TicTacToe.BetterTestingApproach
         }
 
 
-        [Given(@"I setup the mock ILiteDatabase.FindByIndex method to return the following MoveResponses")]
-        public void GivenISetupTheMockILiteDatabaseToFindTheFollowingMoveResponses(Table table)
-        {
-            var moveResponseRecords = table.CreateSet<MoveResponseRecord>();
-            //var id = moveResponseRecords.Select(a => a.Id).Distinct().SingleOrDefault();
-
-
-            Func<Expression<Func<MoveResponseRecord, bool>>, bool> verifyingFunk = (expression) =>
-             {
-                 return true;
-                //return id.Equals(expression.Compile().Invoke(new MoveResponseRecord()));
-            };
-
-            MockLiteDatabase
-                //.Setup(a => a.FindByIndex(It.IsAny<Expression<Func<MoveResponseRecord, bool>>>()))
-                .Setup(a => a.FindByIndex(It.Is<Expression<Func<MoveResponseRecord, bool>>>(b => verifyingFunk(b))))
-                .Returns(moveResponseRecords);
-        }
     }
 }

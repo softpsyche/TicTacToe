@@ -1,5 +1,6 @@
 ﻿using Arcesoft.TicTacToe.ArtificialIntelligence.Strategies;
 using Arcesoft.TicTacToe.Entities;
+using Arcesoft.TicTacToe.GameImplementation;
 using Arcesoft.TicTacToe.RandomNumberGeneration;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,7 +18,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
     public class BruteForceTests
     {
         private Mock<ITicTacToeFactory> TicTacToeFactoryMock { get; set; }
-        private Mock<IRandom> RandomMock { get; set; }
+        private Mock<IBestMoveSelector> BestMoveSelectorMock { get; set; }
         private Mock<IGame> GameMock { get; set; }
 
         //SUT
@@ -27,10 +28,12 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
         public void Initialize()
         {
             TicTacToeFactoryMock = new Mock<ITicTacToeFactory>();
-            RandomMock = new Mock<IRandom>();
+            BestMoveSelectorMock = new Mock<IBestMoveSelector>();
             GameMock = new Mock<IGame>();
 
-            BruteForce = new BruteForce(TicTacToeFactoryMock.Object, RandomMock.Object);
+            BruteForce = new BruteForce(
+                TicTacToeFactoryMock.Object,
+                BestMoveSelectorMock.Object);
         }
 
         [TestMethod]
@@ -48,420 +51,6 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
             act
                 .ShouldThrow<GameException>()
                 .WithMessage($"Unable to make a move because the game is over.");
-        }
-
-        [TestMethod]
-        public void MakeMoveShouldMakeWinningMoveForXRandomly()
-        {
-            //arrange
-            //setup a mock for the initial object..
-            Move[] initialGameMoveArray = new Move[1];
-            Mock<IGame> initialGame = new Mock<IGame>();
-            initialGame
-                .Setup(a => a.MoveHistory)
-                .Returns(initialGameMoveArray);
-
-            TicTacToeFactoryMock
-                .Setup(a => a.NewGame(initialGameMoveArray))
-                .Returns(GameMock.Object);
-
-            //setup the game mock that will drive the rest of our choices
-            List<Move> legalMoves = new List<Move>()
-            {
-                Move.Northern,
-                Move.Center,
-                Move.Southern
-            };
-            GameMock
-                .Setup(a => a.GetLegalMoves())
-                .Returns(legalMoves);
-
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(true);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.X);
-
-            var callCount = 0;
-            GameMock
-                .Setup(a => a.GameState)
-                .Returns(() =>
-                {
-                    callCount++;
-                    switch (callCount - 1)
-                    {
-                        case 0:
-                            return GameState.OWin;
-                        case 1:
-                            return GameState.XWin;
-                        default:
-                            return GameState.Tie;
-                    }
-                });
-
-            //setup up our random mock
-            RandomMock
-                .Setup(a => a.Next(1))
-                .Returns(0);
-
-            //act
-            BruteForce.MakeMove(initialGame.Object);
-
-            //assert
-
-            //random was called
-            RandomMock.Verify(a => a.Next(1), Times.Once());
-
-            //the center move was made
-            GameMock
-                .Verify(a => a.Move(Move.Center));
-        }
-
-        [TestMethod]
-        public void MakeMoveShouldMakeTieMoveForXRandomly()
-        {
-            //arrange
-            //setup a mock for the initial object..
-            Move[] initialGameMoveArray = new Move[1];
-            Mock<IGame> initialGame = new Mock<IGame>();
-            initialGame
-                .Setup(a => a.MoveHistory)
-                .Returns(initialGameMoveArray);
-
-            TicTacToeFactoryMock
-                .Setup(a => a.NewGame(initialGameMoveArray))
-                .Returns(GameMock.Object);
-
-            //setup the game mock that will drive the rest of our choices
-            List<Move> legalMoves = new List<Move>()
-            {
-                Move.Northern,
-                Move.Center,
-                Move.Southern
-            };
-            GameMock
-                .Setup(a => a.GetLegalMoves())
-                .Returns(legalMoves);
-
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(true);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.X);
-
-            var callCount = 0;
-            GameMock
-                .Setup(a => a.GameState)
-                .Returns(() =>
-                {
-                    callCount++;
-                    switch (callCount - 1)
-                    {
-                        case 0:
-                            return GameState.Tie;
-                        case 1:
-                            return GameState.OWin;
-                        default:
-                            return GameState.Tie;
-                    }
-                });
-
-            //setup up our random mock
-            RandomMock
-                .Setup(a => a.Next(2))
-                .Returns(1);
-
-            //act
-            BruteForce.MakeMove(initialGame.Object);
-
-            //assert
-
-            //random was called
-            RandomMock.Verify(a => a.Next(2), Times.Once());
-
-            //the center move was made
-            GameMock
-                .Verify(a => a.Move(Move.Southern));
-        }
-
-        [TestMethod]
-        public void MakeMoveShouldMakeLosingMoveForXRandomly()
-        {
-            //arrange
-            //setup a mock for the initial object..
-            Move[] initialGameMoveArray = new Move[1];
-            Mock<IGame> initialGame = new Mock<IGame>();
-            initialGame
-                .Setup(a => a.MoveHistory)
-                .Returns(initialGameMoveArray);
-
-            TicTacToeFactoryMock
-                .Setup(a => a.NewGame(initialGameMoveArray))
-                .Returns(GameMock.Object);
-
-            //setup the game mock that will drive the rest of our choices
-            List<Move> legalMoves = new List<Move>()
-            {
-                Move.Northern,
-                Move.Center,
-                Move.Southern
-            };
-            GameMock
-                .Setup(a => a.GetLegalMoves())
-                .Returns(legalMoves);
-
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(true);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.X);
-
-            var callCount = 0;
-            GameMock
-                .Setup(a => a.GameState)
-                .Returns(() =>
-                {
-                    callCount++;
-                    switch (callCount - 1)
-                    {
-                        case 0:
-                            return GameState.OWin;
-                        case 1:
-                            return GameState.OWin;
-                        default:
-                            return GameState.OWin;
-                    }
-                });
-
-            //setup up our random mock
-            RandomMock
-                .Setup(a => a.Next(3))
-                .Returns(0);
-
-            //act
-            BruteForce.MakeMove(initialGame.Object);
-
-            //assert
-
-            //random was called
-            RandomMock.Verify(a => a.Next(3), Times.Once());
-
-            //the center move was made
-            GameMock
-                .Verify(a => a.Move(Move.Northern));
-        }
-
-        [TestMethod]
-        public void MakeMoveShouldMakeWinningMoveForORandomly()
-        {
-            //arrange
-            //setup a mock for the initial object..
-            Move[] initialGameMoveArray = new Move[1];
-            Mock<IGame> initialGame = new Mock<IGame>();
-            initialGame
-                .Setup(a => a.MoveHistory)
-                .Returns(initialGameMoveArray);
-
-            TicTacToeFactoryMock
-                .Setup(a => a.NewGame(initialGameMoveArray))
-                .Returns(GameMock.Object);
-
-            //setup the game mock that will drive the rest of our choices
-            List<Move> legalMoves = new List<Move>()
-            {
-                Move.Northern,
-                Move.Center,
-                Move.Southern
-            };
-            GameMock
-                .Setup(a => a.GetLegalMoves())
-                .Returns(legalMoves);
-
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(true);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.O);
-
-            var callCount = 0;
-            GameMock
-                .Setup(a => a.GameState)
-                .Returns(() =>
-                {
-                    callCount++;
-                    switch (callCount - 1)
-                    {
-                        case 0:
-                            return GameState.OWin;
-                        case 1:
-                            return GameState.XWin;
-                        default:
-                            return GameState.Tie;
-                    }
-                });
-
-            //setup up our random mock
-            RandomMock
-                .Setup(a => a.Next(1))
-                .Returns(0);
-
-            //act
-            BruteForce.MakeMove(initialGame.Object);
-
-            //assert
-
-            //random was called
-            RandomMock.Verify(a => a.Next(1), Times.Once());
-
-            //the center move was made
-            GameMock
-                .Verify(a => a.Move(Move.Northern));
-        }
-
-        [TestMethod]
-        public void MakeMoveShouldMakeTieMoveForORandomly()
-        {
-            //arrange
-            //setup a mock for the initial object..
-            Move[] initialGameMoveArray = new Move[1];
-            Mock<IGame> initialGame = new Mock<IGame>();
-            initialGame
-                .Setup(a => a.MoveHistory)
-                .Returns(initialGameMoveArray);
-
-            TicTacToeFactoryMock
-                .Setup(a => a.NewGame(initialGameMoveArray))
-                .Returns(GameMock.Object);
-
-            //setup the game mock that will drive the rest of our choices
-            List<Move> legalMoves = new List<Move>()
-            {
-                Move.Northern,
-                Move.Center,
-                Move.Southern
-            };
-            GameMock
-                .Setup(a => a.GetLegalMoves())
-                .Returns(legalMoves);
-
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(true);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.O);
-
-            var callCount = 0;
-            GameMock
-                .Setup(a => a.GameState)
-                .Returns(() =>
-                {
-                    callCount++;
-                    switch (callCount - 1)
-                    {
-                        case 0:
-                            return GameState.Tie;
-                        case 1:
-                            return GameState.XWin;
-                        default:
-                            return GameState.Tie;
-                    }
-                });
-
-            //setup up our random mock
-            RandomMock
-                .Setup(a => a.Next(2))
-                .Returns(1);
-
-            //act
-            BruteForce.MakeMove(initialGame.Object);
-
-            //assert
-
-            //random was called
-            RandomMock.Verify(a => a.Next(2), Times.Once());
-
-            //the center move was made
-            GameMock
-                .Verify(a => a.Move(Move.Southern));
-        }
-
-        [TestMethod]
-        public void MakeMoveShouldMakeLosingMoveForORandomly()
-        {
-            //arrange
-            //setup a mock for the initial object..
-            Move[] initialGameMoveArray = new Move[1];
-            Mock<IGame> initialGame = new Mock<IGame>();
-            initialGame
-                .Setup(a => a.MoveHistory)
-                .Returns(initialGameMoveArray);
-
-            TicTacToeFactoryMock
-                .Setup(a => a.NewGame(initialGameMoveArray))
-                .Returns(GameMock.Object);
-
-            //setup the game mock that will drive the rest of our choices
-            List<Move> legalMoves = new List<Move>()
-            {
-                Move.Northern,
-                Move.Center,
-                Move.Southern
-            };
-            GameMock
-                .Setup(a => a.GetLegalMoves())
-                .Returns(legalMoves);
-
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(true);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.O);
-
-            var callCount = 0;
-            GameMock
-                .Setup(a => a.GameState)
-                .Returns(() =>
-                {
-                    callCount++;
-                    switch (callCount - 1)
-                    {
-                        case 0:
-                            return GameState.XWin;
-                        case 1:
-                            return GameState.XWin;
-                        default:
-                            return GameState.XWin;
-                    }
-                });
-
-            //setup up our random mock
-            RandomMock
-                .Setup(a => a.Next(3))
-                .Returns(0);
-
-            //act
-            BruteForce.MakeMove(initialGame.Object);
-
-            //assert
-
-            //random was called
-            RandomMock.Verify(a => a.Next(3), Times.Once());
-
-            //the center move was made
-            GameMock
-                .Verify(a => a.Move(Move.Northern));
         }
 
         [TestMethod]
@@ -522,16 +111,145 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                     }
                 });
 
-            //setup up our random mock
-            RandomMock
-                .Setup(a => a.Next(3))
-                .Returns(0);
+            BestMoveSelectorMock
+                .Setup(a => a.FindRandomBestMoveResultForPlayerOrDefault(It.IsAny<IEnumerable<IMoveResult>>(), Player.O))
+                .Returns(new MoveResult(Move.Center, GameState.XWin));
 
             //act
             BruteForce.MakeMove(initialGame.Object);
 
             //assert
             TicTacToeFactoryMock.Verify(a => a.NewGame(initialGameMoveArray), Times.Once());
+        }
+
+        [TestMethod]
+        public void MakeMoveShouldMakeMoveRandomly()
+        {
+            //arrange
+            //setup a mock for the initial object..
+            Move[] initialGameMoveArray = new Move[1];
+            Mock<IGame> initialGame = new Mock<IGame>();
+            initialGame
+                .Setup(a => a.MoveHistory)
+                .Returns(initialGameMoveArray);
+
+            TicTacToeFactoryMock
+                .Setup(a => a.NewGame(initialGameMoveArray))
+                .Returns(GameMock.Object);
+
+            //setup the game mock that will drive the rest of our choices
+            List<Move> legalMoves = new List<Move>()
+            {
+                Move.Northern,
+                Move.Center,
+                Move.Southern
+            };
+            GameMock
+                .Setup(a => a.GetLegalMoves())
+                .Returns(legalMoves);
+
+            GameMock
+                .Setup(a => a.GameIsOver)
+                .Returns(true);
+
+            GameMock
+                .Setup(a => a.CurrentPlayer)
+                .Returns(Player.X);
+
+            var callCount = 0;
+            GameMock
+                .Setup(a => a.GameState)
+                .Returns(() =>
+                {
+                    callCount++;
+                    switch (callCount - 1)
+                    {
+                        case 0:
+                            return GameState.OWin;
+                        case 1:
+                            return GameState.XWin;
+                        default:
+                            return GameState.Tie;
+                    }
+                });
+
+            BestMoveSelectorMock
+                .Setup(a => a.FindRandomBestMoveResultForPlayerOrDefault(It.IsAny<IEnumerable<IMoveResult>>(), Player.X))
+                .Returns(new MoveResult(Move.Center, GameState.XWin));
+
+            //act
+            BruteForce.MakeMove(initialGame.Object);
+
+            //assert
+
+            //the center move was made
+            GameMock
+                .Verify(a => a.Move(Move.Center));
+        }
+
+        [TestMethod]
+        public void MakeMoveShouldMakeMoveNonRandomly()
+        {
+            //arrange
+            //setup a mock for the initial object..
+            Move[] initialGameMoveArray = new Move[1];
+            Mock<IGame> initialGame = new Mock<IGame>();
+            initialGame
+                .Setup(a => a.MoveHistory)
+                .Returns(initialGameMoveArray);
+
+            TicTacToeFactoryMock
+                .Setup(a => a.NewGame(initialGameMoveArray))
+                .Returns(GameMock.Object);
+
+            //setup the game mock that will drive the rest of our choices
+            List<Move> legalMoves = new List<Move>()
+            {
+                Move.Northern,
+                Move.Center,
+                Move.Southern
+            };
+            GameMock
+                .Setup(a => a.GetLegalMoves())
+                .Returns(legalMoves);
+
+            GameMock
+                .Setup(a => a.GameIsOver)
+                .Returns(true);
+
+            GameMock
+                .Setup(a => a.CurrentPlayer)
+                .Returns(Player.X);
+
+            var callCount = 0;
+            GameMock
+                .Setup(a => a.GameState)
+                .Returns(() =>
+                {
+                    callCount++;
+                    switch (callCount - 1)
+                    {
+                        case 0:
+                            return GameState.OWin;
+                        case 1:
+                            return GameState.XWin;
+                        default:
+                            return GameState.Tie;
+                    }
+                });
+
+            BestMoveSelectorMock
+                .Setup(a => a.FindBestMoveResultsForPlayer(It.IsAny<IEnumerable<IMoveResult>>(), Player.X))
+                .Returns(new[] { new MoveResult(Move.Center, GameState.XWin) });
+
+            //act
+            BruteForce.MakeMove(initialGame.Object, false);
+
+            //assert
+
+            //the center move was made
+            GameMock
+                .Verify(a => a.Move(Move.Center));
         }
 
         [TestMethod]
@@ -641,6 +359,22 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                     }
 
                     throw new Exception();
+                });
+
+            BestMoveSelectorMock
+                .Setup(a => a.FindBestMoveResultsForPlayer(It.IsAny<IEnumerable<IMoveResult>>(), It.IsAny<Player>()))
+                .Returns<IEnumerable<IMoveResult>,Player>((moves, player) =>
+                {
+                    if (moves.Count() == 4)
+                    {
+                        return moves.Where(a => a.GameStateAfterMove == GameState.Tie).ToList();
+                    }
+                    else if (moves.Count() == 3)
+                    {
+                        return moves.Where(a => a.GameStateAfterMove == GameState.XWin).ToList();
+                    }
+
+                    throw new Exception("Test got weird yo");
                 });
 
             //act
@@ -765,13 +499,27 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                     throw new Exception();
                 });
 
+            BestMoveSelectorMock
+                .Setup(a => a.FindBestMoveResultsForPlayer(It.IsAny<IEnumerable<IMoveResult>>(), It.IsAny<Player>()))
+                .Returns<IEnumerable<IMoveResult>, Player>((moves, player) =>
+                {
+                    if (moves.Count() == 4)
+                    {
+                        return moves.Where(a => a.GameStateAfterMove == GameState.Tie).ToList();
+                    }
+                    else if (moves.Count() == 3)
+                    {
+                        return moves.Where(a => a.GameStateAfterMove == GameState.XWin).ToList();
+                    }
+
+                    throw new Exception("Test got weird yo");
+                });
+
             //act
             var moveResults = BruteForce.FindMoveResults(initialGame.Object);
 
             //assert
             //at this point, this is all we need...
         }
-
-
     }
 }

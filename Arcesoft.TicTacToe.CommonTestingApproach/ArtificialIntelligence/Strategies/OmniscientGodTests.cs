@@ -10,6 +10,7 @@ using FluentAssertions;
 using Arcesoft.TicTacToe.ArtificialIntelligence.Strategies;
 using Arcesoft.TicTacToe.Data;
 using Arcesoft.TicTacToe.Entities;
+using Arcesoft.TicTacToe.GameImplementation;
 
 namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strategies
 {
@@ -18,7 +19,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
     public class OmniscientGodTests
     {
         private Mock<IMoveDataAccess> MoveDataAccessMock { get; set; }
-        private Mock<IRandom> RandomMock { get; set; }
+        private Mock<IBestMoveSelector> BestMoveSelectorMock { get; set; }
         private Mock<IGame> GameMock { get; set; }
 
         //SUT
@@ -30,10 +31,12 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
         public void Initialize()
         {
             GameMock = new Mock<IGame>();
-            RandomMock = new Mock<IRandom>();
             MoveDataAccessMock = new Mock<IMoveDataAccess>();
+            BestMoveSelectorMock = new Mock<IBestMoveSelector>();
 
-            OmniscientGod = new OmniscientGod(MoveDataAccessMock.Object, RandomMock.Object);
+            OmniscientGod = new OmniscientGod(
+                MoveDataAccessMock.Object, 
+                BestMoveSelectorMock.Object);
         }
 
         [TestMethod]
@@ -54,7 +57,7 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
         }
 
         [TestMethod]
-        public void MakeMoveShouldMakeWinningMoveForX()
+        public void MakeMoveShouldThrowExceptionWhenNoMoveResultsFound()
         {
             //arrange
             GameMock
@@ -65,52 +68,32 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                 .Setup(a => a.GameBoardString)
                 .Returns(AGameBoardString);
 
+            var aPlayer = Player.X;
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Player.X);
+                .Returns(aPlayer);
 
-            var moveResponses = new MoveResponse[]
-                {
-                    new MoveResponse()
-                    {
-                        Response = Move.Northern,
-                        Outcome = GameState.XWin,
-                        Board = "_________",
-                        Player = Player.X
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Center,
-                        Outcome = GameState.OWin,
-                        Board = "_________",
-                        Player = Player.X
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Southern,
-                        Outcome = GameState.Tie,
-                        Board = "_________",
-                        Player = Player.X
-                    }
-                };
+            var moveResponses = new MoveResponse[0];
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.X))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, aPlayer))
                 .Returns(moveResponses);
 
-            RandomMock
-                .Setup(a => a.Next(It.IsAny<int>()))
-                .Returns(0);
+            MoveResult moveResult = null;
+            BestMoveSelectorMock
+                .Setup(a => a.FindRandomBestMoveResultForPlayerOrDefault(moveResponses, aPlayer))
+                .Returns(moveResult);
 
             //act
-            OmniscientGod.MakeMove(GameMock.Object);
+            Action act = () => OmniscientGod.MakeMove(GameMock.Object);
 
             //assert
-            GameMock
-                .Verify(a => a.Move(Move.Northern), Times.Once());
+            act
+                .ShouldThrow<Exception>()
+                .WithMessage("Unable to make a move because there are no available moves for game board Wubalubadubdub. Possible corrupt move data access or game.");
         }
 
         [TestMethod]
-        public void MakeMoveShouldMakeTieMoveForX()
+        public void MakeMoveShouldMakeRandomMove()
         {
             //arrange
             GameMock
@@ -121,52 +104,31 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                 .Setup(a => a.GameBoardString)
                 .Returns(AGameBoardString);
 
+            var aPlayer = Player.X;
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Player.X);
+                .Returns(aPlayer);
 
-            var moveResponses = new MoveResponse[]
-                {
-                    new MoveResponse()
-                    {
-                        Response = Move.Northern,
-                        Outcome = GameState.OWin,
-                        Board = "_________",
-                        Player = Player.X
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Center,
-                        Outcome = GameState.OWin,
-                        Board = "_________",
-                        Player = Player.X
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Southern,
-                        Outcome = GameState.Tie,
-                        Board = "_________",
-                        Player = Player.X
-                    }
-                };
+            var moveResponses = new MoveResponse[0];
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.X))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, aPlayer))
                 .Returns(moveResponses);
 
-            RandomMock
-                .Setup(a => a.Next(It.IsAny<int>()))
-                .Returns(0);
+            var moveResult = new MoveResult(Move.Northern, GameState.XWin);
+            BestMoveSelectorMock
+                .Setup(a => a.FindRandomBestMoveResultForPlayerOrDefault(moveResponses, aPlayer))
+                .Returns(moveResult);
 
             //act
             OmniscientGod.MakeMove(GameMock.Object);
 
             //assert
             GameMock
-                .Verify(a => a.Move(Move.Southern), Times.Once());
+                .Verify(a => a.Move(moveResult.MoveMade), Times.Once());
         }
 
         [TestMethod]
-        public void MakeMoveShouldMakeLosingMoveForX()
+        public void MakeMoveShouldMakeNonRandomMove()
         {
             //arrange
             GameMock
@@ -177,217 +139,29 @@ namespace Arcesoft.TicTacToe.CommonTestingApproach.ArtificialIntelligence.Strate
                 .Setup(a => a.GameBoardString)
                 .Returns(AGameBoardString);
 
+            var aPlayer = Player.X;
             GameMock
                 .Setup(a => a.CurrentPlayer)
-                .Returns(Player.X);
+                .Returns(aPlayer);
 
-            var moveResponses = new MoveResponse[]
-                {
-                    new MoveResponse()
-                    {
-                        Response = Move.Northern,
-                        Outcome = GameState.OWin,
-                        Board = "_________",
-                        Player = Player.X
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Center,
-                        Outcome = GameState.OWin,
-                        Board = "_________",
-                        Player = Player.X
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Southern,
-                        Outcome = GameState.OWin,
-                        Board = "_________",
-                        Player = Player.X
-                    }
-                };
+            var moveResponses = new MoveResponse[0];
             MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.X))
+                .Setup(a => a.FindMoveResponses(AGameBoardString, aPlayer))
                 .Returns(moveResponses);
 
-            RandomMock
-                .Setup(a => a.Next(It.IsAny<int>()))
-                .Returns(0);
+            var moveResult = new MoveResult(Move.Northern, GameState.XWin);
+            BestMoveSelectorMock
+                .Setup(a => a.FindBestMoveResultsForPlayer(moveResponses, aPlayer))
+                .Returns(new[] { moveResult });
 
             //act
-            OmniscientGod.MakeMove(GameMock.Object);
+            OmniscientGod.MakeMove(GameMock.Object, false);
 
             //assert
             GameMock
-                .Verify(a => a.Move(Move.Northern), Times.Once());
+                .Verify(a => a.Move(moveResult.MoveMade), Times.Once());
         }
 
-        [TestMethod]
-        public void MakeMoveShouldMakeWinningMoveForO()
-        {
-            //arrange
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(false);
-
-            GameMock
-                .Setup(a => a.GameBoardString)
-                .Returns(AGameBoardString);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.O);
-
-            var moveResponses = new MoveResponse[]
-                {
-                    new MoveResponse()
-                    {
-                        Response = Move.Northern,
-                        Outcome = GameState.XWin,
-                        Board = "_________",
-                        Player = Player.O
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Center,
-                        Outcome = GameState.OWin,
-                        Board = "_________",
-                        Player = Player.O
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Southern,
-                        Outcome = GameState.Tie,
-                        Board = "_________",
-                        Player = Player.O
-                    }
-                };
-            MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.O))
-                .Returns(moveResponses);
-
-            RandomMock
-                .Setup(a => a.Next(It.IsAny<int>()))
-                .Returns(0);
-
-            //act
-            OmniscientGod.MakeMove(GameMock.Object);
-
-            //assert
-            GameMock
-                .Verify(a => a.Move(Move.Center), Times.Once());
-        }
-
-        [TestMethod]
-        public void MakeMoveShouldMakeTieMoveForO()
-        {
-            //arrange
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(false);
-
-            GameMock
-                .Setup(a => a.GameBoardString)
-                .Returns(AGameBoardString);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.O);
-
-            var moveResponses = new MoveResponse[]
-                {
-                    new MoveResponse()
-                    {
-                        Response = Move.Northern,
-                        Outcome = GameState.XWin,
-                        Board = "_________",
-                        Player = Player.O
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Center,
-                        Outcome = GameState.XWin,
-                        Board = "_________",
-                        Player = Player.O
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Southern,
-                        Outcome = GameState.Tie,
-                        Board = "_________",
-                        Player = Player.O
-                    }
-                };
-            MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.O))
-                .Returns(moveResponses);
-
-            RandomMock
-                .Setup(a => a.Next(It.IsAny<int>()))
-                .Returns(0);
-
-            //act
-            OmniscientGod.MakeMove(GameMock.Object);
-
-            //assert
-            GameMock
-                .Verify(a => a.Move(Move.Southern), Times.Once());
-        }
-
-        [TestMethod]
-        public void MakeMoveShouldMakeLosingMoveForO()
-        {
-            //arrange
-            GameMock
-                .Setup(a => a.GameIsOver)
-                .Returns(false);
-
-            GameMock
-                .Setup(a => a.GameBoardString)
-                .Returns(AGameBoardString);
-
-            GameMock
-                .Setup(a => a.CurrentPlayer)
-                .Returns(Player.O);
-
-            var moveResponses = new MoveResponse[]
-                {
-                    new MoveResponse()
-                    {
-                        Response = Move.Northern,
-                        Outcome = GameState.XWin,
-                        Board = "_________",
-                        Player = Player.O
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Center,
-                        Outcome = GameState.XWin,
-                        Board = "_________",
-                        Player = Player.O
-                    },
-                    new MoveResponse()
-                    {
-                        Response = Move.Southern,
-                        Outcome = GameState.XWin,
-                        Board = "_________",
-                        Player = Player.O
-                    }
-                };
-            MoveDataAccessMock
-                .Setup(a => a.FindMoveResponses(AGameBoardString, Player.O))
-                .Returns(moveResponses);
-
-            RandomMock
-                .Setup(a => a.Next(It.IsAny<int>()))
-                .Returns(0);
-
-            //act
-            OmniscientGod.MakeMove(GameMock.Object);
-
-            //assert
-            GameMock
-                .Verify(a => a.Move(Move.Northern), Times.Once());
-        }
 
         [TestMethod]
         public void ShouldFindMoveResults()
